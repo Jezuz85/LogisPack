@@ -140,6 +140,7 @@
     <Compile Include="Ubicacion.vb">
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
+    <Compile Include="Utilidades_Grid.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
