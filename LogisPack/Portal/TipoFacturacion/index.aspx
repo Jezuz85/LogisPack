@@ -68,7 +68,7 @@
                     <h3>Agregar Registro</h3>
                 </div>
 
-                <asp:updatepanel id="UpdatePanel1" runat="server">
+                <asp:updatepanel id="up_Add" runat="server">
                     <ContentTemplate>
                         <div class="modal-body form-group">
 

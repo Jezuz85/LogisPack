@@ -41,13 +41,13 @@ Partial Public Class index1
     Protected WithEvents btnCrear As Global.System.Web.UI.WebControls.ImageButton
     
     '''<summary>
-    '''Control UpdatePanel1.
+    '''Control up_Add.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents UpdatePanel1 As Global.System.Web.UI.UpdatePanel
+    Protected WithEvents up_Add As Global.System.Web.UI.UpdatePanel
     
     '''<summary>
     '''Control txtNombre.

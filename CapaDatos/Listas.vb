@@ -16,7 +16,7 @@ Public Class Listas
         DropDownList1.DataTextField = "nombre"
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
-        DropDownList1.Items.Insert(0, New ListItem("Seleccione el Almacen", ""))
+        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
     End Sub
 
     Public Shared Sub TipoFacturacion(ByRef DropDownList1 As DropDownList)
@@ -33,7 +33,7 @@ Public Class Listas
         DropDownList1.DataTextField = "nombre"
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
-        DropDownList1.Items.Insert(0, New ListItem("Seleccione el tipo de facturación", ""))
+        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
     End Sub
 
     Public Shared Sub TipoUnidad(ByRef DropDownList1 As DropDownList)
@@ -50,7 +50,7 @@ Public Class Listas
         DropDownList1.DataTextField = "nombre"
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
-        DropDownList1.Items.Insert(0, New ListItem("Seleccione el tipo de unidad", ""))
+        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
     End Sub
 
     Public Shared Sub Articulo(ByRef DropDownList1 As DropDownList)
@@ -68,6 +68,7 @@ Public Class Listas
         DropDownList1.DataTextField = "NombreStock"
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
+        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
     End Sub
 
     Public Shared Sub ArticuloTodos(ByRef DropDownList1 As DropDownList)
@@ -84,6 +85,7 @@ Public Class Listas
         DropDownList1.DataTextField = "NombreStock"
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
+        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
     End Sub
 
 End Class

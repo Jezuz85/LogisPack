@@ -49,33 +49,9 @@ Public Class index1
 
         LlenarGridView()
 
-        For Each c As Control In UpdatePanel1.Controls
-            FindAndInvoke(c)
-        Next
+        Utilidades_UpdatePanel.LimpiarControles(up_Add)
 
     End Sub
-
-    Private Shared Sub FindAndInvoke(control As Control)
-
-        'If c IsNot Nothing Then
-        '    If c.GetType() Is GetType(Button) Then
-
-
-        '    End If
-        'End If
-
-    End Sub
-
-    'Private Shared controldefaults As Dictionary(Of Type, Action(Of Control)) = New Dictionary(Of Type, Action(Of Control))() With {
-    '.GetType(Function(, c) (CType(c, TextBox)).Clear(), TextBox),
-    '.GetTypeCType(Function(, c) (CType(c, CheckBox)).Checked = False, CheckBox),
-    '.GetTypeCType(Function(, c) (CType(c, ListBox)).Items.Clear(), ListBox),
-    '.GetTypeCType(Function(, c) (CType(c, RadioButton)).Checked = False, RadioButton),
-    '.GetTypeCType(Function(, c) (CType(c, GroupBox)).Controls.ClearControls(), GroupBox),
-    '.GetTypeCType(Function(, c) (CType(c, Panel)).Controls.ClearControls(), Panel)
-    '}
-
-
 
 
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)

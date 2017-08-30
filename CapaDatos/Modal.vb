@@ -2,6 +2,7 @@
 
 Public Class Modal
 
+
     Public Shared Sub MostrarMsjModal(msj As String, tipo As String, _page As Page)
 
         Dim sTitulo As String = "Información"

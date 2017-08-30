@@ -1207,9 +1207,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack.index1._UpdatePanel1">
+<member name="F:LogisPack.index1._up_Add">
 <summary>
-Control UpdatePanel1.
+Control up_Add.
 </summary>
 <remarks>
 Campo generado automáticamente.

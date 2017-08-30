@@ -12,3 +12,17 @@ c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Deb
 c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Debug\CapaDatos.xml
 c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Debug\CapaDatos.pdb
 C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Debug\CapaDatos.vbprojResolveAssemblyReference.cache
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\CapaDatos.dll.config
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\CapaDatos.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\EntityFramework.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\EntityFramework.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.vbprojResolveAssemblyReference.cache
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.Resources.resources
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.vbproj.GenerateResource.Cache
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.pdb

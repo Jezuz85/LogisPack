@@ -42,3 +42,47 @@ C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\LogisPack.Tests\b
 C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\LogisPack.Tests\bin\Debug\CapaDatos.xml
 C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\LogisPack.Tests\bin\Debug\CapaDatos.dll.config
 C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\LogisPack.Tests\bin\Debug\EntityFramework.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\ApplicationInsights.config
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\LogisPack.Tests.dll.config
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\LogisPack.Tests.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\LogisPack.Tests.pdb
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\LogisPack.Tests.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\LogisPack.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.Optimization.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\Microsoft.AspNet.FriendlyUrls.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\CapaDatos.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.Mvc.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\EntityFramework.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.Razor.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.WebPages.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\LogisPack.pdb
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\LogisPack.dll.config
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.Optimization.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\CapaDatos.pdb
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\CapaDatos.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\CapaDatos.dll.config
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.Mvc.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\EntityFramework.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.Razor.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.WebPages.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\es\System.Web.Optimization.resources.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\es\Microsoft.AspNet.FriendlyUrls.resources.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\es\System.Web.Mvc.resources.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\es\System.Web.Razor.resources.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\es\System.Web.WebPages.resources.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\obj\Debug\LogisPack.Tests.vbprojResolveAssemblyReference.cache
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\obj\Debug\LogisPack.Tests.Resources.resources
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\obj\Debug\LogisPack.Tests.vbproj.GenerateResource.Cache
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\obj\Debug\LogisPack.Tests.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\obj\Debug\LogisPack.Tests.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\obj\Debug\LogisPack.Tests.pdb
