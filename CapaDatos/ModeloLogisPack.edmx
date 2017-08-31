@@ -30,6 +30,7 @@
           <Property Name="valor_articulo" Type="float" Nullable="false" />
           <Property Name="valoracion_stock" Type="float" Nullable="false" />
           <Property Name="valoracion_seguro" Type="float" Nullable="false" />
+          <Property Name="valor_asegurado" Type="float" />
           <Property Name="peso" Type="float" Nullable="false" />
           <Property Name="alto" Type="float" Nullable="false" />
           <Property Name="largo" Type="float" Nullable="false" />
@@ -347,6 +348,7 @@
           <NavigationProperty Name="Picking_Articulo" Relationship="Self.FK_dbo_Picking_Articulo_dbo_Articulo_id_articulo" FromRole="Articulo" ToRole="Picking_Articulo" />
           <NavigationProperty Name="Ubicacion" Relationship="Self.FK_dbo_Ubicacion_dbo_Articulo_id_articulo" FromRole="Articulo" ToRole="Ubicacion" />
           <NavigationProperty Name="Picking_Articulo1" Relationship="Self.FK_Picking_Articulo_Articulo" FromRole="Articulo" ToRole="Picking_Articulo" />
+          <Property Name="valor_asegurado" Type="Double" />
         </EntityType>
         <EntityType Name="Historico">
           <Key>
@@ -621,6 +623,7 @@
           <EntitySetMapping Name="Articulo">
             <EntityTypeMapping TypeName="LogisPackModel.Articulo">
               <MappingFragment StoreEntitySet="Articulo">
+                <ScalarProperty Name="valor_asegurado" ColumnName="valor_asegurado" />
                 <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />

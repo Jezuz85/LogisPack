@@ -15,6 +15,7 @@
     <EntitySetMapping Name="Articulo">
       <EntityTypeMapping TypeName="LogisPackModel.Articulo">
         <MappingFragment StoreEntitySet="Articulo">
+          <ScalarProperty Name="valor_asegurado" ColumnName="valor_asegurado" />
           <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
           <ScalarProperty Name="codigo" ColumnName="codigo" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />

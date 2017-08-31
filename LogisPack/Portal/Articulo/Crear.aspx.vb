@@ -15,6 +15,8 @@ Public Class Crear
         If Not IsPostBack Then
             ViewState("contadorUbi") = "0"
             CargarListas()
+
+            CargarCoefVol(ddlAlmacen.SelectedValue)
         Else
             For Each ctlID In Page.Request.Form.AllKeys
                 If ctlID IsNot Nothing Then
@@ -54,11 +56,14 @@ Public Class Crear
     End Sub
 
     Public Sub CargarListas()
-
         Listas.Almacen(ddlAlmacen)
         Listas.TipoFacturacion(ddlTipoFacturacion)
         Listas.TipoUnidad(ddlTipoUnidad)
+    End Sub
 
+    Public Sub CargarCoefVol(idAlmacen As Integer)
+        Dim _Almacen = Getter.Almacen(idAlmacen)
+        txtCoefVol.Text = _Almacen.coeficiente_volumetrico
     End Sub
 
     Public Sub crearCamposListaUbicacion(valor As Integer)
@@ -73,37 +78,31 @@ Public Class Crear
 
             ControlesDinamicos.CrearLiteral("<tr><td>", pTabla)
             ControlesDinamicos.CrearTextbox("txtZona" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearRequiredFieldValidator("txtZona" & i, pTabla, "ValidationAdd")
             ControlesDinamicos.CrearLiteral("</td>", pTabla)
 
 
             ControlesDinamicos.CrearLiteral("<td>", pTabla)
             ControlesDinamicos.CrearTextbox("txtEstante" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearRequiredFieldValidator("txtEstante" & i, pTabla, "ValidationAdd")
             ControlesDinamicos.CrearLiteral("</td>", pTabla)
 
 
             ControlesDinamicos.CrearLiteral("<td>", pTabla)
             ControlesDinamicos.CrearTextbox("txtFila" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearRequiredFieldValidator("txtFila" & i, pTabla, "ValidationAdd")
             ControlesDinamicos.CrearLiteral("</td>", pTabla)
 
 
             ControlesDinamicos.CrearLiteral("<td>", pTabla)
             ControlesDinamicos.CrearTextbox("txtColumna" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearRequiredFieldValidator("txtColumna" & i, pTabla, "ValidationAdd")
             ControlesDinamicos.CrearLiteral("</td>", pTabla)
 
 
             ControlesDinamicos.CrearLiteral("<td>", pTabla)
             ControlesDinamicos.CrearTextbox("txtPanel" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearRequiredFieldValidator("txtPanel" & i, pTabla, "ValidationAdd")
             ControlesDinamicos.CrearLiteral("</td>", pTabla)
 
 
             ControlesDinamicos.CrearLiteral("<td>", pTabla)
             ControlesDinamicos.CrearTextbox("txtRefUbi" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearRequiredFieldValidator("txtRefUbi" & i, pTabla, "ValidationAdd")
             ControlesDinamicos.CrearLiteral("</td></tr>", pTabla)
 
 
@@ -117,7 +116,6 @@ Public Class Crear
 
         If Page.IsValid Then
 
-            Dim Stock_Picking As Integer = Convert.ToInt32(txtStockFisico.Text)
             Dim contadorControl As Integer = 0
             Dim zona As String = Nothing
             Dim estante As String = Nothing
@@ -128,36 +126,52 @@ Public Class Crear
             Dim _NuevoUbicaion As Ubicacion
             Dim unidadesSolicitadas As Integer = 0
             Dim unidadesDisponibles As Integer = 0
+            Dim M3 As Double = 0
+            Dim PesoVol As Double = 0
+
+
+            Dim Stock_Picking As Integer = If(txtStockFisico.Text = String.Empty, 0, Convert.ToInt32(txtStockFisico.Text))
 
 #Region "Guardar Articulo nuevo"
+
+            If (txtAlto.Text IsNot String.Empty And txtAncho.Text IsNot String.Empty And txtLargo.Text IsNot String.Empty) Then
+                M3 = ((Convert.ToDouble(txtAlto.Text) * Convert.ToDouble(txtAncho.Text) * Convert.ToDouble(txtLargo.Text)) / 1000)
+            End If
+
+            If (txtAlto.Text IsNot String.Empty And txtAncho.Text IsNot String.Empty And txtLargo.Text IsNot String.Empty And txtCoefVol.Text IsNot String.Empty) Then
+                PesoVol = ((Convert.ToDouble(txtAlto.Text) * Convert.ToDouble(txtAncho.Text) * Convert.ToDouble(txtLargo.Text) * Convert.ToDouble(txtCoefVol.Text)) / 1000)
+            End If
+
             Dim _Nuevo As New Articulo With
                 {
-                .codigo = txtCodigo.Text,
-                .nombre = txtNombre.Text,
-                .referencia_picking = txtRefPick.Text,
-                .referencia1 = txtRef1.Text,
-                .referencia2 = txtRef2.Text,
-                .referencia3 = txtRef3.Text,
-                .identificacion = ddlIdentificacion.SelectedValue,
-                .valor_articulo = txtValArticulo.Text,
-                .valoracion_stock = txtValSotck.Text,
-                .valoracion_seguro = txtValSeguro.Text,
-                .peso = txtPeso.Text,
-                .alto = txtAlto.Text,
-                .largo = txtLargo.Text,
-                .ancho = txtAncho.Text,
-                .coeficiente_volumetrico = txtCoefVol.Text,
-                .cubicaje = txtCubicaje.Text,
-                .peso_volumen = txtPesoVol.Text,
-                .observaciones_articulo = txtObsArt.Text,
-                .observaciones_generales = txtObsGen.Text,
-                .stock_fisico = txtStockFisico.Text,
-                .stock_minimo = txtStockMinimo.Text,
-                .id_almacen = Convert.ToInt32(ddlAlmacen.SelectedValue),
-                .id_tipo_facturacion = Convert.ToInt32(ddlTipoFacturacion.SelectedValue),
-                .id_tipo_unidad = Convert.ToInt32(ddlTipoUnidad.SelectedValue),
-                .tipoArticulo = ddlTipoArticulo.SelectedValue
+                .codigo = If(txtCodigo.Text = String.Empty, "", txtCodigo.Text),
+                .nombre = If(txtNombre.Text = String.Empty, "", txtNombre.Text),
+                .referencia_picking = If(txtRefPick.Text = String.Empty, "", txtRefPick.Text),
+                .referencia1 = If(txtRef1.Text = String.Empty, "", txtRef1.Text),
+                .referencia2 = If(txtRef2.Text = String.Empty, "", txtRef2.Text),
+                .referencia3 = If(txtRef3.Text = String.Empty, "", txtRef3.Text),
+                .identificacion = If(ddlIdentificacion.SelectedValue = String.Empty, "", ddlIdentificacion.SelectedValue),
+                .valor_articulo = If(txtValArticulo.Text = String.Empty, "", Convert.ToDouble(txtValArticulo.Text)),
+                .valor_asegurado = If(txtValAsegurado.Text = String.Empty, "", Convert.ToDouble(txtValAsegurado.Text)),
+                .valoracion_stock = If((txtValArticulo.Text = String.Empty And txtStockFisico.Text = String.Empty), "", (Convert.ToDouble(txtValArticulo.Text) * Convert.ToDouble(txtStockFisico.Text))),
+                .valoracion_seguro = If((txtValAsegurado.Text = String.Empty And txtStockFisico.Text = String.Empty), "", (Convert.ToDouble(txtValAsegurado.Text) * Convert.ToDouble(txtStockFisico.Text))),
+                .peso = If(txtPeso.Text = String.Empty, "", Convert.ToDouble(txtPeso.Text)),
+                .alto = If(txtAlto.Text = String.Empty, "", Convert.ToDouble(txtAlto.Text)),
+                .largo = If(txtLargo.Text = String.Empty, "", Convert.ToDouble(txtLargo.Text)),
+                .ancho = If(txtAncho.Text = String.Empty, "", Convert.ToDouble(txtAncho.Text)),
+                .coeficiente_volumetrico = If(txtCoefVol.Text = String.Empty, "", Convert.ToDouble(txtCoefVol.Text)),
+                .cubicaje = M3,
+                .peso_volumen = PesoVol,
+                .observaciones_articulo = If(txtObsArt.Text = String.Empty, "", txtObsArt.Text),
+                .observaciones_generales = If(txtObsGen.Text = String.Empty, "", txtObsGen.Text),
+                .stock_fisico = If(txtStockFisico.Text = String.Empty, "", txtStockFisico.Text),
+                .stock_minimo = If(txtStockMinimo.Text = String.Empty, "", txtStockMinimo.Text),
+                .id_almacen = If(ddlAlmacen.SelectedValue = String.Empty, 0, Convert.ToInt32(ddlAlmacen.SelectedValue)),
+                .id_tipo_facturacion = If(ddlTipoFacturacion.SelectedValue = String.Empty, 0, Convert.ToInt32(ddlTipoFacturacion.SelectedValue)),
+                .id_tipo_unidad = If(ddlTipoUnidad.SelectedValue = String.Empty, 0, Convert.ToInt32(ddlTipoUnidad.SelectedValue)),
+                .tipoArticulo = If(ddlTipoArticulo.SelectedValue = String.Empty, "", ddlTipoArticulo.SelectedValue)
             }
+
             bError = Create.Articulo(_Nuevo)
 #End Region
 
@@ -193,34 +207,22 @@ Public Class Crear
                 For Each micontrol As Control In pTabla.Controls
 
                     miTextbox = CType(pTabla.FindControl("txtZona" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        zona = miTextbox.Text
-                    End If
+                    zona = If((miTextbox IsNot Nothing And miTextbox.Text IsNot String.Empty), miTextbox.Text, "")
 
                     miTextbox = CType(pTabla.FindControl("txtEstante" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        estante = miTextbox.Text
-                    End If
+                    estante = If(miTextbox IsNot Nothing And miTextbox.Text IsNot String.Empty, miTextbox.Text, "")
 
                     miTextbox = CType(pTabla.FindControl("txtFila" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        fila = miTextbox.Text
-                    End If
+                    fila = If(miTextbox IsNot Nothing And miTextbox.Text IsNot String.Empty, miTextbox.Text, "")
 
                     miTextbox = CType(pTabla.FindControl("txtColumna" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        columna = miTextbox.Text
-                    End If
+                    columna = If(miTextbox IsNot Nothing And miTextbox.Text IsNot String.Empty, miTextbox.Text.PadLeft(4, "0"), "")
 
                     miTextbox = CType(pTabla.FindControl("txtPanel" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        panel = miTextbox.Text
-                    End If
+                    panel = If(miTextbox IsNot Nothing And miTextbox.Text IsNot String.Empty, miTextbox.Text, "")
 
                     miTextbox = CType(pTabla.FindControl("txtRefUbi" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        referencia_ubicacion = miTextbox.Text
-                    End If
+                    referencia_ubicacion = If(miTextbox IsNot Nothing And miTextbox.Text IsNot String.Empty, miTextbox.Text, "")
 
                     If referencia_ubicacion IsNot Nothing Then
                         _NuevoUbicaion = New Ubicacion With {
@@ -348,6 +350,8 @@ Public Class Crear
 
     End Sub
 
-
+    Protected Sub SetCoefVolumétrico(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
+        CargarCoefVol(ddlAlmacen.SelectedValue)
+    End Sub
 
 End Class

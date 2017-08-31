@@ -50,6 +50,7 @@
     <NavigationProperty Name="Picking_Articulo" Relationship="Self.FK_dbo_Picking_Articulo_dbo_Articulo_id_articulo" FromRole="Articulo" ToRole="Picking_Articulo" />
     <NavigationProperty Name="Ubicacion" Relationship="Self.FK_dbo_Ubicacion_dbo_Articulo_id_articulo" FromRole="Articulo" ToRole="Ubicacion" />
     <NavigationProperty Name="Picking_Articulo1" Relationship="Self.FK_Picking_Articulo_Articulo" FromRole="Articulo" ToRole="Picking_Articulo" />
+    <Property Name="valor_asegurado" Type="Double" />
   </EntityType>
   <EntityType Name="Historico">
     <Key>

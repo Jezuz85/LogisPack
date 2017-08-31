@@ -284,24 +284,6 @@ Partial Public Class Crear
     Protected WithEvents txtCoefVol As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control txtCubicaje.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtCubicaje As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control txtPesoVol.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtPesoVol As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
     '''Control ddlTipoFacturacion.
     '''</summary>
     '''<remarks>
@@ -329,22 +311,13 @@ Partial Public Class Crear
     Protected WithEvents txtValArticulo As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control txtValSotck.
+    '''Control txtValAsegurado.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtValSotck As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control txtValSeguro.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtValSeguro As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtValAsegurado As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control txtObsGen.

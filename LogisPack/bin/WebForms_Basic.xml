@@ -640,18 +640,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack.Crear._txtValSotck">
+<member name="F:LogisPack.Crear._txtValAsegurado">
 <summary>
-Control txtValSotck.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack.Crear._txtValSeguro">
-<summary>
-Control txtValSeguro.
+Control txtValAsegurado.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1228,6 +1219,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack.index5._btnDelete">
 <summary>
 Control btnDelete.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack.index5._ucMsjModal">
+<summary>
+Control ucMsjModal.
 </summary>
 <remarks>
 Campo generado automáticamente.

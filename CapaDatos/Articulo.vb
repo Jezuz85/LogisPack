@@ -37,6 +37,7 @@ Partial Public Class Articulo
     Public Property id_tipo_facturacion As Integer
     Public Property id_tipo_unidad As Integer
     Public Property tipoArticulo As String
+    Public Property valor_asegurado As Nullable(Of Double)
 
     Public Overridable Property Almacen As Almacen
     Public Overridable Property Tipo_Facturacion As Tipo_Facturacion
