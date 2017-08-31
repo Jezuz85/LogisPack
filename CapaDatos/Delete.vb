@@ -1,10 +1,9 @@
 ﻿
 Public Class Delete
 
-    Public Shared Function Almacen(ByVal _nuevo As Almacen, ByVal _id As Integer) As Boolean
+    Public Shared Function Almacen(ByVal _id As Integer) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
-        Dim bError As Boolean = True
 
         Try
             Dim Eliminar As New Almacen With {
@@ -14,18 +13,16 @@ Public Class Delete
             contexto.Almacen.Remove(Eliminar)
             contexto.SaveChanges()
         Catch ex As Exception
-            bError = False
+            Return False
         End Try
 
-        Return bError
+        Return True
 
     End Function
 
-    Public Shared Function TipoFacturacion(ByVal _nuevo As Tipo_Facturacion, ByVal _id As Integer) As Boolean
+    Public Shared Function TipoFacturacion(ByVal _id As Integer) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
-        Dim bError As Boolean = True
-
         Try
             Dim Eliminar As New Tipo_Facturacion With {
                 .id_tipo_facturacion = _id
@@ -34,18 +31,16 @@ Public Class Delete
             contexto.Tipo_Facturacion.Remove(Eliminar)
             contexto.SaveChanges()
         Catch ex As Exception
-            bError = False
+            Return False
         End Try
 
-        Return bError
+        Return True
 
     End Function
 
-    Public Shared Function TipoUnidad(ByVal _nuevo As Tipo_Unidad, ByVal _id As Integer) As Boolean
+    Public Shared Function TipoUnidad(ByVal _id As Integer) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
-        Dim bError As Boolean = True
-
         Try
             Dim Eliminar As New Tipo_Unidad With {
                 .id_tipo_unidad = _id
@@ -54,17 +49,16 @@ Public Class Delete
             contexto.Tipo_Unidad.Remove(Eliminar)
             contexto.SaveChanges()
         Catch ex As Exception
-            bError = False
+            Return False
         End Try
 
-        Return bError
+        Return True
 
     End Function
 
-    Public Shared Function Articulo(ByVal _nuevo As Articulo, ByVal _id As Integer) As Boolean
+    Public Shared Function Articulo(ByVal _id As Integer) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
-        Dim bError As Boolean = True
 
         Try
             Dim Eliminar As New Articulo With {
@@ -74,10 +68,10 @@ Public Class Delete
             contexto.Articulo.Remove(Eliminar)
             contexto.SaveChanges()
         Catch ex As Exception
-            bError = False
+            Return False
         End Try
 
-        Return bError
+        Return True
 
     End Function
 End Class

@@ -3,6 +3,7 @@
 Public Class index1
     Inherits Page
 
+    Dim contexto As LogisPackEntities = New LogisPackEntities()
     Dim bError As Boolean
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -27,11 +28,17 @@ Public Class index1
 
         If e.CommandName.Equals("Editar") Then
 
+            hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
+            Dim _TipoFacturacion = Getter.Tipo_Facturacion(Convert.ToInt32(hdfEdit.Value))
+            txtNombre_Edit.Text = _TipoFacturacion.nombre
+            Modal.AbrirModal("editModal", "editModalScript", Me)
+
         ElseIf e.CommandName.Equals("Eliminar") Then
+
             hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Modal.AbrirModal("deleteModal", "DeleteModalScript", Me)
-        End If
 
+        End If
 
     End Sub
 
@@ -44,26 +51,33 @@ Public Class index1
         bError = Create.TipoFacturacion(_Nuevo)
 
         Modal.CerrarModal("addModal", "AddModalScript", Me)
-
         Modal.Validacion(Me, bError, "Add")
-
         LlenarGridView()
-
         Utilidades_UpdatePanel.LimpiarControles(up_Add)
 
     End Sub
 
+    Protected Sub Editar(sender As Object, e As EventArgs) Handles btnEdit.Click
+
+        Dim Edit = Getter.Tipo_Facturacion(Convert.ToInt32(hdfEdit.Value), contexto)
+
+        If Edit IsNot Nothing Then
+            Edit.nombre = txtNombre_Edit.Text
+        End If
+
+        bError = Update.Tipo_Facturacion(Edit, contexto)
+
+        Modal.CerrarModal("editModal", "EditModallScript", Me)
+        Modal.Validacion(Me, bError, "Edit")
+        Utilidades_UpdatePanel.LimpiarControles(up_Edit)
+        LlenarGridView()
+    End Sub
 
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 
-        Dim tabla As New Tipo_Facturacion()
-
-        bError = Delete.TipoFacturacion(tabla, Convert.ToInt32(hdfIDDel.Value))
-
+        bError = Delete.TipoFacturacion(Convert.ToInt32(hdfIDDel.Value))
         Modal.CerrarModal("deleteModal", "DeleteModalScript", Me)
-
         Modal.Validacion(Me, bError, "Delete")
-
         LlenarGridView()
 
     End Sub

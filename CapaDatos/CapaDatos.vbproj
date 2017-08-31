@@ -84,12 +84,14 @@
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
     <Compile Include="Cifrar.vb" />
+    <Compile Include="Comandos.vb" />
     <Compile Include="ControlesDinamicos.vb" />
     <Compile Include="Create.vb" />
     <Compile Include="C__MigrationHistory.vb">
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
     <Compile Include="Delete.vb" />
+    <Compile Include="Getter.vb" />
     <Compile Include="Historico.vb">
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
@@ -144,6 +146,8 @@
     <Compile Include="Ubicacion.vb">
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
+    <Compile Include="Update.vb" />
+    <Compile Include="Utilidades_Fileupload.vb" />
     <Compile Include="Utilidades_Grid.vb" />
     <Compile Include="Utilidades_UpdatePanel.vb" />
   </ItemGroup>

@@ -95,13 +95,13 @@ Partial Public Class index
     Protected WithEvents btnCrear As Global.System.Web.UI.WebControls.ImageButton
     
     '''<summary>
-    '''Control UpdatePanel1.
+    '''Control up_Add.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents UpdatePanel1 As Global.System.Web.UI.UpdatePanel
+    Protected WithEvents up_Add As Global.System.Web.UI.UpdatePanel
     
     '''<summary>
     '''Control txtCodigo.
@@ -149,13 +149,13 @@ Partial Public Class index
     Protected WithEvents btnAdd As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''Control UpdatePanel3.
+    '''Control up_Edit.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents UpdatePanel3 As Global.System.Web.UI.UpdatePanel
+    Protected WithEvents up_Edit As Global.System.Web.UI.UpdatePanel
     
     '''<summary>
     '''Control hdfEdit.

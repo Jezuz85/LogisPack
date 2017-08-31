@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 	
-	<asp:updatepanel id="MyUpdatePanel" runat="server">
+	<asp:updatepanel id="upAdd_Articulo" runat="server">
 		<ContentTemplate>
 			
 			<br />

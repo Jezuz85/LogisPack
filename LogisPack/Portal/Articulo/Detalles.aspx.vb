@@ -1,19 +1,19 @@
 ﻿Imports CapaDatos
 
 Public Class Detalles
-    Inherits System.Web.UI.Page
+    Inherits Page
 
     Dim contexto As LogisPackEntities = New LogisPackEntities()
 
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Dim IdArticulo = Cifrar.descifrarCadena_Num(Request.QueryString("id"))
 
-        Dim IdArticulo = Convert.ToInt32(Cifrar.descifrarCadena(Request.QueryString("id")))
-
-        Dim _Articulo As List(Of Articulo) = contexto.Articulo.Where(Function(model) model.id_articulo = IdArticulo).ToList()
+        Dim _Articulo As List(Of Articulo) = Getter.Articulo_list(IdArticulo)
 
         For Each itemArticulos In _Articulo
 
+#Region "articulo"
             lbTipoArticulo.Text = itemArticulos.tipoArticulo
             lbAlmacen.Text = itemArticulos.Almacen.nombre
             lbCodigo.Text = itemArticulos.codigo
@@ -39,6 +39,9 @@ Public Class Detalles
             txtObsArt.Text = itemArticulos.observaciones_articulo
             lbStockMinimo.Text = itemArticulos.stock_minimo
             lbStockFisico.Text = itemArticulos.stock_fisico
+#End Region
+
+#Region "lista articulos picking"
 
             If itemArticulos.tipoArticulo = "Picking" Then
                 phListaArticulos.Visible = True
@@ -52,8 +55,9 @@ Public Class Detalles
                 ControlesDinamicos.CrearLiteral("</ul>", pArticulos)
 
             End If
+#End Region
 
-
+#Region "imagenes"
             ControlesDinamicos.CrearLiteral("
                 <div id='ImagenesArticulo' class='carousel slide' data-ride='carousel'>
                     <div class='carousel-inner'>", pImagenes)
@@ -86,14 +90,9 @@ Public Class Detalles
                     </span><span class='sr-only'>Next</span>
                 </a>
             </div>", pImagenes)
-
+#End Region
 
         Next
-
-
-
-
-
 
     End Sub
 

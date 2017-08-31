@@ -1,5 +1,4 @@
-﻿Imports System.Drawing
-Imports CapaDatos
+﻿Imports CapaDatos
 
 Public Class Crear
     Inherits Page
@@ -164,7 +163,7 @@ Public Class Crear
 
             If bError Then
 
-                Dim articuloView = contexto.Articulo.ToList().LastOrDefault()
+                Dim articuloView = Getter.Articulo_Ultimo()
 
 #Region "Guardar imagenes"
                 For Each _imagen In fuImagenes.PostedFiles
@@ -173,17 +172,13 @@ Public Class Crear
 
                     If _imagen.ContentLength > 0 And _imagen IsNot Nothing Then
 
-                        Dim fileExtension As String = "." + _imagen.FileName.Substring(_imagen.FileName.LastIndexOf(".") + 1).ToLower()
-                        Dim rutaImagen As String = Server.MapPath("~/Archivos/Articulos/") & "Img_" & articuloView.id_articulo & "_" & contadorControl & fileExtension
-
-                        _imagen.SaveAs(rutaImagen)
-
+                        Dim urlImagen As String = Utilidades_Fileupload.Subir_Archivos(_imagen, "~/Archivos/Articulos/", "Img_" & articuloView.id_articulo & "_" & contadorControl)
 
                         Dim _imagenes As New Imagen With
                             {
                             .nombre = "Imagen_" & contadorControl,
                             .id_articulo = articuloView.id_articulo,
-                            .url_imagen = "/Archivos/Articulos/Img_" & articuloView.id_articulo & "_" & contadorControl & fileExtension
+                            .url_imagen = urlImagen
                         }
 
                         Create.Imagen(_imagenes)
@@ -247,9 +242,11 @@ Public Class Crear
 
 #Region "Guardar picking"
                 If ddlTipoArticulo.SelectedValue = "Picking" Then
+
                     contadorControl = 0
 
                     Dim lineaArt As String() = txtArticulos2.Text.Split("" & vbLf & "")
+
                     For i As Integer = 1 To (lineaArt.Length - 1)
 
                         Dim lineas As String() = lineaArt(i - 1).Split(New Char() {"-"c})
@@ -293,6 +290,10 @@ Public Class Crear
 
             Modal.CerrarModal("addModal", "AddModalScript", Me)
             Modal.Validacion(Me, bError, "Add")
+
+            If bError Then
+                Utilidades_UpdatePanel.LimpiarControles(upAdd_Articulo)
+            End If
 
         End If
 

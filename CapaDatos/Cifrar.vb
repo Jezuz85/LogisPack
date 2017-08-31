@@ -12,7 +12,7 @@ Public Class Cifrar
     End Function
 
 
-    Public Shared Function descifrarCadena(mensaje As String) As String
+    Public Shared Function descifrarCadena_Text(mensaje As String) As String
         Dim result As String = String.Empty
         Dim decrypted As Byte() = Convert.FromBase64String(mensaje)
         result = Encoding.Unicode.GetString(decrypted)
@@ -20,6 +20,12 @@ Public Class Cifrar
 
     End Function
 
+    Public Shared Function descifrarCadena_Num(mensaje As String) As Integer
+        Dim result As String = String.Empty
+        Dim decrypted As Byte() = Convert.FromBase64String(mensaje)
+        result = Encoding.Unicode.GetString(decrypted)
+        Return Convert.ToInt32(result)
 
+    End Function
 
 End Class

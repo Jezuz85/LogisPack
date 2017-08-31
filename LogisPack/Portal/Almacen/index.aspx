@@ -121,7 +121,7 @@
 					<h3>Agregar Registro</h3>
 				</div>
 
-				<asp:updatepanel id="UpdatePanel1" runat="server">
+				<asp:updatepanel id="up_Add" runat="server">
 					<ContentTemplate>
 						<div class="modal-body form-group">
 							
@@ -199,7 +199,7 @@
 	</div>	
 		
 	<!-- Edit Modal -->
-	<div id="EditModal" class="modal">
+	<div id="editModal" class="modal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				
@@ -208,7 +208,7 @@
 					<h3>Editar Registro</h3>
 				</div>
 
-				<asp:updatepanel id="UpdatePanel3" runat="server">
+				<asp:updatepanel id="up_Edit" runat="server">
 					<ContentTemplate>
 						<div class="modal-body form-group">
 							<asp:HiddenField id="hdfEdit" runat="server"/>
@@ -288,7 +288,7 @@
 	</div>	
 
 	<!-- View Modal -->
-	<div id="ViewModal" class="modal">
+	<div id="viewModal" class="modal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				
