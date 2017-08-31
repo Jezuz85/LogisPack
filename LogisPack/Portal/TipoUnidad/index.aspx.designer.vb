@@ -41,13 +41,13 @@ Partial Public Class index2
     Protected WithEvents btnCrear As Global.System.Web.UI.WebControls.ImageButton
     
     '''<summary>
-    '''Control UpdatePanel1.
+    '''Control up_Add.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents UpdatePanel1 As Global.System.Web.UI.UpdatePanel
+    Protected WithEvents up_Add As Global.System.Web.UI.UpdatePanel
     
     '''<summary>
     '''Control txtNombre.
@@ -66,6 +66,42 @@ Partial Public Class index2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnAdd As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control up_Edit.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents up_Edit As Global.System.Web.UI.UpdatePanel
+    
+    '''<summary>
+    '''Control hdfEdit.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents hdfEdit As Global.System.Web.UI.WebControls.HiddenField
+    
+    '''<summary>
+    '''Control txtNombre_Edit.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtNombre_Edit As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control btnEdit.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnEdit As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''Control upDel.

@@ -35,9 +35,7 @@
                                 <asp:ButtonField   CommandName="Editar" ButtonType="Image" Text ="Editar"
                                     HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default">
                                 </asp:ButtonField>
-                                <asp:ButtonField   CommandName="Detalles" ButtonType="Image" Text ="Detalles"
-                                    HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default">
-                                </asp:ButtonField>
+  
                                 <asp:ButtonField   CommandName="Eliminar" ButtonType="Image" Text ="Eliminar"
                                     HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default">
                                 </asp:ButtonField>
@@ -68,7 +66,7 @@
                     <h3>Agregar Registro</h3>
                 </div>
 
-                <asp:updatepanel id="UpdatePanel1" runat="server">
+                <asp:updatepanel id="up_Add" runat="server">
                     <ContentTemplate>
                         <div class="modal-body form-group">
 
@@ -103,6 +101,55 @@
         </div>
     </div>    
     
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                    <button id="btnEditCerrar" type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+                    <h3>Editar Registro</h3>
+                </div>
+
+                <asp:updatepanel id="up_Edit" runat="server">
+                    <ContentTemplate>
+
+                        <div class="modal-body form-group">
+                            
+                            <asp:HiddenField id="hdfEdit" runat="server"/>
+
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <h4 class="text-left">Nombre</h4>
+
+                                    <asp:TextBox id="txtNombre_Edit" MaxLength="40" runat="server" ClientIDMode="Static" 
+                                        CssClass="form-control" data-toggle="tooltip" data-placement="bottom" 
+                                        title="Ingrese el nombre del Almacén"></asp:TextBox>
+                                    
+                                    <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" setfocusonerror="true" 
+                                        Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true" 
+                                        ControlToValidate="txtNombre_Edit" runat="server" ValidationGroup="VG_Edit"/>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <div class="row">
+
+                                <div class="col-md-4 col-md-offset-4">
+                                    <asp:Button id="btnEdit" runat="server" Text="Editar" class="btn btn-block btn-default" ValidationGroup="VG_Edit"/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger Controlid="btnEdit" EventName="Click"/></Triggers>
+                </asp:updatepanel>
+            </div>
+        </div>
+    </div>  
+
     <!-- Delete Modal -->
     <div id="deleteModal" class="modal">
         <div class="modal-dialog">
@@ -149,4 +196,3 @@
     <!-- Msj Modal -->
     <ucm:ucMsjModal runat="server" id="ucMsjModal"/>
 </asp:Content>
-

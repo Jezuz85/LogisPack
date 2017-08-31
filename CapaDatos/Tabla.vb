@@ -18,6 +18,35 @@ Public Class Tabla
         GridView1.DataBind()
     End Sub
 
+    Public Shared Sub Articulo(ByRef GridView1 As GridView)
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Dim query = (From AL In contexto.Articulo
+                     Select
+                         AL.id_articulo,
+                         AL.nombre
+                    ).ToList()
+
+        GridView1.DataSource = query
+        GridView1.DataBind()
+    End Sub
+
+    Public Shared Sub Cliente(ByRef GridView1 As GridView)
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Dim query = (From AL In contexto.Cliente
+                     Select
+                         AL.id_cliente,
+                         AL.codigo,
+                         AL.nombre
+                    ).ToList()
+
+        GridView1.DataSource = query
+        GridView1.DataBind()
+    End Sub
+
     Public Shared Sub TipoFacturacion(ByRef GridView1 As GridView)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -39,20 +68,6 @@ Public Class Tabla
         Dim query = (From AL In contexto.Tipo_Unidad
                      Select
                          AL.id_tipo_unidad,
-                         AL.nombre
-                    ).ToList()
-
-        GridView1.DataSource = query
-        GridView1.DataBind()
-    End Sub
-
-    Public Shared Sub Articulo(ByRef GridView1 As GridView)
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-
-        Dim query = (From AL In contexto.Articulo
-                     Select
-                         AL.id_articulo,
                          AL.nombre
                     ).ToList()
 

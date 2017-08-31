@@ -1,16 +1,16 @@
 ﻿Imports CapaDatos
 
 Public Class index2
-    Inherits System.Web.UI.Page
+    Inherits Page
 
     Dim bError As Boolean
+    Dim contexto As LogisPackEntities = New LogisPackEntities()
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         LlenarGridView()
 
     End Sub
-
     Public Sub LlenarGridView()
 
         Tabla.TipoUnidad(GridView1)
@@ -26,17 +26,17 @@ Public Class index2
 
         If e.CommandName.Equals("Editar") Then
 
+            hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
+            Dim _TipoUnidad = Getter.Tipo_Unidad(Convert.ToInt32(hdfEdit.Value))
+            txtNombre_Edit.Text = _TipoUnidad.nombre
+            Modal.AbrirModal("editModal", "editModalScript", Me)
         End If
         If e.CommandName.Equals("Eliminar") Then
 
-            Dim RowIndex As Integer = Convert.ToInt32((e.CommandArgument))
-            Dim gvrow As GridViewRow = GridView1.Rows(RowIndex)
-            hdfIDDel.Value = TryCast(gvrow.FindControl("id"), Label).Text
-
+            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Modal.AbrirModal("deleteModal", "DeleteModalScript", Me)
 
         End If
-
 
     End Sub
 
@@ -52,20 +52,30 @@ Public Class index2
         Modal.CerrarModal("addModal", "AddModalScript", Me)
         Modal.Validacion(Me, bError, "Add")
         LlenarGridView()
+        Utilidades_UpdatePanel.LimpiarControles(up_Add)
     End Sub
+    Protected Sub Editar(sender As Object, e As EventArgs) Handles btnEdit.Click
 
+        Dim Edit = Getter.Tipo_Unidad(Convert.ToInt32(hdfEdit.Value), contexto)
+
+        If Edit IsNot Nothing Then
+            Edit.nombre = txtNombre_Edit.Text
+        End If
+
+        bError = Update.Tipo_Unidad(Edit, contexto)
+
+        Modal.CerrarModal("editModal", "EditModallScript", Me)
+        Modal.Validacion(Me, bError, "Edit")
+        Utilidades_UpdatePanel.LimpiarControles(up_Edit)
+        LlenarGridView()
+    End Sub
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 
-        Dim tabla As New Tipo_Unidad()
-
-        bError = Delete.TipoUnidad(tabla, Convert.ToInt32(hdfIDDel.Value))
+        bError = Delete.TipoUnidad(Convert.ToInt32(hdfIDDel.Value))
 
         Modal.CerrarModal("deleteModal", "DeleteModalScript", Me)
-
         Modal.Validacion(Me, bError, "Delete")
-
         LlenarGridView()
-
     End Sub
 
 End Class

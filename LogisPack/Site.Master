@@ -32,6 +32,7 @@
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li><a runat="server" href="~/">Inicio</a></li>
+						<li><a runat="server" href="~/Portal/Cliente/index">Cliente</a></li>
 						<li><a runat="server" href="~/Portal/Almacen/index">Almacen</a></li>
 						<li><a runat="server" href="~/Portal/Articulo/index">Articulo</a></li>
 						<li><a runat="server" href="~/Portal/Operacion/index">Operacion</a></li>

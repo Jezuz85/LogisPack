@@ -17,38 +17,6 @@ Public Class Create
 
     End Function
 
-    Public Shared Function TipoFacturacion(ByVal _nuevo As Tipo_Facturacion) As Boolean
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-        Dim bError As Boolean = True
-
-        Try
-            contexto.Tipo_Facturacion.Add(_nuevo)
-            contexto.SaveChanges()
-        Catch ex As Exception
-            bError = False
-        End Try
-
-        Return bError
-
-    End Function
-
-    Public Shared Function TipoUnidad(ByVal _nuevo As Tipo_Unidad) As Boolean
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-        Dim bError As Boolean = True
-
-        Try
-            contexto.Tipo_Unidad.Add(_nuevo)
-            contexto.SaveChanges()
-        Catch ex As Exception
-            bError = False
-        End Try
-
-        Return bError
-
-    End Function
-
     Public Shared Function Articulo(ByVal _nuevo As Articulo) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -65,13 +33,29 @@ Public Class Create
 
     End Function
 
-    Public Shared Function Ubicacion(ByVal _nuevo As Ubicacion) As Boolean
+    Public Shared Function Cliente(ByVal _nuevo As Cliente) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
         Dim bError As Boolean = True
 
         Try
-            contexto.Ubicacion.Add(_nuevo)
+            contexto.Cliente.Add(_nuevo)
+            contexto.SaveChanges()
+        Catch ex As Exception
+            bError = False
+        End Try
+
+        Return bError
+
+    End Function
+
+    Public Shared Function Historico(ByVal _nuevo As Historico) As Boolean
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+        Dim bError As Boolean = True
+
+        Try
+            contexto.Historico.Add(_nuevo)
             contexto.SaveChanges()
         Catch ex As Exception
             bError = False
@@ -113,13 +97,13 @@ Public Class Create
 
     End Function
 
-    Public Shared Function Historico(ByVal _nuevo As Historico) As Boolean
+    Public Shared Function TipoFacturacion(ByVal _nuevo As Tipo_Facturacion) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
         Dim bError As Boolean = True
 
         Try
-            contexto.Historico.Add(_nuevo)
+            contexto.Tipo_Facturacion.Add(_nuevo)
             contexto.SaveChanges()
         Catch ex As Exception
             bError = False
@@ -129,4 +113,35 @@ Public Class Create
 
     End Function
 
+    Public Shared Function TipoUnidad(ByVal _nuevo As Tipo_Unidad) As Boolean
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+        Dim bError As Boolean = True
+
+        Try
+            contexto.Tipo_Unidad.Add(_nuevo)
+            contexto.SaveChanges()
+        Catch ex As Exception
+            bError = False
+        End Try
+
+        Return bError
+
+    End Function
+
+    Public Shared Function Ubicacion(ByVal _nuevo As Ubicacion) As Boolean
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+        Dim bError As Boolean = True
+
+        Try
+            contexto.Ubicacion.Add(_nuevo)
+            contexto.SaveChanges()
+        Catch ex As Exception
+            bError = False
+        End Try
+
+        Return bError
+
+    End Function
 End Class

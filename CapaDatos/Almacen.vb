@@ -18,5 +18,6 @@ Partial Public Class Almacen
     Public Property id_cliente As Integer
 
     Public Overridable Property Articulo As ICollection(Of Articulo) = New HashSet(Of Articulo)
+    Public Overridable Property Cliente As Cliente
 
 End Class

@@ -10,10 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class C__MigrationHistory
-    Public Property MigrationId As String
-    Public Property ContextKey As String
-    Public Property Model As Byte()
-    Public Property ProductVersion As String
+Partial Public Class Cliente
+    Public Property id_cliente As Integer
+    Public Property nombre As String
+    Public Property codigo As String
+
+    Public Overridable Property Almacen As ICollection(Of Almacen) = New HashSet(Of Almacen)
 
 End Class

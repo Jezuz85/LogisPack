@@ -1,18 +1,6 @@
 ﻿
 Public Class Getter
 
-    Public Shared Function Tipo_Facturacion(id As Integer) As Tipo_Facturacion
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-
-        Return contexto.Tipo_Facturacion.Where(Function(model) model.id_tipo_facturacion = id).SingleOrDefault()
-
-    End Function
-    Public Shared Function Tipo_Facturacion(id As Integer, ByRef contexto As LogisPackEntities) As Tipo_Facturacion
-
-        Return contexto.Tipo_Facturacion.Where(Function(model) model.id_tipo_facturacion = id).SingleOrDefault()
-
-    End Function
 
     Public Shared Function Almacen(id As Integer) As Almacen
 
@@ -49,4 +37,44 @@ Public Class Getter
 
     End Function
 
+
+    Public Shared Function Cliente(id As Integer) As Cliente
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Return contexto.Cliente.Where(Function(model) model.id_cliente = id).SingleOrDefault()
+
+    End Function
+    Public Shared Function Cliente(id As Integer, ByRef contexto As LogisPackEntities) As Cliente
+
+        Return contexto.Cliente.Where(Function(model) model.id_cliente = id).SingleOrDefault()
+
+    End Function
+
+
+    Public Shared Function Tipo_Facturacion(id As Integer) As Tipo_Facturacion
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Return contexto.Tipo_Facturacion.Where(Function(model) model.id_tipo_facturacion = id).SingleOrDefault()
+
+    End Function
+    Public Shared Function Tipo_Facturacion(id As Integer, ByRef contexto As LogisPackEntities) As Tipo_Facturacion
+
+        Return contexto.Tipo_Facturacion.Where(Function(model) model.id_tipo_facturacion = id).SingleOrDefault()
+
+    End Function
+
+    Public Shared Function Tipo_Unidad(id As Integer) As Tipo_Unidad
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Return contexto.Tipo_Unidad.Where(Function(model) model.id_tipo_unidad = id).SingleOrDefault()
+
+    End Function
+    Public Shared Function Tipo_Unidad(id As Integer, ByRef contexto As LogisPackEntities) As Tipo_Unidad
+
+        Return contexto.Tipo_Unidad.Where(Function(model) model.id_tipo_unidad = id).SingleOrDefault()
+
+    End Function
 End Class

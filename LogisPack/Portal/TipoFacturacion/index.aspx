@@ -35,9 +35,7 @@
                                 <asp:ButtonField   CommandName="Editar" ButtonType="Image" Text ="Editar"
                                     HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default">
                                 </asp:ButtonField>
-                                <asp:ButtonField   CommandName="Detalles" ButtonType="Image" Text ="Detalles"
-                                    HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default">
-                                </asp:ButtonField>
+
                                 <asp:ButtonField   CommandName="Eliminar" ButtonType="Image" Text ="Eliminar"
                                     HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default">
                                 </asp:ButtonField>
@@ -102,7 +100,6 @@
             </div>
         </div>
     </div>
-
     
     <!-- Edit Modal -->
     <div id="editModal" class="modal">

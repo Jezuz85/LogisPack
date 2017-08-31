@@ -1,15 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="LogisPackModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="__MigrationHistory">
-    <Key>
-      <PropertyRef Name="MigrationId" />
-      <PropertyRef Name="ContextKey" />
-    </Key>
-    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
-    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
-    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
-  </EntityType>
   <EntityType Name="Almacen">
     <Key>
       <PropertyRef Name="id_almacen" />
@@ -50,6 +40,14 @@
     <Property Name="id_tipo_facturacion" Type="int" Nullable="false" />
     <Property Name="id_tipo_unidad" Type="int" Nullable="false" />
     <Property Name="tipoArticulo" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+    </Key>
+    <Property Name="id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="codigo" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Historico">
     <Key>
@@ -118,6 +116,20 @@
     <Property Name="referencia_ubicacion" Type="nvarchar" MaxLength="40" />
     <Property Name="id_articulo" Type="int" Nullable="false" />
   </EntityType>
+  <Association Name="FK_Almacen_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="Almacen">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_dbo_Articulo_dbo_Almacen_id_almacen">
     <End Role="Almacen" Type="Self.Almacen" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -229,9 +241,9 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="LogisPackModelStoreContainer">
-    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Almacen" EntityType="Self.Almacen" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Articulo" EntityType="Self.Articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Historico" EntityType="Self.Historico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Imagen" EntityType="Self.Imagen" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Picking_Articulo" EntityType="Self.Picking_Articulo" Schema="dbo" store:Type="Tables" />
@@ -239,6 +251,10 @@
     <EntitySet Name="Tipo_Facturacion" EntityType="Self.Tipo_Facturacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tipo_Unidad" EntityType="Self.Tipo_Unidad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Almacen_Cliente" Association="Self.FK_Almacen_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Almacen" EntitySet="Almacen" />
+    </AssociationSet>
     <AssociationSet Name="FK_dbo_Articulo_dbo_Almacen_id_almacen" Association="Self.FK_dbo_Articulo_dbo_Almacen_id_almacen">
       <End Role="Almacen" EntitySet="Almacen" />
       <End Role="Articulo" EntitySet="Articulo" />

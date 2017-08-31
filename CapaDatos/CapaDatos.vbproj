@@ -84,12 +84,12 @@
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
     <Compile Include="Cifrar.vb" />
+    <Compile Include="Cliente.vb">
+      <DependentUpon>ModeloLogisPack.tt</DependentUpon>
+    </Compile>
     <Compile Include="Comandos.vb" />
     <Compile Include="ControlesDinamicos.vb" />
     <Compile Include="Create.vb" />
-    <Compile Include="C__MigrationHistory.vb">
-      <DependentUpon>ModeloLogisPack.tt</DependentUpon>
-    </Compile>
     <Compile Include="Delete.vb" />
     <Compile Include="Getter.vb" />
     <Compile Include="Historico.vb">

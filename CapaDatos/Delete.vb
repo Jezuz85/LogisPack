@@ -20,6 +20,44 @@ Public Class Delete
 
     End Function
 
+    Public Shared Function Articulo(ByVal _id As Integer) As Boolean
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Try
+            Dim Eliminar As New Articulo With {
+                .id_articulo = _id
+            }
+            contexto.Articulo.Attach(Eliminar)
+            contexto.Articulo.Remove(Eliminar)
+            contexto.SaveChanges()
+        Catch ex As Exception
+            Return False
+        End Try
+
+        Return True
+
+    End Function
+
+    Public Shared Function Cliente(ByVal _id As Integer) As Boolean
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Try
+            Dim Eliminar As New Cliente With {
+                .id_cliente = _id
+            }
+            contexto.Cliente.Attach(Eliminar)
+            contexto.Cliente.Remove(Eliminar)
+            contexto.SaveChanges()
+        Catch ex As Exception
+            Return False
+        End Try
+
+        Return True
+
+    End Function
+
     Public Shared Function TipoFacturacion(ByVal _id As Integer) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -56,22 +94,4 @@ Public Class Delete
 
     End Function
 
-    Public Shared Function Articulo(ByVal _id As Integer) As Boolean
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-
-        Try
-            Dim Eliminar As New Articulo With {
-                .id_articulo = _id
-            }
-            contexto.Articulo.Attach(Eliminar)
-            contexto.Articulo.Remove(Eliminar)
-            contexto.SaveChanges()
-        Catch ex As Exception
-            Return False
-        End Try
-
-        Return True
-
-    End Function
 End Class

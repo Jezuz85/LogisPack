@@ -1,15 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="LogisPackModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="C__MigrationHistory">
-    <Key>
-      <PropertyRef Name="MigrationId" />
-      <PropertyRef Name="ContextKey" />
-    </Key>
-    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
   <EntityType Name="Almacen">
     <Key>
       <PropertyRef Name="id_almacen" />
@@ -20,6 +10,7 @@
     <Property Name="coeficiente_volumetrico" Type="Double" Nullable="false" />
     <Property Name="id_cliente" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Articulo" Relationship="Self.FK_dbo_Articulo_dbo_Almacen_id_almacen" FromRole="Almacen" ToRole="Articulo" />
+    <NavigationProperty Name="Cliente" Relationship="LogisPackModel.FK_Almacen_Cliente" FromRole="Almacen" ToRole="Cliente" />
   </EntityType>
   <EntityType Name="Articulo">
     <Key>
@@ -245,7 +236,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="LogisPackEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
     <EntitySet Name="Almacen" EntityType="Self.Almacen" />
     <EntitySet Name="Articulo" EntityType="Self.Articulo" />
     <EntitySet Name="Historico" EntityType="Self.Historico" />
@@ -287,5 +277,31 @@
       <End Role="Articulo" EntitySet="Articulo" />
       <End Role="Picking_Articulo" EntitySet="Picking_Articulo" />
     </AssociationSet>
+    <EntitySet Name="Cliente" EntityType="LogisPackModel.Cliente" />
+    <AssociationSet Name="FK_Almacen_Cliente" Association="LogisPackModel.FK_Almacen_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Almacen" EntitySet="Almacen" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+    </Key>
+    <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Almacen" Relationship="LogisPackModel.FK_Almacen_Cliente" FromRole="Cliente" ToRole="Almacen" />
+  </EntityType>
+  <Association Name="FK_Almacen_Cliente">
+    <End Type="LogisPackModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="LogisPackModel.Almacen" Role="Almacen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="Almacen">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

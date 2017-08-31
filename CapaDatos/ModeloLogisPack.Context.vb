@@ -22,7 +22,6 @@ Partial Public Class LogisPackEntities
         Throw New UnintentionalCodeFirstException()
     End Sub
 
-    Public Overridable Property C__MigrationHistory() As DbSet(Of C__MigrationHistory)
     Public Overridable Property Almacen() As DbSet(Of Almacen)
     Public Overridable Property Articulo() As DbSet(Of Articulo)
     Public Overridable Property Historico() As DbSet(Of Historico)
@@ -32,5 +31,6 @@ Partial Public Class LogisPackEntities
     Public Overridable Property Tipo_Facturacion() As DbSet(Of Tipo_Facturacion)
     Public Overridable Property Tipo_Unidad() As DbSet(Of Tipo_Unidad)
     Public Overridable Property Ubicacion() As DbSet(Of Ubicacion)
+    Public Overridable Property Cliente() As DbSet(Of Cliente)
 
 End Class

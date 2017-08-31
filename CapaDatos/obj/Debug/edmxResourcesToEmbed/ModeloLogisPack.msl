@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="LogisPackModelStoreContainer" CdmEntityContainer="LogisPackEntities">
-    <EntitySetMapping Name="C__MigrationHistory">
-      <EntityTypeMapping TypeName="LogisPackModel.C__MigrationHistory">
-        <MappingFragment StoreEntitySet="__MigrationHistory">
-          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-          <ScalarProperty Name="Model" ColumnName="Model" />
-          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Almacen">
       <EntityTypeMapping TypeName="LogisPackModel.Almacen">
         <MappingFragment StoreEntitySet="Almacen">
@@ -125,6 +115,15 @@
           <ScalarProperty Name="panel" ColumnName="panel" />
           <ScalarProperty Name="referencia_ubicacion" ColumnName="referencia_ubicacion" />
           <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="LogisPackModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
