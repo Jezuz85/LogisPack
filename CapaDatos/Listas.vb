@@ -16,6 +16,24 @@ Public Class Listas
         DropDownList1.DataTextField = "nombre"
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
+        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
+    End Sub
+    Public Shared Sub Almacen(ByRef DropDownList1 As DropDownList, idCliente As Integer)
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Dim query = (From AL In contexto.Almacen
+                     Where AL.id_cliente = idCliente
+                     Select
+                         AL.id_almacen,
+                         AL.nombre
+                    ).ToList()
+
+        DropDownList1.DataValueField = "id_almacen"
+        DropDownList1.DataTextField = "nombre"
+        DropDownList1.DataSource = query
+        DropDownList1.DataBind()
+        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
     End Sub
 
     Public Shared Sub Articulo(ByRef DropDownList1 As DropDownList)
@@ -49,6 +67,24 @@ Public Class Listas
         DropDownList1.DataTextField = "NombreStock"
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
+    End Sub
+
+    Public Shared Sub Cliente(ByRef DropDownList1 As DropDownList)
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Dim query = (From AL In contexto.Cliente
+                     Select
+                         AL.id_cliente,
+                         AL.nombre
+                    ).ToList()
+
+        DropDownList1.DataValueField = "id_cliente"
+        DropDownList1.DataTextField = "nombre"
+        DropDownList1.DataSource = query
+        DropDownList1.DataBind()
+
+        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
     End Sub
 
     Public Shared Sub TipoFacturacion(ByRef DropDownList1 As DropDownList)

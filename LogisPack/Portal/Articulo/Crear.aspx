@@ -1,11 +1,13 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Crear.aspx.vb" Inherits="LogisPack.Crear" %>
 <%@ Register Src="~/Portal/WebUserControl/MsjModal.ascx" TagPrefix="ucm" TagName="ucMsjModal" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-	
+ 
+
 	<asp:updatepanel id="upAdd_Articulo" runat="server">
 		<ContentTemplate>
-			
+
 			<br />
 			<ol class="breadcrumb">
 				<li><a href="../../Default.aspx">Menu Principal</a></li>
@@ -29,9 +31,23 @@
 				</div>
 
 				<div class="col-md-2">
+					<h4>Cliente:</h4>
+					<asp:dropdownlist id="ddlCliente" runat="server" cssclass="form-control" data-toggle="tooltip" 
+						data-placement="bottom" title="Seleccione el cliente" AutoPostBack="true"></asp:dropdownlist>
+
+					<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" setfocusonerror="true" Display="Dynamic" 
+						ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="ddlCliente" runat="server" 
+						validationgroup="ValidationAdd"/>
+				</div>
+
+				<div class="col-md-2">
 					<h4>Almacén</h4>
 					<asp:dropdownlist id="ddlAlmacen" runat="server" cssclass="form-control" data-toggle="tooltip" 
 						data-placement="bottom" title="Seleccione el almacén" AutoPostBack="true"></asp:dropdownlist>
+
+					<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" setfocusonerror="true" Display="Dynamic" 
+						ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="ddlAlmacen" runat="server" 
+						validationgroup="ValidationAdd"/>
 				</div>
 
 				<div class="col-md-8">
@@ -173,7 +189,7 @@
 					</table>
 					
 					<div class="col-md-6">
-						<asp:button id="btnAddFilaUbicacion" runat="server" cssclass="btn btn-default" text="Agregar Otra Ubicación"/>
+						<asp:button id="btnAddFilaUbicacion" runat="server" cssclass="btn btn-default" text="Agregar Otra Ubicación" />
 						<asp:button id="btnEliminarFila" runat="server" cssclass="btn btn-default" text="Eliminar Ubicación" 
 							validationgroup="ValidationAddRow"/>
 					</div>
@@ -183,31 +199,31 @@
 			<hr />
 
 			<div class="row">				
-				<div class="col-md-1">
+				<div class="col-md-2">
 					<h4>Peso</h4>
 					<asp:TextBox runat="server" min=0 max=9999 id="txtPeso" CssClass="form-control" data-toggle="tooltip" type="number"
 						step="any" data-placement="bottom" title="Ingrese el peso del artículo"></asp:TextBox>
 				</div>
 				
-				<div class="col-md-1">
-					<h4>Alto</h4>
+				<div class="col-md-2">
+					<h4>Alto(cm)</h4>
 					<asp:TextBox runat="server" min=0 max=9999 id="txtAlto" CssClass="form-control" data-toggle="tooltip" type="number"
 						step="any" data-placement="bottom" title="Ingrese la altura del artículo"></asp:TextBox>
 				</div>
 				
-				<div class="col-md-1">
-					<h4>Largo</h4>
+				<div class="col-md-2">
+					<h4>Largo (cm)</h4>
 					<asp:TextBox runat="server" min=0 max=9999 id="txtLargo" CssClass="form-control" data-toggle="tooltip" type="number"
 						step="any" data-placement="bottom" title="Ingrese el largo del artículo"></asp:TextBox>
 				</div>
 				
-				<div class="col-md-1">
-					<h4>Ancho</h4>
+				<div class="col-md-2">
+					<h4>Ancho(cm)</h4>
 					<asp:TextBox runat="server" min=0 max=9999 id="txtAncho" CssClass="form-control" data-toggle="tooltip" type="number"
 						step="any" data-placement="bottom" title="Ingrese el ancho del artículo"></asp:TextBox>
 				</div>
 				
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<h4>Coef. Volumétrico</h4>
 					<asp:TextBox runat="server" min=0 max=9999 id="txtCoefVol" CssClass="form-control" data-toggle="tooltip" type="number"
 						step="any" data-placement="bottom" title="Ingrese el coeficiente volumétrico del artículo"></asp:TextBox>
@@ -218,23 +234,23 @@
 			<hr />
 
 			<div class="row">				
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<h4>Tipo de Facturación</h4>
 					<asp:dropdownlist id="ddlTipoFacturacion" runat="server" cssclass="form-control" data-toggle="tooltip" 
 						data-placement="bottom" title="Seleccione el Tipo de Facturación"></asp:dropdownlist>
 				</div>
 				
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<h4>Identificación</h4>
 					
 					<asp:DropDownList runat="server" id="ddlIdentificacion" CssClass="form-control" data-toggle="tooltip" 
-						data-placement="bottom" title="Seleccione el tipo de Artículo" AutoPostBack="true">
+						data-placement="bottom" title="Seleccione el tipo de Artículo">
 						<asp:ListItem Text="CB" Value="CB"></asp:ListItem>
 						<asp:ListItem Text="RF" Value="RF"></asp:ListItem>
 					</asp:DropDownList>
 				</div>
 
-				<div class="col-md-2">  
+				<div class="col-md-3">  
 					<h4>Valor artículo</h4>
 					<asp:TextBox runat="server" min=0  id="txtValArticulo" CssClass="form-control" data-toggle="tooltip" type="number"
 						step="any" data-placement="bottom" title="Ingrese el valor del artículo"></asp:TextBox>
@@ -244,7 +260,7 @@
 						validationgroup="ValidationAdd"/>--%>
 				</div>
 
-				<div class="col-md-2">  
+				<div class="col-md-3">  
 					<h4>Valor Asegurado</h4>
 					<asp:TextBox runat="server" id="txtValAsegurado"  CssClass="form-control" type="number"
 						step="any" data-placement="bottom" title="Ingrese el valor asegurado"></asp:TextBox>
@@ -256,16 +272,23 @@
 			<div class="row">
 				<div class="col-md-6">
 					<h4>Observaciones Generales</h4>
-					<asp:TextBox runat="server" MaxLength="300" id="txtObsGen" CssClass="form-control" data-toggle="tooltip" rows="3" 
+					<asp:TextBox runat="server" id="txtObsGen" CssClass="form-control" data-toggle="tooltip" rows="3" 
 						textmode="multiline" data-placement="bottom" title="Ingrese las observaciones generales"></asp:TextBox>
+					<div id="count1">0</div>
+					<div id="alert1" class="hidden">Has alcanzado el limite!</div>
+
 				</div>
 				
 				<div class="col-md-6">
 					<h4>Observaciones Artículo</h4>
 					<asp:TextBox runat="server" MaxLength="300" id="txtObsArt" CssClass="form-control" data-toggle="tooltip" rows="3" 
 						textmode="multiline" data-placement="bottom" title="Ingrese las observaciones del artículo"></asp:TextBox>
+					<div id="count2">0</div>
+					<div id="alert2" class="hidden">Has alcanzado el limite!</div>
 				</div>
+
 			</div>
+
 
 			<hr />
 
@@ -280,11 +303,6 @@
 					<h4>Stock físico</h4>
 					<asp:TextBox runat="server" min=0 id="txtStockFisico" CssClass="form-control" data-toggle="tooltip" type="number"
 						step="any" data-placement="bottom" title="Ingrese el stock fisico del artículo"></asp:TextBox>
-					
-					<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" setfocusonerror="true" Display="Dynamic" 
-						ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtStockFisico" runat="server" 
-						validationgroup="Val_AddArticulo"/>
-
 				</div>
 			</div>
 			
@@ -295,7 +313,7 @@
 					<h4>Imagenes</h4>
 					
 					<asp:FileUpload runat="server" id="fuImagenes" data-toggle="tooltip" data-placement="bottom" AllowMultiple="true" 
-						class="multiple form-control" title="Seleccione las imagenes del articulo"/>
+						class="multiple form-control" title="Seleccione las imagenes del articulo" accept=".png,.jpg,.jpeg,.gif"/> 
 				</div>
 			</div>
 

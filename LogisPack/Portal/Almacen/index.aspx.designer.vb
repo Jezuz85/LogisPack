@@ -131,13 +131,13 @@ Partial Public Class index
     Protected WithEvents txtCoefVol As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control txtcliente.
+    '''Control ddlClienteAdd.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtcliente As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents ddlClienteAdd As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
     '''Control btnAdd.
@@ -194,13 +194,13 @@ Partial Public Class index
     Protected WithEvents txtEditCoefVol As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control txtEditCliente.
+    '''Control ddlClienteEdit.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtEditCliente As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents ddlClienteEdit As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
     '''Control btnEdit.

@@ -92,6 +92,19 @@ Public Class Detalles
             </div>", pImagenes)
 #End Region
 
+            For Each itemUbicacion In itemArticulos.Ubicacion
+
+                ControlesDinamicos.CrearLiteral("<tr'>", pTabla)
+                ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.zona & "</td>", pTabla)
+                ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.estante & "</td>", pTabla)
+                ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.fila & "</td>", pTabla)
+                ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.columna & "</td>", pTabla)
+                ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.panel & "</td>", pTabla)
+                ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.referencia_ubicacion & "</td>", pTabla)
+                ControlesDinamicos.CrearLiteral("</tr>", pTabla)
+
+            Next
+
         Next
 
     End Sub

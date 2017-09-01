@@ -10,8 +10,6 @@ Public Class Utilidades_UpdatePanel
             If _control IsNot Nothing Then
                 If _control.GetType() Is GetType(TextBox) Then
                     CType(_control, TextBox).Text = Nothing
-                ElseIf _control.GetType() Is GetType(DropDownList) Then
-                    CType(_control, DropDownList).SelectedValue = ""
                 ElseIf _control.GetType() Is GetType(CheckBox) Then
                     CType(_control, CheckBox).Checked = False
                 ElseIf _control.GetType() Is GetType(ListBox) Then
@@ -47,4 +45,13 @@ Public Class Utilidades_UpdatePanel
 
     End Sub
 
+    Public Shared Function ObtenerControl_PostBack(page As Page) As Control
+
+        Dim ctrl As Control = Nothing
+        Dim ctrlName As String = page.Request.Params.Get("__EVENTTARGET")
+        If Not String.IsNullOrEmpty(ctrlName) Then
+            ctrl = page.FindControl(ctrlName)
+        End If
+        Return ctrl
+    End Function
 End Class

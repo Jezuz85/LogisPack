@@ -1,4 +1,6 @@
 ﻿
+Imports System.Drawing
+Imports System.Drawing.Imaging
 Imports System.Web
 Imports System.Web.UI.WebControls
 
@@ -6,14 +8,16 @@ Public Class Utilidades_Fileupload
 
     Public Shared Function Subir_Archivos(ByRef _archivo As HttpPostedFile, ruta As String, nombre As String) As String
 
-        Dim fileExtension As String = "." + _archivo.FileName.Substring(_archivo.FileName.LastIndexOf(".") + 1).ToLower()
-        Dim rutaImagen As String = HttpContext.Current.Server.MapPath(ruta) & nombre & fileExtension
-        _archivo.SaveAs(rutaImagen)
+        Dim rutaImagen As String = HttpContext.Current.Server.MapPath(ruta) & nombre & ".jpg"
 
-        Return ruta & nombre & fileExtension
+        Dim bmpPostedImage As New Bitmap(_archivo.InputStream)
+        Dim objImage As Drawing.Image = ScaleImage(bmpPostedImage, 81)
+
+        objImage.Save(rutaImagen, ImageFormat.Jpeg)
+
+        Return ruta.Replace("~", "") & nombre & ".jpg"
 
     End Function
-
 
     Public Shared Function Subir_Archivo(ByRef _archivo As FileUpload, ruta As String, nombre As String) As String
 
@@ -21,8 +25,22 @@ Public Class Utilidades_Fileupload
         Dim rutaImagen As String = HttpContext.Current.Server.MapPath(ruta) & nombre & fileExtension
         _archivo.SaveAs(rutaImagen)
 
-        Return ruta & nombre & fileExtension
+        Return ruta.Replace("~", "") & nombre & fileExtension
 
     End Function
+
+    Private Shared Function ScaleImage(image As Drawing.Image, maxHeight As Integer) As Drawing.Image
+        Dim ratio = CDbl(maxHeight / image.Height)
+        Dim newWidth = CInt((image.Width * ratio))
+        Dim newHeight = CInt((image.Height * ratio))
+        Dim newImage = New Bitmap(800, 600)
+        Using g = Graphics.FromImage(newImage)
+            g.DrawImage(image, 0, 0, 800, 600)
+
+        End Using
+        Return newImage
+
+    End Function
+
 
 End Class

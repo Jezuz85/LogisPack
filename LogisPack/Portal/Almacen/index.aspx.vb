@@ -19,6 +19,7 @@ Public Class index
             LlenarTreeView(dt, 0, Nothing)
 
             LlenarGridView()
+            CargarListas()
 
         End If
 
@@ -27,6 +28,9 @@ Public Class index
 
         Tabla.Almacen(GridView1)
 
+    End Sub
+    Public Sub CargarListas()
+        Listas.Cliente(ddlClienteAdd)
     End Sub
 
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
@@ -41,7 +45,9 @@ Public Class index
             hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Dim _Almacen = Getter.Almacen(Convert.ToInt32(hdfEdit.Value))
 
-            txtEditCliente.Text = _Almacen.id_cliente
+
+            Listas.Cliente(ddlClienteEdit)
+            ddlClienteEdit.SelectedValue = _Almacen.id_cliente
             txtEditCodigo.Text = _Almacen.codigo
             txtEditNombre.Text = _Almacen.nombre
             txtEditCoefVol.Text = _Almacen.coeficiente_volumetrico
@@ -57,7 +63,7 @@ Public Class index
             hdfView.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Dim _Almacen = Getter.Almacen(Convert.ToInt32(hdfView.Value))
 
-            lbViewCliente.Text = _Almacen.id_cliente
+            lbViewCliente.Text = _Almacen.Cliente.nombre
             lbViewCodigo.Text = _Almacen.codigo
             lbViewNombre.Text = _Almacen.nombre
             lbViewCoefVol.Text = _Almacen.coeficiente_volumetrico
@@ -73,7 +79,7 @@ Public Class index
             .nombre = txtNombre.Text,
             .codigo = txtCodigo.Text,
             .coeficiente_volumetrico = txtCoefVol.Text,
-            .id_cliente = txtcliente.Text
+            .id_cliente = Convert.ToInt32(ddlClienteAdd.SelectedValue)
         }
 
         bError = Create.Almacen(_Nuevo)
@@ -88,7 +94,7 @@ Public Class index
         Dim Edit = Getter.Almacen(Convert.ToInt32(hdfEdit.Value), contexto)
 
         If Edit IsNot Nothing Then
-            Edit.id_cliente = Convert.ToInt32(txtEditCliente.Text)
+            Edit.id_cliente = Convert.ToInt32(ddlClienteEdit.SelectedValue)
             Edit.codigo = txtEditCodigo.Text
             Edit.nombre = txtEditNombre.Text
             Edit.coeficiente_volumetrico = Convert.ToDouble(txtEditCoefVol.Text)

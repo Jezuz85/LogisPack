@@ -122,60 +122,6 @@ Partial Public Class Detalles
     Protected WithEvents pTabla As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control txtZona0.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtZona0 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control txtEstante0.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtEstante0 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control txtFila0.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtFila0 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control txtColumna0.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtColumna0 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control txtPanel0.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtPanel0 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control txtRefUbi0.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtRefUbi0 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
     '''Control lbPeso.
     '''</summary>
     '''<remarks>
@@ -212,15 +158,6 @@ Partial Public Class Detalles
     Protected WithEvents lbAncho As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control lbCoefVol.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lbCoefVol As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
     '''Control lbCubicaje.
     '''</summary>
     '''<remarks>
@@ -228,6 +165,15 @@ Partial Public Class Detalles
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents lbCubicaje As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control lbCoefVol.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbCoefVol As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''Control txtPesoVol.
@@ -282,6 +228,15 @@ Partial Public Class Detalles
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtValSeguro As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control txtValAsegurado.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtValAsegurado As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''Control txtObsGen.

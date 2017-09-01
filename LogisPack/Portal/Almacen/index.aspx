@@ -170,14 +170,13 @@
 							<div class="row">
 								<div class="col-md-8 col-md-offset-2">
 									<h4 class="text-left">Cliente</h4>
-
-									<asp:TextBox id="txtcliente" type="number" runat="server" ClientIDMode="Static" 
-										CssClass="form-control" data-toggle="tooltip" data-placement="bottom" 
-										title="Ingrese el cliente"></asp:TextBox>
 									
+									<asp:dropdownlist id="ddlClienteAdd" runat="server" cssclass="form-control" data-toggle="tooltip" 
+										data-placement="bottom" title="Seleccione el cliente" AutoPostBack="true"></asp:dropdownlist>
+							
 									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" setfocusonerror="true" 
 										Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true" 
-										ControlToValidate="txtcliente" runat="server" ValidationGroup="ValidationAdd"/>
+										ControlToValidate="ddlClienteAdd" runat="server" ValidationGroup="ValidationAdd"/>
 								</div>
 							</div>
 						</div>
@@ -259,13 +258,13 @@
 								<div class="col-md-8 col-md-offset-2">
 									<h4 class="text-left">Cliente</h4>
 
-									<asp:TextBox id="txtEditCliente" type="number" runat="server" ClientIDMode="Static" 
-										CssClass="form-control" data-toggle="tooltip" data-placement="bottom" 
-										title="Ingrese el cliente"></asp:TextBox>
 									
+									<asp:dropdownlist id="ddlClienteEdit" runat="server" cssclass="form-control" data-toggle="tooltip" 
+										data-placement="bottom" title="Seleccione el cliente" AutoPostBack="true"></asp:dropdownlist>
+							
 									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" setfocusonerror="true" 
 										Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true" 
-										ControlToValidate="txtEditCliente" runat="server" ValidationGroup="ValidationEdit"/>
+										ControlToValidate="ddlClienteEdit" runat="server" ValidationGroup="ValidationEdit"/>
 								</div>
 							</div>
 						</div>

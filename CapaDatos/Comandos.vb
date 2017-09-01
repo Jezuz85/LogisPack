@@ -6,7 +6,7 @@ Public Class Comandos
     End Sub
 
     Public Function Arbol_Almacen_Nivel0() As String
-        Return "SELECT Count(id_almacen), id_cliente ID , 'Cliente:' + cast(id_cliente as varchar)  Name FROM Almacen Group By id_cliente"
+        Return "SELECT Count(id_almacen), CL.id_cliente ID , CL.nombre  Name FROM Almacen AL INNER JOIN cliente CL ON CL.id_cliente = AL.id_cliente Group By CL.id_cliente,CL.nombre"
     End Function
 
     Public Function Arbol_Almacen_Nivel1() As String

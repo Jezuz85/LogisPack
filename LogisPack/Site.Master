@@ -57,22 +57,10 @@
 				<script src="../../../Scripts/jquery-3.1.1.slim.js"></script>
 				<script src="../../../Scripts/jquery-3.1.1.min.js"></script>
 				<script src="../../../Scripts/bootstrap.min.js"></script>
+				<script src="../../../Scripts/Custom.js"></script>
 	
 
-				<script type="text/javascript">
-					function MostrarMsjModal(message, title, ccsclas) {
-						var vIcoModal = document.getElementById("icoModal");
-						vIcoModal.className = ccsclas;
-						$('#lblMsjTitle').html(title);
-						$('#lblMsjModal').html(message);
-						$('#Msjmodal').modal('show');
-						return true;
-					}
-					function MostrarMsjModalExito() {
-						$('#modalExito').modal('show');
-						return true;
-					}
-				</script>
+
 		</div>
 
 	</form>

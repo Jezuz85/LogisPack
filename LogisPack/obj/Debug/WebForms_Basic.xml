@@ -154,9 +154,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack.index._txtcliente">
+<member name="F:LogisPack.index._ddlClienteAdd">
 <summary>
-Control txtcliente.
+Control ddlClienteAdd.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -217,9 +217,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack.index._txtEditCliente">
+<member name="F:LogisPack.index._ddlClienteEdit">
 <summary>
-Control txtEditCliente.
+Control ddlClienteEdit.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -337,6 +337,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack.Crear._ddlTipoArticulo">
 <summary>
 Control ddlTipoArticulo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack.Crear._ddlCliente">
+<summary>
+Control ddlCliente.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -595,24 +604,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack.Crear._txtCubicaje">
-<summary>
-Control txtCubicaje.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack.Crear._txtPesoVol">
-<summary>
-Control txtPesoVol.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:LogisPack.Crear._ddlTipoFacturacion">
 <summary>
 Control ddlTipoFacturacion.
@@ -820,60 +811,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack.Detalles._txtZona0">
-<summary>
-Control txtZona0.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack.Detalles._txtEstante0">
-<summary>
-Control txtEstante0.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack.Detalles._txtFila0">
-<summary>
-Control txtFila0.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack.Detalles._txtColumna0">
-<summary>
-Control txtColumna0.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack.Detalles._txtPanel0">
-<summary>
-Control txtPanel0.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack.Detalles._txtRefUbi0">
-<summary>
-Control txtRefUbi0.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:LogisPack.Detalles._lbPeso">
 <summary>
 Control lbPeso.
@@ -910,18 +847,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack.Detalles._lbCoefVol">
+<member name="F:LogisPack.Detalles._lbCubicaje">
 <summary>
-Control lbCoefVol.
+Control lbCubicaje.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack.Detalles._lbCubicaje">
+<member name="F:LogisPack.Detalles._lbCoefVol">
 <summary>
-Control lbCubicaje.
+Control lbCoefVol.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -976,6 +913,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack.Detalles._txtValSeguro">
 <summary>
 Control txtValSeguro.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack.Detalles._txtValAsegurado">
+<summary>
+Control txtValAsegurado.
 </summary>
 <remarks>
 Campo generado automáticamente.

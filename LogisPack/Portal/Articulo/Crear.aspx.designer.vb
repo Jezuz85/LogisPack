@@ -32,6 +32,15 @@ Partial Public Class Crear
     Protected WithEvents ddlTipoArticulo As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
+    '''Control ddlCliente.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlCliente As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''Control ddlAlmacen.
     '''</summary>
     '''<remarks>
