@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LogisPackModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LogisPackModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Almacen">
           <Key>
             <PropertyRef Name="id_almacen" />
@@ -20,31 +20,31 @@
             <PropertyRef Name="id_articulo" />
           </Key>
           <Property Name="id_articulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="codigo" Type="nvarchar" MaxLength="25" />
-          <Property Name="nombre" Type="nvarchar" MaxLength="40" />
-          <Property Name="referencia_picking" Type="nvarchar" MaxLength="25" />
-          <Property Name="referencia1" Type="nvarchar" MaxLength="25" />
-          <Property Name="referencia2" Type="nvarchar" MaxLength="25" />
-          <Property Name="referencia3" Type="nvarchar" MaxLength="25" />
-          <Property Name="identificacion" Type="nvarchar" MaxLength="2" />
-          <Property Name="valor_articulo" Type="float" Nullable="false" />
-          <Property Name="valoracion_stock" Type="float" Nullable="false" />
-          <Property Name="valoracion_seguro" Type="float" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="25" />
+          <Property Name="nombre" Type="varchar" MaxLength="40" />
+          <Property Name="referencia_picking" Type="varchar" MaxLength="25" />
+          <Property Name="referencia1" Type="varchar" MaxLength="25" />
+          <Property Name="referencia2" Type="varchar" MaxLength="25" />
+          <Property Name="referencia3" Type="varchar" MaxLength="25" />
+          <Property Name="identificacion" Type="varchar" MaxLength="2" />
+          <Property Name="valor_articulo" Type="float" />
+          <Property Name="valoracion_stock" Type="float" />
+          <Property Name="valoracion_seguro" Type="float" />
           <Property Name="valor_asegurado" Type="float" />
-          <Property Name="peso" Type="float" Nullable="false" />
-          <Property Name="alto" Type="float" Nullable="false" />
-          <Property Name="largo" Type="float" Nullable="false" />
-          <Property Name="ancho" Type="float" Nullable="false" />
-          <Property Name="coeficiente_volumetrico" Type="float" Nullable="false" />
-          <Property Name="cubicaje" Type="float" Nullable="false" />
-          <Property Name="peso_volumen" Type="float" Nullable="false" />
-          <Property Name="observaciones_articulo" Type="nvarchar" MaxLength="300" />
-          <Property Name="observaciones_generales" Type="nvarchar" MaxLength="300" />
-          <Property Name="stock_fisico" Type="float" Nullable="false" />
-          <Property Name="stock_minimo" Type="float" Nullable="false" />
-          <Property Name="id_almacen" Type="int" Nullable="false" />
-          <Property Name="id_tipo_facturacion" Type="int" Nullable="false" />
-          <Property Name="id_tipo_unidad" Type="int" Nullable="false" />
+          <Property Name="peso" Type="float" />
+          <Property Name="alto" Type="float" />
+          <Property Name="largo" Type="float" />
+          <Property Name="ancho" Type="float" />
+          <Property Name="coeficiente_volumetrico" Type="float" />
+          <Property Name="cubicaje" Type="float" />
+          <Property Name="peso_volumen" Type="float" />
+          <Property Name="observaciones_articulo" Type="varchar" MaxLength="300" />
+          <Property Name="observaciones_generales" Type="varchar" MaxLength="300" />
+          <Property Name="stock_fisico" Type="float" />
+          <Property Name="stock_minimo" Type="float" />
+          <Property Name="id_almacen" Type="int" />
+          <Property Name="id_tipo_facturacion" Type="int" />
+          <Property Name="id_tipo_unidad" Type="int" />
           <Property Name="tipoArticulo" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Cliente">
@@ -114,12 +114,12 @@
             <PropertyRef Name="id_ubicacion" />
           </Key>
           <Property Name="id_ubicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="zona" Type="nvarchar" MaxLength="4" />
-          <Property Name="estante" Type="nvarchar" MaxLength="4" />
-          <Property Name="fila" Type="nvarchar" MaxLength="4" />
-          <Property Name="columna" Type="nvarchar" MaxLength="4" />
-          <Property Name="panel" Type="nvarchar" MaxLength="4" />
-          <Property Name="referencia_ubicacion" Type="nvarchar" MaxLength="40" />
+          <Property Name="zona" Type="varchar" MaxLength="4" />
+          <Property Name="estante" Type="varchar" MaxLength="4" />
+          <Property Name="fila" Type="varchar" MaxLength="4" />
+          <Property Name="columna" Type="varchar" MaxLength="4" />
+          <Property Name="panel" Type="varchar" MaxLength="4" />
+          <Property Name="referencia_ubicacion" Type="varchar" MaxLength="40" />
           <Property Name="id_articulo" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Almacen_Cliente">
@@ -137,7 +137,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_Articulo_dbo_Almacen_id_almacen">
-          <End Role="Almacen" Type="Self.Almacen" Multiplicity="1">
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
@@ -151,7 +151,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_Articulo_dbo_Tipo_Facturacion_id_tipo_facturacion">
-          <End Role="Tipo_Facturacion" Type="Self.Tipo_Facturacion" Multiplicity="1">
+          <End Role="Tipo_Facturacion" Type="Self.Tipo_Facturacion" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
@@ -165,7 +165,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_Articulo_dbo_Tipo_Unidad_id_tipo_unidad">
-          <End Role="Tipo_Unidad" Type="Self.Tipo_Unidad" Multiplicity="1">
+          <End Role="Tipo_Unidad" Type="Self.Tipo_Unidad" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
@@ -294,7 +294,8 @@
             <End Role="Picking_Articulo" EntitySet="Picking_Articulo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LogisPackModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -307,38 +308,39 @@
           <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="coeficiente_volumetrico" Type="Double" Nullable="false" />
           <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Almacen_Cliente" FromRole="Almacen" ToRole="Cliente" />
           <NavigationProperty Name="Articulo" Relationship="Self.FK_dbo_Articulo_dbo_Almacen_id_almacen" FromRole="Almacen" ToRole="Articulo" />
-          <NavigationProperty Name="Cliente" Relationship="LogisPackModel.FK_Almacen_Cliente" FromRole="Almacen" ToRole="Cliente" />
         </EntityType>
         <EntityType Name="Articulo">
           <Key>
             <PropertyRef Name="id_articulo" />
           </Key>
           <Property Name="id_articulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="codigo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="referencia_picking" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="referencia1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="referencia2" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="referencia3" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="identificacion" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="valor_articulo" Type="Double" Nullable="false" />
-          <Property Name="valoracion_stock" Type="Double" Nullable="false" />
-          <Property Name="valoracion_seguro" Type="Double" Nullable="false" />
-          <Property Name="peso" Type="Double" Nullable="false" />
-          <Property Name="alto" Type="Double" Nullable="false" />
-          <Property Name="largo" Type="Double" Nullable="false" />
-          <Property Name="ancho" Type="Double" Nullable="false" />
-          <Property Name="coeficiente_volumetrico" Type="Double" Nullable="false" />
-          <Property Name="cubicaje" Type="Double" Nullable="false" />
-          <Property Name="peso_volumen" Type="Double" Nullable="false" />
-          <Property Name="observaciones_articulo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="observaciones_generales" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="stock_fisico" Type="Double" Nullable="false" />
-          <Property Name="stock_minimo" Type="Double" Nullable="false" />
-          <Property Name="id_almacen" Type="Int32" Nullable="false" />
-          <Property Name="id_tipo_facturacion" Type="Int32" Nullable="false" />
-          <Property Name="id_tipo_unidad" Type="Int32" Nullable="false" />
+          <Property Name="codigo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="referencia_picking" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="referencia1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="referencia2" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="referencia3" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="identificacion" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="valor_articulo" Type="Double" />
+          <Property Name="valoracion_stock" Type="Double" />
+          <Property Name="valoracion_seguro" Type="Double" />
+          <Property Name="valor_asegurado" Type="Double" />
+          <Property Name="peso" Type="Double" />
+          <Property Name="alto" Type="Double" />
+          <Property Name="largo" Type="Double" />
+          <Property Name="ancho" Type="Double" />
+          <Property Name="coeficiente_volumetrico" Type="Double" />
+          <Property Name="cubicaje" Type="Double" />
+          <Property Name="peso_volumen" Type="Double" />
+          <Property Name="observaciones_articulo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="observaciones_generales" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="stock_fisico" Type="Double" />
+          <Property Name="stock_minimo" Type="Double" />
+          <Property Name="id_almacen" Type="Int32" />
+          <Property Name="id_tipo_facturacion" Type="Int32" />
+          <Property Name="id_tipo_unidad" Type="Int32" />
           <Property Name="tipoArticulo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Almacen" Relationship="Self.FK_dbo_Articulo_dbo_Almacen_id_almacen" FromRole="Articulo" ToRole="Almacen" />
           <NavigationProperty Name="Tipo_Facturacion" Relationship="Self.FK_dbo_Articulo_dbo_Tipo_Facturacion_id_tipo_facturacion" FromRole="Articulo" ToRole="Tipo_Facturacion" />
@@ -348,7 +350,15 @@
           <NavigationProperty Name="Picking_Articulo" Relationship="Self.FK_dbo_Picking_Articulo_dbo_Articulo_id_articulo" FromRole="Articulo" ToRole="Picking_Articulo" />
           <NavigationProperty Name="Ubicacion" Relationship="Self.FK_dbo_Ubicacion_dbo_Articulo_id_articulo" FromRole="Articulo" ToRole="Ubicacion" />
           <NavigationProperty Name="Picking_Articulo1" Relationship="Self.FK_Picking_Articulo_Articulo" FromRole="Articulo" ToRole="Picking_Articulo" />
-          <Property Name="valor_asegurado" Type="Double" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Almacen" Relationship="Self.FK_Almacen_Cliente" FromRole="Cliente" ToRole="Almacen" />
         </EntityType>
         <EntityType Name="Historico">
           <Key>
@@ -415,17 +425,31 @@
             <PropertyRef Name="id_ubicacion" />
           </Key>
           <Property Name="id_ubicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="zona" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
-          <Property Name="estante" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
-          <Property Name="fila" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
-          <Property Name="columna" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
-          <Property Name="panel" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
-          <Property Name="referencia_ubicacion" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="zona" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="estante" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="fila" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="columna" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="panel" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="referencia_ubicacion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="id_articulo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Articulo" Relationship="Self.FK_dbo_Ubicacion_dbo_Articulo_id_articulo" FromRole="Ubicacion" ToRole="Articulo" />
         </EntityType>
+        <Association Name="FK_Almacen_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="Almacen">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_Articulo_dbo_Almacen_id_almacen">
-          <End Role="Almacen" Type="Self.Almacen" Multiplicity="1">
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
@@ -439,7 +463,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_Articulo_dbo_Tipo_Facturacion_id_tipo_facturacion">
-          <End Role="Tipo_Facturacion" Type="Self.Tipo_Facturacion" Multiplicity="1">
+          <End Role="Tipo_Facturacion" Type="Self.Tipo_Facturacion" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
@@ -453,7 +477,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_Articulo_dbo_Tipo_Unidad_id_tipo_unidad">
-          <End Role="Tipo_Unidad" Type="Self.Tipo_Unidad" Multiplicity="1">
+          <End Role="Tipo_Unidad" Type="Self.Tipo_Unidad" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
@@ -537,6 +561,7 @@
         <EntityContainer Name="LogisPackEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Almacen" EntityType="Self.Almacen" />
           <EntitySet Name="Articulo" EntityType="Self.Articulo" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
           <EntitySet Name="Historico" EntityType="Self.Historico" />
           <EntitySet Name="Imagen" EntityType="Self.Imagen" />
           <EntitySet Name="Picking_Articulo" EntityType="Self.Picking_Articulo" />
@@ -544,6 +569,10 @@
           <EntitySet Name="Tipo_Facturacion" EntityType="Self.Tipo_Facturacion" />
           <EntitySet Name="Tipo_Unidad" EntityType="Self.Tipo_Unidad" />
           <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" />
+          <AssociationSet Name="FK_Almacen_Cliente" Association="Self.FK_Almacen_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Almacen" EntitySet="Almacen" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_Articulo_dbo_Almacen_id_almacen" Association="Self.FK_dbo_Articulo_dbo_Almacen_id_almacen">
             <End Role="Almacen" EntitySet="Almacen" />
             <End Role="Articulo" EntitySet="Articulo" />
@@ -576,33 +605,7 @@
             <End Role="Articulo" EntitySet="Articulo" />
             <End Role="Picking_Articulo" EntitySet="Picking_Articulo" />
           </AssociationSet>
-          <EntitySet Name="Cliente" EntityType="LogisPackModel.Cliente" />
-          <AssociationSet Name="FK_Almacen_Cliente" Association="LogisPackModel.FK_Almacen_Cliente">
-            <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="Almacen" EntitySet="Almacen" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Cliente">
-          <Key>
-            <PropertyRef Name="id_cliente" />
-          </Key>
-          <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Almacen" Relationship="LogisPackModel.FK_Almacen_Cliente" FromRole="Cliente" ToRole="Almacen" />
-        </EntityType>
-        <Association Name="FK_Almacen_Cliente">
-          <End Type="LogisPackModel.Cliente" Role="Cliente" Multiplicity="1" />
-          <End Type="LogisPackModel.Almacen" Role="Almacen" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cliente">
-              <PropertyRef Name="id_cliente" />
-            </Principal>
-            <Dependent Role="Almacen">
-              <PropertyRef Name="id_cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -623,7 +626,6 @@
           <EntitySetMapping Name="Articulo">
             <EntityTypeMapping TypeName="LogisPackModel.Articulo">
               <MappingFragment StoreEntitySet="Articulo">
-                <ScalarProperty Name="valor_asegurado" ColumnName="valor_asegurado" />
                 <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -635,6 +637,7 @@
                 <ScalarProperty Name="valor_articulo" ColumnName="valor_articulo" />
                 <ScalarProperty Name="valoracion_stock" ColumnName="valoracion_stock" />
                 <ScalarProperty Name="valoracion_seguro" ColumnName="valoracion_seguro" />
+                <ScalarProperty Name="valor_asegurado" ColumnName="valor_asegurado" />
                 <ScalarProperty Name="peso" ColumnName="peso" />
                 <ScalarProperty Name="alto" ColumnName="alto" />
                 <ScalarProperty Name="largo" ColumnName="largo" />
@@ -650,6 +653,15 @@
                 <ScalarProperty Name="id_tipo_facturacion" ColumnName="id_tipo_facturacion" />
                 <ScalarProperty Name="id_tipo_unidad" ColumnName="id_tipo_unidad" />
                 <ScalarProperty Name="tipoArticulo" ColumnName="tipoArticulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="LogisPackModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -724,15 +736,6 @@
                 <ScalarProperty Name="panel" ColumnName="panel" />
                 <ScalarProperty Name="referencia_ubicacion" ColumnName="referencia_ubicacion" />
                 <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Cliente">
-            <EntityTypeMapping TypeName="LogisPackModel.Cliente">
-              <MappingFragment StoreEntitySet="Cliente">
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

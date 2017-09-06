@@ -24,6 +24,7 @@ Partial Public Class LogisPackEntities
 
     Public Overridable Property Almacen() As DbSet(Of Almacen)
     Public Overridable Property Articulo() As DbSet(Of Articulo)
+    Public Overridable Property Cliente() As DbSet(Of Cliente)
     Public Overridable Property Historico() As DbSet(Of Historico)
     Public Overridable Property Imagen() As DbSet(Of Imagen)
     Public Overridable Property Picking_Articulo() As DbSet(Of Picking_Articulo)
@@ -31,6 +32,5 @@ Partial Public Class LogisPackEntities
     Public Overridable Property Tipo_Facturacion() As DbSet(Of Tipo_Facturacion)
     Public Overridable Property Tipo_Unidad() As DbSet(Of Tipo_Unidad)
     Public Overridable Property Ubicacion() As DbSet(Of Ubicacion)
-    Public Overridable Property Cliente() As DbSet(Of Cliente)
 
 End Class

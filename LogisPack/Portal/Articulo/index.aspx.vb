@@ -25,16 +25,16 @@ Public Class index3
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
         If e.CommandName.Equals("Editar") Then
+            Dim id As String = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
+            Response.Redirect("Editar.aspx?id=" & Cifrar.cifrarCadena(id))
 
         End If
         If e.CommandName.Equals("Detalle") Then
-
             Dim id As String = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Response.Redirect("Detalles.aspx?id=" & Cifrar.cifrarCadena(id))
 
         End If
         If e.CommandName.Equals("Eliminar") Then
-
             hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Modal.AbrirModal("deleteModal", "DeleteModalScript", Me)
 
@@ -42,7 +42,6 @@ Public Class index3
 
 
     End Sub
-
 
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 

@@ -32,6 +32,24 @@ Partial Public Class Detalles
     Protected WithEvents lbAlmacen As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
+    '''Control lbStockMinimo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbStockMinimo As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control lbStockFisico.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbStockFisico As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''Control phListaArticulos.
     '''</summary>
     '''<remarks>
@@ -48,6 +66,15 @@ Partial Public Class Detalles
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents pArticulos As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control pImagenes.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pImagenes As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
     '''Control lbCodigo.
@@ -212,6 +239,15 @@ Partial Public Class Detalles
     Protected WithEvents lbValArticulo As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
+    '''Control txtValAsegurado.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtValAsegurado As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''Control lbValSotck.
     '''</summary>
     '''<remarks>
@@ -230,15 +266,6 @@ Partial Public Class Detalles
     Protected WithEvents txtValSeguro As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control txtValAsegurado.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtValAsegurado As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
     '''Control txtObsGen.
     '''</summary>
     '''<remarks>
@@ -255,31 +282,4 @@ Partial Public Class Detalles
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtObsArt As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''Control lbStockMinimo.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lbStockMinimo As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''Control lbStockFisico.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lbStockFisico As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''Control pImagenes.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents pImagenes As Global.System.Web.UI.WebControls.Panel
 End Class

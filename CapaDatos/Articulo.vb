@@ -19,25 +19,25 @@ Partial Public Class Articulo
     Public Property referencia2 As String
     Public Property referencia3 As String
     Public Property identificacion As String
-    Public Property valor_articulo As Double
-    Public Property valoracion_stock As Double
-    Public Property valoracion_seguro As Double
-    Public Property peso As Double
-    Public Property alto As Double
-    Public Property largo As Double
-    Public Property ancho As Double
-    Public Property coeficiente_volumetrico As Double
-    Public Property cubicaje As Double
-    Public Property peso_volumen As Double
+    Public Property valor_articulo As Nullable(Of Double)
+    Public Property valoracion_stock As Nullable(Of Double)
+    Public Property valoracion_seguro As Nullable(Of Double)
+    Public Property valor_asegurado As Nullable(Of Double)
+    Public Property peso As Nullable(Of Double)
+    Public Property alto As Nullable(Of Double)
+    Public Property largo As Nullable(Of Double)
+    Public Property ancho As Nullable(Of Double)
+    Public Property coeficiente_volumetrico As Nullable(Of Double)
+    Public Property cubicaje As Nullable(Of Double)
+    Public Property peso_volumen As Nullable(Of Double)
     Public Property observaciones_articulo As String
     Public Property observaciones_generales As String
-    Public Property stock_fisico As Double
-    Public Property stock_minimo As Double
-    Public Property id_almacen As Integer
-    Public Property id_tipo_facturacion As Integer
-    Public Property id_tipo_unidad As Integer
+    Public Property stock_fisico As Nullable(Of Double)
+    Public Property stock_minimo As Nullable(Of Double)
+    Public Property id_almacen As Nullable(Of Integer)
+    Public Property id_tipo_facturacion As Nullable(Of Integer)
+    Public Property id_tipo_unidad As Nullable(Of Integer)
     Public Property tipoArticulo As String
-    Public Property valor_asegurado As Nullable(Of Double)
 
     Public Overridable Property Almacen As Almacen
     Public Overridable Property Tipo_Facturacion As Tipo_Facturacion

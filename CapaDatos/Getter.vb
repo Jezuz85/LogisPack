@@ -11,7 +11,6 @@ Public Class Getter
     End Function
     Public Shared Function Almacen(id As Integer, ByRef contexto As LogisPackEntities) As Almacen
         Return contexto.Almacen.Where(Function(model) model.id_almacen = id).SingleOrDefault()
-
     End Function
 
 
@@ -29,12 +28,16 @@ Public Class Getter
         Return contexto.Articulo.Where(Function(model) model.id_articulo = id).ToList()
 
     End Function
+
     Public Shared Function Articulo(id As Integer) As Articulo
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
         Return contexto.Articulo.Where(Function(model) model.id_articulo = id).SingleOrDefault()
 
+    End Function
+    Public Shared Function Articulo(id As Integer, ByRef contexto As LogisPackEntities) As Articulo
+        Return contexto.Articulo.Where(Function(model) model.id_articulo = id).SingleOrDefault()
     End Function
 
 

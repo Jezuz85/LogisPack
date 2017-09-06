@@ -15,7 +15,6 @@
     <EntitySetMapping Name="Articulo">
       <EntityTypeMapping TypeName="LogisPackModel.Articulo">
         <MappingFragment StoreEntitySet="Articulo">
-          <ScalarProperty Name="valor_asegurado" ColumnName="valor_asegurado" />
           <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
           <ScalarProperty Name="codigo" ColumnName="codigo" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -27,6 +26,7 @@
           <ScalarProperty Name="valor_articulo" ColumnName="valor_articulo" />
           <ScalarProperty Name="valoracion_stock" ColumnName="valoracion_stock" />
           <ScalarProperty Name="valoracion_seguro" ColumnName="valoracion_seguro" />
+          <ScalarProperty Name="valor_asegurado" ColumnName="valor_asegurado" />
           <ScalarProperty Name="peso" ColumnName="peso" />
           <ScalarProperty Name="alto" ColumnName="alto" />
           <ScalarProperty Name="largo" ColumnName="largo" />
@@ -42,6 +42,15 @@
           <ScalarProperty Name="id_tipo_facturacion" ColumnName="id_tipo_facturacion" />
           <ScalarProperty Name="id_tipo_unidad" ColumnName="id_tipo_unidad" />
           <ScalarProperty Name="tipoArticulo" ColumnName="tipoArticulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="LogisPackModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -116,15 +125,6 @@
           <ScalarProperty Name="panel" ColumnName="panel" />
           <ScalarProperty Name="referencia_ubicacion" ColumnName="referencia_ubicacion" />
           <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Cliente">
-      <EntityTypeMapping TypeName="LogisPackModel.Cliente">
-        <MappingFragment StoreEntitySet="Cliente">
-          <ScalarProperty Name="codigo" ColumnName="codigo" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

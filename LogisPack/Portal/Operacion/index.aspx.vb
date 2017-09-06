@@ -32,7 +32,7 @@ Public Class index4
 
                 If fuDocumento.FileName IsNot "" Then
 
-                    Dim urlDoc As String = Utilidades_Fileupload.Subir_Archivo(fuDocumento, "~/Archivos/Operacion/", "Doc_" & ddlTipoOperacion.SelectedValue & "_" & _articulo.id_articulo & "_" & Convert.ToDateTime(txtFechaOperacion.Text).ToString("yyyy-MM-dd") & "_")
+                    Dim urlDoc As String = Utilidades_Fileupload.Subir_Archivo(fuDocumento, "../../Archivos/Operacion/", "Doc_" & ddlTipoOperacion.SelectedValue & "_" & _articulo.id_articulo & "_" & Convert.ToDateTime(txtFechaOperacion.Text).ToString("yyyy-MM-dd") & "_")
 
 #Region "Guardar operacion nuevo"
                     Dim _Nuevo As New Historico With

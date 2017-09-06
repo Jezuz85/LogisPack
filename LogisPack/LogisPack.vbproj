@@ -207,6 +207,7 @@
     <Content Include="Portal\Almacen\index.aspx" />
     <Content Include="Portal\Articulo\Crear.aspx" />
     <Content Include="Portal\Articulo\Detalles.aspx" />
+    <Content Include="Portal\Articulo\Editar.aspx" />
     <Content Include="Portal\Articulo\index.aspx" />
     <Content Include="Portal\Cliente\index.aspx" />
     <Content Include="Portal\Operacion\index.aspx" />
@@ -318,6 +319,13 @@
     </Compile>
     <Compile Include="Portal\Articulo\Detalles.aspx.vb">
       <DependentUpon>Detalles.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Portal\Articulo\Editar.aspx.designer.vb">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\Articulo\Editar.aspx.vb">
+      <DependentUpon>Editar.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Portal\Articulo\index.aspx.designer.vb">

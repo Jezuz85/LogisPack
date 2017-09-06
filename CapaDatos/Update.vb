@@ -13,6 +13,18 @@ Public Class Update
 
     End Function
 
+    Public Shared Function Articulo(_Edit As Articulo, ByRef contexto As LogisPackEntities) As Boolean
+
+        Try
+            contexto.SaveChanges()
+        Catch ex As Exception
+            Return False
+        End Try
+
+        Return True
+
+    End Function
+
     Public Shared Function Cliente(_Edit As Cliente, ByRef contexto As LogisPackEntities) As Boolean
 
         Try

@@ -15,31 +15,31 @@
       <PropertyRef Name="id_articulo" />
     </Key>
     <Property Name="id_articulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="codigo" Type="nvarchar" MaxLength="25" />
-    <Property Name="nombre" Type="nvarchar" MaxLength="40" />
-    <Property Name="referencia_picking" Type="nvarchar" MaxLength="25" />
-    <Property Name="referencia1" Type="nvarchar" MaxLength="25" />
-    <Property Name="referencia2" Type="nvarchar" MaxLength="25" />
-    <Property Name="referencia3" Type="nvarchar" MaxLength="25" />
-    <Property Name="identificacion" Type="nvarchar" MaxLength="2" />
-    <Property Name="valor_articulo" Type="float" Nullable="false" />
-    <Property Name="valoracion_stock" Type="float" Nullable="false" />
-    <Property Name="valoracion_seguro" Type="float" Nullable="false" />
+    <Property Name="codigo" Type="varchar" MaxLength="25" />
+    <Property Name="nombre" Type="varchar" MaxLength="40" />
+    <Property Name="referencia_picking" Type="varchar" MaxLength="25" />
+    <Property Name="referencia1" Type="varchar" MaxLength="25" />
+    <Property Name="referencia2" Type="varchar" MaxLength="25" />
+    <Property Name="referencia3" Type="varchar" MaxLength="25" />
+    <Property Name="identificacion" Type="varchar" MaxLength="2" />
+    <Property Name="valor_articulo" Type="float" />
+    <Property Name="valoracion_stock" Type="float" />
+    <Property Name="valoracion_seguro" Type="float" />
     <Property Name="valor_asegurado" Type="float" />
-    <Property Name="peso" Type="float" Nullable="false" />
-    <Property Name="alto" Type="float" Nullable="false" />
-    <Property Name="largo" Type="float" Nullable="false" />
-    <Property Name="ancho" Type="float" Nullable="false" />
-    <Property Name="coeficiente_volumetrico" Type="float" Nullable="false" />
-    <Property Name="cubicaje" Type="float" Nullable="false" />
-    <Property Name="peso_volumen" Type="float" Nullable="false" />
-    <Property Name="observaciones_articulo" Type="nvarchar" MaxLength="300" />
-    <Property Name="observaciones_generales" Type="nvarchar" MaxLength="300" />
-    <Property Name="stock_fisico" Type="float" Nullable="false" />
-    <Property Name="stock_minimo" Type="float" Nullable="false" />
-    <Property Name="id_almacen" Type="int" Nullable="false" />
-    <Property Name="id_tipo_facturacion" Type="int" Nullable="false" />
-    <Property Name="id_tipo_unidad" Type="int" Nullable="false" />
+    <Property Name="peso" Type="float" />
+    <Property Name="alto" Type="float" />
+    <Property Name="largo" Type="float" />
+    <Property Name="ancho" Type="float" />
+    <Property Name="coeficiente_volumetrico" Type="float" />
+    <Property Name="cubicaje" Type="float" />
+    <Property Name="peso_volumen" Type="float" />
+    <Property Name="observaciones_articulo" Type="varchar" MaxLength="300" />
+    <Property Name="observaciones_generales" Type="varchar" MaxLength="300" />
+    <Property Name="stock_fisico" Type="float" />
+    <Property Name="stock_minimo" Type="float" />
+    <Property Name="id_almacen" Type="int" />
+    <Property Name="id_tipo_facturacion" Type="int" />
+    <Property Name="id_tipo_unidad" Type="int" />
     <Property Name="tipoArticulo" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Cliente">
@@ -109,12 +109,12 @@
       <PropertyRef Name="id_ubicacion" />
     </Key>
     <Property Name="id_ubicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="zona" Type="nvarchar" MaxLength="4" />
-    <Property Name="estante" Type="nvarchar" MaxLength="4" />
-    <Property Name="fila" Type="nvarchar" MaxLength="4" />
-    <Property Name="columna" Type="nvarchar" MaxLength="4" />
-    <Property Name="panel" Type="nvarchar" MaxLength="4" />
-    <Property Name="referencia_ubicacion" Type="nvarchar" MaxLength="40" />
+    <Property Name="zona" Type="varchar" MaxLength="4" />
+    <Property Name="estante" Type="varchar" MaxLength="4" />
+    <Property Name="fila" Type="varchar" MaxLength="4" />
+    <Property Name="columna" Type="varchar" MaxLength="4" />
+    <Property Name="panel" Type="varchar" MaxLength="4" />
+    <Property Name="referencia_ubicacion" Type="varchar" MaxLength="40" />
     <Property Name="id_articulo" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Almacen_Cliente">
@@ -132,7 +132,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_dbo_Articulo_dbo_Almacen_id_almacen">
-    <End Role="Almacen" Type="Self.Almacen" Multiplicity="1">
+    <End Role="Almacen" Type="Self.Almacen" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
@@ -146,7 +146,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_dbo_Articulo_dbo_Tipo_Facturacion_id_tipo_facturacion">
-    <End Role="Tipo_Facturacion" Type="Self.Tipo_Facturacion" Multiplicity="1">
+    <End Role="Tipo_Facturacion" Type="Self.Tipo_Facturacion" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
@@ -160,7 +160,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_dbo_Articulo_dbo_Tipo_Unidad_id_tipo_unidad">
-    <End Role="Tipo_Unidad" Type="Self.Tipo_Unidad" Multiplicity="1">
+    <End Role="Tipo_Unidad" Type="Self.Tipo_Unidad" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />

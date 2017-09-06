@@ -1,19 +1,22 @@
 ﻿<%@ Master Language="VB" AutoEventWireup="true" CodeBehind="Site.master.vb" Inherits="LogisPack.SiteMaster" %>
 
+<%@ Register Src="~/Portal/WebUserControl/MsjModal.ascx" TagPrefix="ucm" TagName="ucMsjModal" %>
+
 <!DOCTYPE html>
 
 <html lang="es">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title><%: Page.Title %> - LogisPack</title>
 
 	<asp:PlaceHolder runat="server">
-		<%: Scripts.Render("~/bundles/modernizr") %>
+		<%: Scripts.Render("~/bundles/modernizr")%>
 	</asp:PlaceHolder>
 
-	<webopt:bundlereference runat="server" path="~/Content/css" />
+	<webopt:BundleReference runat="server" Path="~/Content/css" />
+
 	<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -44,25 +47,38 @@
 		</div>
 
 		<div class="container body-content">
-			
-			<asp:scriptmanager id="ScriptManager1" runat="server"/>
-			<asp:ContentPlaceHolder ID="MainContent" runat="server">
 
+			<asp:ScriptManager ID="ScriptManager1" runat="server" />
+			<%: Scripts.Render("~/bundles/MisScripts") %>
+			<asp:ContentPlaceHolder ID="MainContent" runat="server">
 			</asp:ContentPlaceHolder>
 
 			<hr />
 			<footer>
 				<p>&copy; <%: DateTime.Now.Year %> - Logis Pack</p>
 			</footer>
-				<script src="../../../Scripts/jquery-3.1.1.slim.js"></script>
-				<script src="../../../Scripts/jquery-3.1.1.min.js"></script>
-				<script src="../../../Scripts/bootstrap.min.js"></script>
-				<script src="../../../Scripts/Custom.js"></script>
-	
 
 
 		</div>
 
 	</form>
+	
+
+	<script type="text/javascript">
+		window.onload = function () {
+			load();
+		};
+		var prm = Sys.WebForms.PageRequestManager.getInstance();
+		if (prm != null) {
+			prm.add_endRequest(function (sender, e) {
+				if (sender._postBackSettings.panelsToUpdate != null) {
+					load();
+				}
+			});
+		};
+	</script>
+
+	<!-- Msj Modal -->
+	<ucm:ucMsjModal runat="server" ID="ucMsjModal" />
 </body>
 </html>

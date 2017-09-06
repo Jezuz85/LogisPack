@@ -104,6 +104,15 @@ Partial Public Class Crear
     Protected WithEvents btnAddArticuloRow As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''Control btnReset.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnReset As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
     '''Control txtCodigo.
     '''</summary>
     '''<remarks>
@@ -381,13 +390,4 @@ Partial Public Class Crear
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnGuardar As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
-    '''Control ucMsjModal.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ucMsjModal As Global.LogisPack.MsjModal
 End Class

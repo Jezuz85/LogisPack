@@ -4,16 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a1e513167b5d4a5ca405df3adced8937" Name="Diagram1" ZoomLevel="33">
-        <EntityTypeShape EntityType="LogisPackModel.Almacen" Width="1.5" PointX="4.25" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LogisPackModel.Articulo" Width="1.5" PointX="6.5" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="LogisPackModel.Historico" Width="1.5" PointX="8.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LogisPackModel.Imagen" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LogisPackModel.Picking_Articulo" Width="1.5" PointX="8.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LogisPackModel.sysdiagrams" Width="1.5" PointX="10.875" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LogisPackModel.Tipo_Facturacion" Width="1.5" PointX="4.25" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="LogisPackModel.Tipo_Unidad" Width="1.5" PointX="4.25" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LogisPackModel.Ubicacion" Width="1.5" PointX="8.75" PointY="10.375" IsExpanded="true" />
+      <Diagram DiagramId="a35ef8f5bf694e1fab57a39785dfe1d4" Name="Diagram1">
+        <EntityTypeShape EntityType="LogisPackModel.Almacen" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPackModel.Articulo" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPackModel.Cliente" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPackModel.Historico" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPackModel.Imagen" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPackModel.Picking_Articulo" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPackModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPackModel.Tipo_Facturacion" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPackModel.Tipo_Unidad" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPackModel.Ubicacion" Width="1.5" PointX="7.5" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="LogisPackModel.FK_Almacen_Cliente" ManuallyRouted="false" />
         <AssociationConnector Association="LogisPackModel.FK_dbo_Articulo_dbo_Almacen_id_almacen" ManuallyRouted="false" />
         <AssociationConnector Association="LogisPackModel.FK_dbo_Articulo_dbo_Tipo_Facturacion_id_tipo_facturacion" ManuallyRouted="false" />
         <AssociationConnector Association="LogisPackModel.FK_dbo_Articulo_dbo_Tipo_Unidad_id_tipo_unidad" ManuallyRouted="false" />
@@ -22,8 +24,6 @@
         <AssociationConnector Association="LogisPackModel.FK_dbo_Picking_Articulo_dbo_Articulo_id_articulo" ManuallyRouted="false" />
         <AssociationConnector Association="LogisPackModel.FK_dbo_Ubicacion_dbo_Articulo_id_articulo" ManuallyRouted="false" />
         <AssociationConnector Association="LogisPackModel.FK_Picking_Articulo_Articulo" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="LogisPackModel.Cliente" Width="1.5" PointX="1" PointY="6.5" />
-        <AssociationConnector Association="LogisPackModel.FK_Almacen_Cliente" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

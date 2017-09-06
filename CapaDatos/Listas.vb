@@ -36,19 +36,19 @@ Public Class Listas
         DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
     End Sub
 
-    Public Shared Sub Articulo(ByRef DropDownList1 As DropDownList)
+    Public Shared Sub Articulo(ByRef DropDownList1 As DropDownList, idAlmacen As Integer)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
         Dim query = (From AL In contexto.Articulo
-                     Where AL.tipoArticulo = "Normal"
+                     Where AL.tipoArticulo = "Normal" And AL.id_almacen = idAlmacen
                      Select
                          AL.id_articulo,
-                         NombreStock = AL.nombre & " - Stock:" & AL.stock_fisico
+                         AL.nombre
                     ).ToList()
 
         DropDownList1.DataValueField = "id_articulo"
-        DropDownList1.DataTextField = "NombreStock"
+        DropDownList1.DataTextField = "nombre"
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
     End Sub

@@ -121,7 +121,7 @@
 					<h3>Agregar Registro</h3>
 				</div>
 
-				<asp:updatepanel id="UpdatePanel1" runat="server">
+				<asp:updatepanel id="up_Add" runat="server">
 					<ContentTemplate>
 						<div class="modal-body form-group">
 							
@@ -170,14 +170,13 @@
 							<div class="row">
 								<div class="col-md-8 col-md-offset-2">
 									<h4 class="text-left">Cliente</h4>
-
-									<asp:TextBox id="txtcliente" type="number" runat="server" ClientIDMode="Static" 
-										CssClass="form-control" data-toggle="tooltip" data-placement="bottom" 
-										title="Ingrese el cliente"></asp:TextBox>
 									
+									<asp:dropdownlist id="ddlClienteAdd" runat="server" cssclass="form-control" data-toggle="tooltip" 
+										data-placement="bottom" title="Seleccione el cliente" AutoPostBack="true"></asp:dropdownlist>
+							
 									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" setfocusonerror="true" 
 										Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true" 
-										ControlToValidate="txtcliente" runat="server" ValidationGroup="ValidationAdd"/>
+										ControlToValidate="ddlClienteAdd" runat="server" ValidationGroup="ValidationAdd"/>
 								</div>
 							</div>
 						</div>
@@ -199,7 +198,7 @@
 	</div>	
 		
 	<!-- Edit Modal -->
-	<div id="EditModal" class="modal">
+	<div id="editModal" class="modal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				
@@ -208,7 +207,7 @@
 					<h3>Editar Registro</h3>
 				</div>
 
-				<asp:updatepanel id="UpdatePanel3" runat="server">
+				<asp:updatepanel id="up_Edit" runat="server">
 					<ContentTemplate>
 						<div class="modal-body form-group">
 							<asp:HiddenField id="hdfEdit" runat="server"/>
@@ -259,13 +258,13 @@
 								<div class="col-md-8 col-md-offset-2">
 									<h4 class="text-left">Cliente</h4>
 
-									<asp:TextBox id="txtEditCliente" type="number" runat="server" ClientIDMode="Static" 
-										CssClass="form-control" data-toggle="tooltip" data-placement="bottom" 
-										title="Ingrese el cliente"></asp:TextBox>
 									
+									<asp:dropdownlist id="ddlClienteEdit" runat="server" cssclass="form-control" data-toggle="tooltip" 
+										data-placement="bottom" title="Seleccione el cliente" AutoPostBack="true"></asp:dropdownlist>
+							
 									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" setfocusonerror="true" 
 										Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true" 
-										ControlToValidate="txtEditCliente" runat="server" ValidationGroup="ValidationEdit"/>
+										ControlToValidate="ddlClienteEdit" runat="server" ValidationGroup="ValidationEdit"/>
 								</div>
 							</div>
 						</div>
@@ -288,7 +287,7 @@
 	</div>	
 
 	<!-- View Modal -->
-	<div id="ViewModal" class="modal">
+	<div id="viewModal" class="modal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				

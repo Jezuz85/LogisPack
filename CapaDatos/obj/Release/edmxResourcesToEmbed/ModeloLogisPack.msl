@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="LogisPackModelStoreContainer" CdmEntityContainer="LogisPackEntities">
-    <EntitySetMapping Name="C__MigrationHistory">
-      <EntityTypeMapping TypeName="LogisPackModel.C__MigrationHistory">
-        <MappingFragment StoreEntitySet="__MigrationHistory">
-          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-          <ScalarProperty Name="Model" ColumnName="Model" />
-          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Almacen">
       <EntityTypeMapping TypeName="LogisPackModel.Almacen">
         <MappingFragment StoreEntitySet="Almacen">
@@ -36,6 +26,7 @@
           <ScalarProperty Name="valor_articulo" ColumnName="valor_articulo" />
           <ScalarProperty Name="valoracion_stock" ColumnName="valoracion_stock" />
           <ScalarProperty Name="valoracion_seguro" ColumnName="valoracion_seguro" />
+          <ScalarProperty Name="valor_asegurado" ColumnName="valor_asegurado" />
           <ScalarProperty Name="peso" ColumnName="peso" />
           <ScalarProperty Name="alto" ColumnName="alto" />
           <ScalarProperty Name="largo" ColumnName="largo" />
@@ -51,6 +42,15 @@
           <ScalarProperty Name="id_tipo_facturacion" ColumnName="id_tipo_facturacion" />
           <ScalarProperty Name="id_tipo_unidad" ColumnName="id_tipo_unidad" />
           <ScalarProperty Name="tipoArticulo" ColumnName="tipoArticulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="LogisPackModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="index.aspx.vb" Inherits="LogisPack.index" %>
 
-<%@ Register Src="~/Portal/WebUserControl/MsjModal.ascx" TagPrefix="ucm" TagName="ucMsjModal" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 	
 	<asp:updatepanel id="updatePanelPrinicpal" runat="server">
@@ -379,8 +377,5 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Msj Modal -->
-	<ucm:ucMsjModal runat="server" id="ucMsjModal"/>
-
+    
 </asp:Content>
