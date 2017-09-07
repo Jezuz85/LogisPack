@@ -383,13 +383,13 @@ Partial Public Class Editar
     Protected WithEvents fuImagenes As Global.System.Web.UI.WebControls.FileUpload
     
     '''<summary>
-    '''Control pImagenes.
+    '''Control GridView1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents pImagenes As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
     '''Control btnGuardar.
@@ -399,4 +399,31 @@ Partial Public Class Editar
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnGuardar As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control upDel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents upDel As Global.System.Web.UI.UpdatePanel
+    
+    '''<summary>
+    '''Control hdfIDDel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents hdfIDDel As Global.System.Web.UI.WebControls.HiddenField
+    
+    '''<summary>
+    '''Control btnDelete.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnDelete As Global.System.Web.UI.WebControls.Button
 End Class

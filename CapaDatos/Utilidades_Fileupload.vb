@@ -8,24 +8,24 @@ Public Class Utilidades_Fileupload
 
     Public Shared Function Subir_Archivos(ByRef _archivo As HttpPostedFile, ruta As String, nombre As String) As String
 
-        Dim rutaImagen As String = HttpContext.Current.Server.MapPath(ruta) & nombre & ".jpg"
+        Dim rutaImagen As String = HttpContext.Current.Server.MapPath(ruta) & nombre & DateTime.Now.ToString("(MM-dd-yy_H-mm-ss)") & ".jpg"
 
         Dim bmpPostedImage As New Bitmap(_archivo.InputStream)
         Dim objImage As Drawing.Image = ScaleImage(bmpPostedImage, 81)
 
         objImage.Save(rutaImagen, ImageFormat.Jpeg)
 
-        Return ruta.Replace("~", "") & nombre & ".jpg"
+        Return ruta.Replace("~", "") & nombre & DateTime.Now.ToString("(MM-dd-yy_H-mm-ss)") & ".jpg"
 
     End Function
 
     Public Shared Function Subir_Archivo(ByRef _archivo As FileUpload, ruta As String, nombre As String) As String
 
         Dim fileExtension As String = "." + _archivo.FileName.Substring(_archivo.FileName.LastIndexOf(".") + 1).ToLower()
-        Dim rutaImagen As String = HttpContext.Current.Server.MapPath(ruta) & nombre & fileExtension
+        Dim rutaImagen As String = HttpContext.Current.Server.MapPath(ruta) & nombre & DateTime.Now.ToString("(MM-dd-yy_H-mm-ss)") & fileExtension
         _archivo.SaveAs(rutaImagen)
 
-        Return ruta.Replace("~", "") & nombre & fileExtension
+        Return ruta.Replace("~", "") & nombre & DateTime.Now.ToString("(MM-dd-yy_H-mm-ss)") & fileExtension
 
     End Function
 

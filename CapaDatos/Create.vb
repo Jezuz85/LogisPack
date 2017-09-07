@@ -1,6 +1,9 @@
 ﻿
 Public Class Create
 
+    ''' <summary>
+    ''' Metodo que recibe un objeto Almacen y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
+    ''' </summary>
     Public Shared Function Almacen(ByVal _nuevo As Almacen) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -17,6 +20,9 @@ Public Class Create
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un objeto Articulo y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
+    ''' </summary>
     Public Shared Function Articulo(ByVal _nuevo As Articulo) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -33,6 +39,9 @@ Public Class Create
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un objeto Cliente y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
+    ''' </summary>
     Public Shared Function Cliente(ByVal _nuevo As Cliente) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -49,6 +58,9 @@ Public Class Create
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un objeto Historico y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
+    ''' </summary>
     Public Shared Function Historico(ByVal _nuevo As Historico) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -65,6 +77,9 @@ Public Class Create
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un objeto Imagen y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
+    ''' </summary>
     Public Shared Function Imagen(ByVal _nuevo As Imagen) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -81,6 +96,9 @@ Public Class Create
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un objeto Picking_Articulo y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
+    ''' </summary>
     Public Shared Function Picking_Articulo(ByVal _nuevo As Picking_Articulo) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -97,6 +115,9 @@ Public Class Create
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un objeto Tipo Facturacion y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
+    ''' </summary>
     Public Shared Function TipoFacturacion(ByVal _nuevo As Tipo_Facturacion) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -113,6 +134,9 @@ Public Class Create
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un objeto Tipo Unidad y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
+    ''' </summary>
     Public Shared Function TipoUnidad(ByVal _nuevo As Tipo_Unidad) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -129,6 +153,9 @@ Public Class Create
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un objeto Ubicacion y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
+    ''' </summary>
     Public Shared Function Ubicacion(ByVal _nuevo As Ubicacion) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()

@@ -54,4 +54,15 @@ Public Class Utilidades_UpdatePanel
         End If
         Return ctrl
     End Function
+
+    Public Shared Sub CerrarOperacion(_modal As String, bError As Boolean, _page As Page, Optional ByRef _update As UpdatePanel = Nothing)
+
+        If _update IsNot Nothing Then
+            LimpiarControles(_update)
+        End If
+
+
+        Modal.CerrarModal(_modal & "Modal", _modal & "Script", _page)
+        Modal.Validacion(_page, bError, _modal)
+    End Sub
 End Class

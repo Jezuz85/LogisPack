@@ -8,15 +8,21 @@ Public Class Editar
     Dim ContFilas As Integer = 0
     Dim bError As Boolean
     Dim miTextbox As TextBox
+    Dim miHyperLink As HyperLink
     Dim miDropDownList As DropDownList
     Dim IdArticulo As Integer = 0
+    Dim _Articulo As List(Of Articulo)
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
 
+        IdArticulo = Cifrar.descifrarCadena_Num(Request.QueryString("id"))
+
         If Not IsPostBack Then
             ViewState("contadorUbi") = "0"
             CargarListas()
+            CargarArticulo()
+            CargarImagenes(IdArticulo)
         Else
             ObtenerControl_Postback(Me)
             For Each ctlID In Page.Request.Form.AllKeys
@@ -42,8 +48,6 @@ Public Class Editar
             Next
         End If
 
-        IdArticulo = Cifrar.descifrarCadena_Num(Request.QueryString("id"))
-        CargarArticulo(IdArticulo)
     End Sub
 
     Private Sub ObtenerControl_Postback(page As Page)
@@ -64,9 +68,9 @@ Public Class Editar
         Listas.Cliente(ddlCliente)
     End Sub
 
-    Private Sub CargarArticulo(IdArticulo As Integer)
-        Dim _Articulo As List(Of Articulo) = Getter.Articulo_list(IdArticulo)
+    Private Sub CargarArticulo()
 
+        _Articulo = Getter.Articulo_list(IdArticulo)
         For Each itemArticulos In _Articulo
 
             ddlTipoArticulo.SelectedValue = itemArticulos.tipoArticulo
@@ -128,25 +132,6 @@ Public Class Editar
             txtObsArt.Text = itemArticulos.observaciones_articulo
             txtStockMinimo.Text = itemArticulos.stock_minimo.ToString().Replace(",", ".")
             txtStockFisico.Text = itemArticulos.stock_fisico.ToString().Replace(",", ".")
-
-
-#Region "imagenes"
-
-            If itemArticulos.Imagen.Count > 0 Then
-                Dim contIma As Integer = 1
-
-                ControlesDinamicos.CrearLiteral("<ul class='list-group'>", pImagenes)
-                For Each itemImagen In itemArticulos.Imagen
-
-                    ControlesDinamicos.CrearLiteral("<li class='list-group-item' id='Ima" & contIma & "'><strong><a href='" & itemImagen.url_imagen & "' target='_blank'>Imagen " & contIma & "</a></strong> - <button id='RemoveIma" & contIma & "' OnClick='return false;'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span>Remover</button></li>", pImagenes)
-                    contIma += 1
-                Next
-                ControlesDinamicos.CrearLiteral("</ul>", pImagenes)
-            Else
-                ControlesDinamicos.CrearLiteral("<h5>Sin imagenes registradas</h5>", pImagenes)
-            End If
-#End Region
-
 #Region "ubicaciones"
             If itemArticulos.Ubicacion.Count > 0 Then
                 crearCamposListaUbicacion(itemArticulos.Ubicacion.Count - 1)
@@ -179,6 +164,30 @@ Public Class Editar
 
 #End Region
         Next
+    End Sub
+
+    Private Sub CargarImagenes(idArticulo As Integer)
+
+        Tabla.Imagen(GridView1, idArticulo)
+    End Sub
+    Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+        GridView1.PageIndex = e.NewPageIndex
+        CargarImagenes(IdArticulo)
+    End Sub
+    Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
+
+        If e.CommandName.Equals("Eliminar") Then
+            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
+            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
+        End If
+
+    End Sub
+    Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
+
+        bError = Delete.Imagen(Convert.ToInt32(hdfIDDel.Value))
+        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
+        Modal.Validacion(Me, bError, "Delete")
+        CargarImagenes(IdArticulo)
     End Sub
 
     Private Sub CargarCoefVol(idAlmacen As Integer)
@@ -232,7 +241,7 @@ Public Class Editar
 
     End Sub
 
-    Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnGuardar.Click
+    Protected Sub Editar(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
         If Page.IsValid Then
             Dim contadorControl As Integer = 0
@@ -245,7 +254,7 @@ Public Class Editar
             Dim _NuevoUbicaion As Ubicacion
             Dim M3 As Double = Nothing
             Dim PesoVol As Double = Nothing
-            Dim Stock_Picking As Integer = If(txtStockFisico.Text = String.Empty, 0, Convert.ToInt32(txtStockFisico.Text))
+            Dim Stock_Picking As Double = If(txtStockFisico.Text = String.Empty, 0, Double.Parse(txtStockFisico.Text, CultureInfo.InvariantCulture))
 
 #Region "Editar Articulo"
 
@@ -304,122 +313,132 @@ Public Class Editar
             End If
 
             bError = Update.Articulo(Edit, contexto)
-
 #End Region
 
             If bError Then
-                Dim articuloView = Getter.Articulo_Ultimo()
-
 #Region "Guardar imagenes"
+                'Guardar fotos que fueron cargadas
                 For Each _imagen In fuImagenes.PostedFiles
-
                     contadorControl += 1
-
                     If _imagen.ContentLength > 0 And _imagen IsNot Nothing Then
 
-                        Dim urlImagen As String = Utilidades_Fileupload.Subir_Archivos(_imagen, "../../Archivos/Articulos/", "Img_" & articuloView.id_articulo & "_" & contadorControl)
+                        Dim urlImagen As String = Utilidades_Fileupload.Subir_Archivos(_imagen, "../../Archivos/Articulos/", "Img_" & Edit.id_articulo & "_" & contadorControl)
 
                         Dim _imagenes As New Imagen With
                             {
-                            .nombre = "Imagen_" & contadorControl,
-                            .id_articulo = articuloView.id_articulo,
+                            .nombre = "Imagen_" & DateTime.Now.ToString("(MM-dd-yy_H:mm:ss)"),
+                            .id_articulo = Edit.id_articulo,
                             .url_imagen = urlImagen
                         }
                         Create.Imagen(_imagenes)
                     End If
-
                 Next
 #End Region
 
 #Region "Guardar ubicaciones"
-                contadorControl = 0
 
-                For Each micontrol As Control In pTabla.Controls
+                If Edit.Ubicacion.Count > 0 Then
+                    bError = Delete.Ubicacion(Edit.id_articulo)
+                Else
+                    bError = True
+                End If
 
-                    miTextbox = CType(pTabla.FindControl("txtZona" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        zona = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
-                    End If
+                If bError Then
+                    contadorControl = 0
+                    For Each micontrol As Control In pTabla.Controls
 
-                    miTextbox = CType(pTabla.FindControl("txtEstante" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        estante = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
-                    End If
-
-                    miTextbox = CType(pTabla.FindControl("txtFila" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        fila = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
-                    End If
-
-                    miTextbox = CType(pTabla.FindControl("txtColumna" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        Dim valor As String = miTextbox.Text.PadLeft(4, "0")
-                        columna = If(miTextbox.Text = String.Empty, "", miTextbox.Text.PadLeft(4, "0"))
-                    End If
-
-                    miTextbox = CType(pTabla.FindControl("txtPanel" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        panel = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
-                    End If
-
-                    miTextbox = CType(pTabla.FindControl("txtRefUbi" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        referencia_ubicacion = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
-                    End If
-
-                    If referencia_ubicacion IsNot Nothing Then
-
-                        If (zona <> String.Empty) Or
-                            (estante <> String.Empty) Or
-                            (columna <> String.Empty) Or
-                            (panel <> String.Empty) Or
-                            (referencia_ubicacion <> String.Empty) Then
-
-                            _NuevoUbicaion = New Ubicacion With {
-                                .zona = zona,
-                                .estante = estante,
-                                .fila = fila,
-                                .columna = columna,
-                                .panel = panel,
-                                .referencia_ubicacion = referencia_ubicacion,
-                                .id_articulo = articuloView.id_articulo
-                            }
-
-                            Create.Ubicacion(_NuevoUbicaion)
-                            referencia_ubicacion = Nothing
-
+                        miTextbox = CType(pTabla.FindControl("txtZona" & contadorControl), TextBox)
+                        If miTextbox IsNot Nothing Then
+                            zona = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
                         End If
-                    End If
 
-                    contadorControl += 1
-                Next
+                        miTextbox = CType(pTabla.FindControl("txtEstante" & contadorControl), TextBox)
+                        If miTextbox IsNot Nothing Then
+                            estante = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+                        End If
+
+                        miTextbox = CType(pTabla.FindControl("txtFila" & contadorControl), TextBox)
+                        If miTextbox IsNot Nothing Then
+                            fila = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+                        End If
+
+                        miTextbox = CType(pTabla.FindControl("txtColumna" & contadorControl), TextBox)
+                        If miTextbox IsNot Nothing Then
+                            Dim valor As String = miTextbox.Text.PadLeft(4, "0")
+                            columna = If(miTextbox.Text = String.Empty, "", miTextbox.Text.PadLeft(4, "0"))
+                        End If
+
+                        miTextbox = CType(pTabla.FindControl("txtPanel" & contadorControl), TextBox)
+                        If miTextbox IsNot Nothing Then
+                            panel = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+                        End If
+
+                        miTextbox = CType(pTabla.FindControl("txtRefUbi" & contadorControl), TextBox)
+                        If miTextbox IsNot Nothing Then
+                            referencia_ubicacion = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+                        End If
+
+                        If referencia_ubicacion IsNot Nothing Then
+
+                            If (zona <> String.Empty) Or
+                                (estante <> String.Empty) Or
+                                (columna <> String.Empty) Or
+                                (panel <> String.Empty) Or
+                                (referencia_ubicacion <> String.Empty) Then
+
+                                _NuevoUbicaion = New Ubicacion With {
+                                    .zona = zona,
+                                    .estante = estante,
+                                    .fila = fila,
+                                    .columna = columna,
+                                    .panel = panel,
+                                    .referencia_ubicacion = referencia_ubicacion,
+                                    .id_articulo = Edit.id_articulo
+                                }
+
+                                Create.Ubicacion(_NuevoUbicaion)
+                                referencia_ubicacion = Nothing
+
+                            End If
+                        End If
+
+                        contadorControl += 1
+                    Next
+                End If
 #End Region
 
 #Region "Guardar picking"
                 If ddlTipoArticulo.SelectedValue = "Picking" Then
 
-                    contadorControl = 0
+                    If Edit.Picking_Articulo.Count > 0 Then
+                        bError = Delete.Picking_Articulo(Edit.id_articulo)
+                    Else
+                        bError = True
+                    End If
 
-                    Dim lineaArt As String() = txtArticulos2.Text.Split("" & vbLf & "")
+                    If bError Then
+                        contadorControl = 0
+                        Dim lineaArt As String() = txtArticulos2.Text.Split("" & vbLf & "")
 
-                    For i As Integer = 1 To (lineaArt.Length - 1)
+                        For i As Integer = 1 To (lineaArt.Length - 1)
 
-                        Dim lineas As String() = lineaArt(i - 1).Split(New Char() {"-"c})
-                        Dim itemArt As Integer = Convert.ToInt32(lineas(0))
-                        Dim itemUni As Double = Double.Parse(lineas(1), CultureInfo.InvariantCulture)
+                            Dim lineas As String() = lineaArt(i - 1).Split(New Char() {"-"c})
+                            Dim itemArt As Integer = Convert.ToInt32(lineas(0))
+                            Dim itemUni As Double = Double.Parse(lineas(1), CultureInfo.InvariantCulture)
 
-                        Dim Listarticulo = contexto.Articulo.Where(Function(model) model.id_articulo = itemArt).SingleOrDefault()
+                            Dim Listarticulo = contexto.Articulo.Where(Function(model) model.id_articulo = itemArt).SingleOrDefault()
 
-                        Dim _NuevoPic_Art As New Picking_Articulo With {
-                            .unidades = itemUni,
-                            .id_articulo = itemArt,
-                            .id_picking = articuloView.id_articulo
-                        }
-                        bError = Create.Picking_Articulo(_NuevoPic_Art)
-                    Next
+                            Dim _NuevoPic_Art As New Picking_Articulo With {
+                                .unidades = itemUni,
+                                .id_articulo = itemArt,
+                                .id_picking = Edit.id_articulo
+                            }
+                            bError = Create.Picking_Articulo(_NuevoPic_Art)
+                        Next
+                    End If
+
                 End If
 #End Region
-
             End If
 
             Modal.Validacion(Me, bError, "Add")
@@ -438,6 +457,7 @@ Public Class Editar
             End If
 
         End If
+
     End Sub
 
     Protected Sub CambiarCliente(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
@@ -493,14 +513,17 @@ Public Class Editar
     End Sub
 
     Protected Sub SetCoefVolumétrico(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
-
         If ddlAlmacen.SelectedValue = "" Then
             txtCoefVol.Text = String.Empty
             phListaArticulos.Visible = False
         Else
+
+            If ddlTipoArticulo.SelectedValue = "Picking" Then
+                Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+                phListaArticulos.Visible = True
+            End If
+
             CargarCoefVol(Convert.ToInt32(ddlAlmacen.SelectedValue))
-            Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
-            phListaArticulos.Visible = True
         End If
 
     End Sub
@@ -513,4 +536,5 @@ Public Class Editar
         txtArticulos2.Text = String.Empty
 
     End Sub
+
 End Class

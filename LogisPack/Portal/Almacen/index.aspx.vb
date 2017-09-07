@@ -13,30 +13,35 @@ Public Class index
         If IsPostBack = False Then
 
             MyTreeView.Nodes.Clear()
-
             Dim dt As DataTable = GetData(_comando.Arbol_Almacen_Nivel0)
-
             LlenarTreeView(dt, 0, Nothing)
-
             LlenarGridView()
             CargarListas()
-
         End If
 
     End Sub
+
+    ''' <summary>
+    ''' Metodo que llena El Gridview con datos de la Base de Datos
+    ''' </summary>
     Public Sub LlenarGridView()
-
         Tabla.Almacen(GridView1)
-
     End Sub
+
+    ''' <summary>
+    ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
+    ''' </summary>
     Public Sub CargarListas()
         Listas.Cliente(ddlClienteAdd)
     End Sub
 
+
+    ''' <summary>
+    ''' Metodos del Gridview
+    ''' </summary>
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         LlenarGridView()
-
     End Sub
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
@@ -44,19 +49,18 @@ Public Class index
 
             hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Dim _Almacen = Getter.Almacen(Convert.ToInt32(hdfEdit.Value))
-
-
             Listas.Cliente(ddlClienteEdit)
+
             ddlClienteEdit.SelectedValue = _Almacen.id_cliente
             txtEditCodigo.Text = _Almacen.codigo
             txtEditNombre.Text = _Almacen.nombre
             txtEditCoefVol.Text = _Almacen.coeficiente_volumetrico
 
-            Modal.AbrirModal("editModal", "EditModalScript", Me)
+            Modal.AbrirModal("EditModal", "EditModalScript", Me)
         End If
         If e.CommandName.Equals("Eliminar") Then
             hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Modal.AbrirModal("deleteModal", "DeleteModalScript", Me)
+            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
         End If
         If e.CommandName.Equals("Detalles") Then
 
@@ -68,11 +72,14 @@ Public Class index
             lbViewNombre.Text = _Almacen.nombre
             lbViewCoefVol.Text = _Almacen.coeficiente_volumetrico
 
-            Modal.AbrirModal("viewModal", "ViewModalScript", Me)
+            Modal.AbrirModal("ViewModal", "ViewModalScript", Me)
         End If
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que crea un objeto Almacen y lo guarda en la base de datos
+    ''' </summary>
     Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnAdd.Click
 
         Dim _Nuevo As New Almacen With {
@@ -84,11 +91,14 @@ Public Class index
 
         bError = Create.Almacen(_Nuevo)
 
-        Modal.CerrarModal("addModal", "AddModalScript", Me)
-        Modal.Validacion(Me, bError, "Add")
+        Utilidades_UpdatePanel.CerrarOperacion("Add", bError, Me, up_Add)
+
         LlenarGridView()
-        Utilidades_UpdatePanel.LimpiarControles(up_Add)
     End Sub
+
+    ''' <summary>
+    ''' Metodo que Edita un objeto Almacen y actualiza el registro en la base de datos
+    ''' </summary>
     Protected Sub Editar(sender As Object, e As EventArgs) Handles btnEdit.Click
 
         Dim Edit = Getter.Almacen(Convert.ToInt32(hdfEdit.Value), contexto)
@@ -102,20 +112,27 @@ Public Class index
 
         bError = Update.Almacen(Edit, contexto)
 
-        Modal.CerrarModal("EditModal", "EditModallScript", Me)
-        Modal.Validacion(Me, bError, "Edit")
-        Utilidades_UpdatePanel.LimpiarControles(up_Edit)
+        Utilidades_UpdatePanel.CerrarOperacion("Edit", bError, Me, up_Edit)
+
         LlenarGridView()
+
     End Sub
+
+    ''' <summary>
+    ''' Metodo que Elimina un registro de Almacen de la base de datos
+    ''' </summary>
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
-
         bError = Delete.Almacen(Convert.ToInt32(hdfIDDel.Value))
-        Modal.CerrarModal("deleteModal", "DeleteModalScript", Me)
-        Modal.Validacion(Me, bError, "Delete")
-        LlenarGridView()
 
+        Utilidades_UpdatePanel.CerrarOperacion("Delete", bError, Me)
+
+        LlenarGridView()
     End Sub
 
+
+    ''' <summary>
+    ''' Metodo que se invoca al darle click al nodo de almacen y asi consultar los datos del almacen
+    ''' </summary>
     Protected Sub MyTreeView_SelectedNodeChanged(sender As Object, e As EventArgs) Handles MyTreeView.SelectedNodeChanged
 
         If MyTreeView.SelectedNode.Depth = 1 Then
@@ -131,6 +148,10 @@ Public Class index
             NomCliente.Text = "Cliente: " & MyTreeView.SelectedNode.Parent.Text
         End If
     End Sub
+
+    ''' <summary>
+    ''' Metodo que llena el arbol de almacenes
+    ''' </summary>
     Private Sub LlenarTreeView(dtParent As DataTable, parentId As Integer, treeNode As TreeNode)
 
         For Each row As DataRow In dtParent.Rows
@@ -156,6 +177,10 @@ Public Class index
         MyTreeView.CollapseAll()
 
     End Sub
+
+    ''' <summary>
+    ''' Metodo que obtiene la data a pasarle al arbol
+    ''' </summary>
     Private Function GetData(query As String) As DataTable
         Dim dt As New DataTable()
         Dim constr As String = ConfigurationManager.ConnectionStrings("DLAlmacen").ConnectionString

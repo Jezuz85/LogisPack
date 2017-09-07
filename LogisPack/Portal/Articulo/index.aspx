@@ -59,7 +59,7 @@
     </asp:updatepanel>
 
     <!-- Delete Modal -->
-    <div id="deleteModal" class="modal">
+    <div id="DeleteModal" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
 

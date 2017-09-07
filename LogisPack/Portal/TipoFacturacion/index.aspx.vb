@@ -31,12 +31,12 @@ Public Class index1
             hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Dim _TipoFacturacion = Getter.Tipo_Facturacion(Convert.ToInt32(hdfEdit.Value))
             txtNombre_Edit.Text = _TipoFacturacion.nombre
-            Modal.AbrirModal("editModal", "editModalScript", Me)
+            Modal.AbrirModal("EditModal", "EditModalScript", Me)
 
         ElseIf e.CommandName.Equals("Eliminar") Then
 
             hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Modal.AbrirModal("deleteModal", "DeleteModalScript", Me)
+            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
         End If
 
@@ -50,7 +50,7 @@ Public Class index1
 
         bError = Create.TipoFacturacion(_Nuevo)
 
-        Modal.CerrarModal("addModal", "AddModalScript", Me)
+        Modal.CerrarModal("AddModal", "AddModalScript", Me)
         Modal.Validacion(Me, bError, "Add")
         LlenarGridView()
         Utilidades_UpdatePanel.LimpiarControles(up_Add)
@@ -67,7 +67,7 @@ Public Class index1
 
         bError = Update.Tipo_Facturacion(Edit, contexto)
 
-        Modal.CerrarModal("editModal", "EditModallScript", Me)
+        Modal.CerrarModal("EditModal", "EditModallScript", Me)
         Modal.Validacion(Me, bError, "Edit")
         Utilidades_UpdatePanel.LimpiarControles(up_Edit)
         LlenarGridView()
@@ -76,7 +76,7 @@ Public Class index1
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 
         bError = Delete.TipoFacturacion(Convert.ToInt32(hdfIDDel.Value))
-        Modal.CerrarModal("deleteModal", "DeleteModalScript", Me)
+        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
         Modal.Validacion(Me, bError, "Delete")
         LlenarGridView()
 

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LogisPackModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LogisPackModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Almacen">
           <Key>
             <PropertyRef Name="id_almacen" />
@@ -72,7 +72,7 @@
             <PropertyRef Name="id_imagen" />
           </Key>
           <Property Name="id_imagen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="nvarchar" MaxLength="15" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
           <Property Name="url_imagen" Type="nvarchar" MaxLength="200" />
           <Property Name="id_articulo" Type="int" Nullable="false" />
         </EntityType>
@@ -294,8 +294,7 @@
             <End Role="Picking_Articulo" EntitySet="Picking_Articulo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LogisPackModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -378,7 +377,7 @@
             <PropertyRef Name="id_imagen" />
           </Key>
           <Property Name="id_imagen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="url_imagen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="id_articulo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Articulo" Relationship="Self.FK_dbo_Imagen_dbo_Articulo_id_articulo" FromRole="Imagen" ToRole="Articulo" />

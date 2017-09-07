@@ -5,14 +5,10 @@ Public Class Crear
     Inherits Page
 
     Dim contexto As LogisPackEntities = New LogisPackEntities()
-    Dim ContFilas As Integer = 0
     Dim bError As Boolean
-    Dim miTextbox As TextBox
-    Dim miDropDownList As DropDownList
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
-
 
         If Not IsPostBack Then
             ViewState("contadorUbi") = "0"
@@ -46,6 +42,9 @@ Public Class Crear
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo para obtener que lista hace el postback si Tipo de Articulo o Cliente y asi pintar las ubicaciones
+    ''' </summary>
     Private Sub ObtenerControl_Postback(page As Page)
 
         Dim ctrl As Control = Utilidades_UpdatePanel.ObtenerControl_PostBack(page)
@@ -58,6 +57,9 @@ Public Class Crear
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que llena los Dropdownlits con datos de la Base de DAtos
+    ''' </summary>
     Public Sub CargarListas()
         Listas.TipoFacturacion(ddlTipoFacturacion)
         Listas.TipoUnidad(ddlTipoUnidad)
@@ -70,6 +72,7 @@ Public Class Crear
     End Sub
 
     Public Sub crearCamposListaUbicacion(valor As Integer)
+        Dim ContFilas As Integer = 0
 
         If valor < 0 Then
             ContFilas = 0
@@ -119,6 +122,7 @@ Public Class Crear
 
         If Page.IsValid Then
 
+            Dim miTextbox As TextBox
             Dim contadorControl As Integer = 0
             Dim zona As String = Nothing
             Dim estante As String = Nothing
@@ -127,13 +131,11 @@ Public Class Crear
             Dim panel As String = Nothing
             Dim referencia_ubicacion As String = Nothing
             Dim _NuevoUbicaion As Ubicacion
-            'Dim unidadesSolicitadas As Integer = 0
-            'Dim unidadesDisponibles As Integer = 0
             Dim M3 As Double = Nothing
             Dim PesoVol As Double = Nothing
 
 
-            Dim Stock_Picking As Integer = If(txtStockFisico.Text = String.Empty, 0, Convert.ToInt32(txtStockFisico.Text))
+            Dim Stock_Picking As Double = If(txtStockFisico.Text = String.Empty, 0, Double.Parse(txtStockFisico.Text, CultureInfo.InvariantCulture))
 
 #Region "Guardar Articulo nuevo"
 
@@ -208,7 +210,7 @@ Public Class Crear
 
                         Dim _imagenes As New Imagen With
                             {
-                            .nombre = "Imagen_" & contadorControl,
+                            .nombre = "Imagen_" & DateTime.Now.ToString("(MM-dd-yy_H:mm:ss)"),
                             .id_articulo = articuloView.id_articulo,
                             .url_imagen = urlImagen
                         }
@@ -284,7 +286,6 @@ Public Class Crear
 
 #Region "Guardar picking"
                 If ddlTipoArticulo.SelectedValue = "Picking" Then
-
                     contadorControl = 0
 
                     Dim lineaArt As String() = txtArticulos2.Text.Split("" & vbLf & "")
@@ -297,32 +298,12 @@ Public Class Crear
 
                         Dim Listarticulo = contexto.Articulo.Where(Function(model) model.id_articulo = itemArt).SingleOrDefault()
 
-                        'unidadesSolicitadas = (Stock_Picking * itemUni)
-                        ' unidadesDisponibles = (Listarticulo.stock_fisico)
-
                         Dim _NuevoPic_Art As New Picking_Articulo With {
                             .unidades = itemUni,
                             .id_articulo = itemArt,
                             .id_picking = articuloView.id_articulo
                         }
                         bError = Create.Picking_Articulo(_NuevoPic_Art)
-
-                        'If bError Then
-
-                        '    Dim Edit As Articulo = contexto.Articulo.SingleOrDefault(Function(b) b.id_articulo = Listarticulo.id_articulo)
-
-                        '    If Edit IsNot Nothing Then
-                        '        Edit.stock_fisico = (Edit.stock_fisico - unidadesSolicitadas)
-                        '    End If
-
-                        '    Try
-                        '        contexto.SaveChanges()
-                        '    Catch ex As Exception
-
-                        '    End Try
-
-                        'End If
-
                     Next
                 End If
 #End Region
@@ -345,6 +326,7 @@ Public Class Crear
             End If
 
         End If
+
     End Sub
 
     Protected Sub CambiarCliente(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
@@ -394,9 +376,13 @@ Public Class Crear
             txtCoefVol.Text = String.Empty
             phListaArticulos.Visible = False
         Else
+
+            If ddlTipoArticulo.SelectedValue = "Picking" Then
+                Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+                phListaArticulos.Visible = True
+            End If
+
             CargarCoefVol(Convert.ToInt32(ddlAlmacen.SelectedValue))
-            Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
-            phListaArticulos.Visible = True
         End If
 
     End Sub

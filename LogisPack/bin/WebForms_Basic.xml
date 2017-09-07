@@ -1333,9 +1333,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack.Editar._pImagenes">
+<member name="F:LogisPack.Editar._GridView1">
 <summary>
-Control pImagenes.
+Control GridView1.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1345,6 +1345,33 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack.Editar._btnGuardar">
 <summary>
 Control btnGuardar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack.Editar._upDel">
+<summary>
+Control upDel.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack.Editar._hdfIDDel">
+<summary>
+Control hdfIDDel.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack.Editar._btnDelete">
+<summary>
+Control btnDelete.
 </summary>
 <remarks>
 Campo generado automáticamente.

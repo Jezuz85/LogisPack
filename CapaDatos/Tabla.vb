@@ -75,4 +75,19 @@ Public Class Tabla
         GridView1.DataBind()
     End Sub
 
+    Public Shared Sub Imagen(ByRef GridView1 As GridView, id As Integer)
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Dim query = (From AL In contexto.Imagen
+                     Where AL.id_articulo = id
+                     Select
+                         AL.id_imagen,
+                         AL.nombre,
+                         AL.url_imagen
+                    ).ToList()
+
+        GridView1.DataSource = query
+        GridView1.DataBind()
+    End Sub
 End Class

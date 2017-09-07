@@ -314,9 +314,40 @@
 					<asp:FileUpload runat="server" ID="fuImagenes" data-toggle="tooltip" data-placement="bottom" AllowMultiple="true"
 						class="multiple form-control" title="Seleccione las imagenes del articulo" accept=".png,.jpg,.jpeg,.gif" />
 				</div>
-				<div class="col-md-3">
-					<asp:Panel ID="pImagenes" runat="server"></asp:Panel>
-					
+				<div class="col-md-9">
+					<div class="row">
+						<div class="box-body">
+							<div class="dataTables_wrapper form-inline dt-bootstrap">
+								<asp:GridView ID="GridView1" class="table table-bordered table-hover dataTable" runat="server"
+									AutoGenerateColumns="false" AllowPaging="true" PageSize="10" OnRowCommand="GridView1_RowCommand"
+									OnPageIndexChanging="GridView1_PageIndexChanging" EmptyDataText="No existen Registros">
+
+									<Columns>
+										<asp:TemplateField HeaderText="Id Categoria" Visible="false" HeaderStyle-CssClass="text-center">
+											<ItemTemplate>
+												<asp:Label ID="id" runat="server" Text='<%# Eval("id_imagen") %>' /></ItemTemplate>
+										</asp:TemplateField>
+
+										<asp:TemplateField HeaderText="Nombre" HeaderStyle-CssClass="text-center">
+											<ItemTemplate>
+												<asp:Label ID="nombre" runat="server" Text='<%# Eval("nombre") %>' /></ItemTemplate>
+										</asp:TemplateField>
+
+										<asp:TemplateField HeaderText="Ver" HeaderStyle-CssClass="text-center">
+											<ItemTemplate>
+												<asp:HyperLink runat="server" NavigateUrl='<%# Eval("url_imagen") %>' Target="_blank">Ver</asp:HyperLink>
+
+											</ItemTemplate>
+										</asp:TemplateField>
+
+										<asp:ButtonField CommandName="Eliminar" ButtonType="Image" Text="Eliminar"
+											HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
+
+									</Columns>
+								</asp:GridView>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -333,4 +364,48 @@
 			<asp:PostBackTrigger ControlID="btnGuardar" />
 		</Triggers>
 	</asp:UpdatePanel>
+
+	<!-- Delete Modal -->
+	<div id="DeleteModal" class="modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+					<h3>Eliminar Registro</h3>
+				</div>
+
+				<asp:updatepanel id="upDel" runat="server">
+					<ContentTemplate>
+						
+						<div class="modal-body form-group">
+							<asp:HiddenField id="hdfIDDel" runat="server"/>
+							
+							<div class="row">
+								<h4 class="text-center">¿Seguro desea eliminar esta imagen?</h4>
+							</div>
+						</div>
+						
+						<div class="modal-footer">
+							<div class="row">                                
+								<div class="col-md-4 col-md-offset-2">
+									<asp:Button id="btnDelete" runat="server" Text="Eliminar" class="btn btn-block btn-info" 
+										OnClick="EliminarRegistro"/>
+								</div>
+								
+								<div class="col-md-4">
+									<button class="btn btn-block btn-default" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+								</div>
+							</div>
+						</div>
+					</ContentTemplate>
+					<Triggers>
+						<asp:AsyncPostBackTrigger Controlid="btnDelete" EventName="Click"/>
+					</Triggers>
+				</asp:updatepanel>
+
+			</div>
+		</div>
+	</div>
+
 </asp:Content>

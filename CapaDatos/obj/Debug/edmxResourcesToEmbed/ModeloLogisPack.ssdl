@@ -67,7 +67,7 @@
       <PropertyRef Name="id_imagen" />
     </Key>
     <Property Name="id_imagen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar" MaxLength="15" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
     <Property Name="url_imagen" Type="nvarchar" MaxLength="200" />
     <Property Name="id_articulo" Type="int" Nullable="false" />
   </EntityType>

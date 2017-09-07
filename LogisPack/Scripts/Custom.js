@@ -13,7 +13,7 @@ function load() {
 
     var URLActual = "" + window.location;
 
-    if (URLActual.includes("Portal/Articulo/Crear")) {
+    if (URLActual.includes("Portal/Articulo/Crear") || URLActual.includes("Portal/Articulo/Editar")) {
 
         //evento de observaciones de contador
         var txtObsGen = document.getElementById('MainContent_txtObsGen'),
@@ -64,19 +64,22 @@ function load() {
 
             count2.textContent = length;
         }, false);
-        
+
         //Asignar evento de ceros a columna en la tabla Ubicacion
-        var Columnas = [$('#MainContent_txtColumna0')];  
+        var Columnas = [$('#MainContent_txtColumna0')];
         for (var i = 1; i <= 50; i++) {
-            Columnas.push($('#MainContent_txtColumna'+i)); 
+            Columnas.push($('#MainContent_txtColumna' + i));
         }
-        $.each(Columnas,function (){
+        $.each(Columnas, function () {
             $(this).focusout(function () {
                 var _valor = $(this).val();
-                $(this).val(_valor.padStart(4, "0"));
+                if (_valor.length>0) {
+                    $(this).val(_valor.padStart(4, "0"));
+                }
+
             });
         });
-        
+
     }
 
     if (URLActual.includes("Portal/Articulo/Editar")) {
@@ -88,12 +91,15 @@ function load() {
         $.each(Columnas, function () {
             $(this).click(function (event) {
                 var res = this.id.replace("RemoveIma", "");
-                $("#Ima" + res).remove();
-               this.remove();
+
+                if (confirm("Seguro desea Eliminar esta imagen, esta opcion no se puede deshacer!") == true) {
+                    $("#Ima" + res).remove();
+                    this.remove();
+                }
+
             });
         });
     }
-
 
     function MostrarMsjModal(message, title, ccsclas) {
         var vIcoModal = document.getElementById("icoModal");

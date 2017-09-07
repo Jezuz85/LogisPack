@@ -33,12 +33,12 @@ Public Class index5
             txtCodigo_Edit.Text = _Cliente.codigo
             txtNombre_Edit.Text = _Cliente.nombre
 
-            Modal.AbrirModal("editModal", "editModalScript", Me)
+            Modal.AbrirModal("EditModal", "EditModalScript", Me)
 
         ElseIf e.CommandName.Equals("Eliminar") Then
 
             hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Modal.AbrirModal("deleteModal", "DeleteModalScript", Me)
+            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
         End If
 
@@ -53,7 +53,7 @@ Public Class index5
 
         bError = Create.Cliente(_Nuevo)
 
-        Modal.CerrarModal("addModal", "AddModalScript", Me)
+        Modal.CerrarModal("AddModal", "AddModalScript", Me)
         Modal.Validacion(Me, bError, "Add")
         LlenarGridView()
         Utilidades_UpdatePanel.LimpiarControles(up_Add)
@@ -71,7 +71,7 @@ Public Class index5
 
         bError = Update.Cliente(Edit, contexto)
 
-        Modal.CerrarModal("editModal", "EditModallScript", Me)
+        Modal.CerrarModal("EditModal", "EditModallScript", Me)
         Modal.Validacion(Me, bError, "Edit")
         Utilidades_UpdatePanel.LimpiarControles(up_Edit)
         LlenarGridView()
@@ -80,7 +80,7 @@ Public Class index5
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 
         bError = Delete.Cliente(Convert.ToInt32(hdfIDDel.Value))
-        Modal.CerrarModal("deleteModal", "DeleteModalScript", Me)
+        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
         Modal.Validacion(Me, bError, "Delete")
         LlenarGridView()
 

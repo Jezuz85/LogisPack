@@ -51,7 +51,7 @@
     
             <div class="row">
                 <div class="col-md-12">
-                    <asp:ImageButton AlternateText="Registrar" id="btnCrear" runat="server" CssClass="btn btn-default" data-toggle="modal" data-target="#addModal"/>
+                    <asp:ImageButton AlternateText="Registrar" id="btnCrear" runat="server" CssClass="btn btn-default" data-toggle="modal" data-target="#AddModal"/>
                 </div>
             </div>
 
@@ -60,7 +60,7 @@
     </asp:updatepanel>
 
     <!-- Add Modal -->
-    <div id="addModal" class="modal">
+    <div id="AddModal" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 
@@ -120,7 +120,7 @@
     </div>
     
     <!-- Edit Modal -->
-    <div id="editModal" class="modal">
+    <div id="EditModal" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 
@@ -185,7 +185,7 @@
     </div>    
     
     <!-- Delete Modal -->
-    <div id="deleteModal" class="modal">
+    <div id="DeleteModal" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
 

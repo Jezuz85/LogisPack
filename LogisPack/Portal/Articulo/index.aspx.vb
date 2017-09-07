@@ -36,7 +36,7 @@ Public Class index3
         End If
         If e.CommandName.Equals("Eliminar") Then
             hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Modal.AbrirModal("deleteModal", "DeleteModalScript", Me)
+            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
         End If
 
@@ -46,7 +46,7 @@ Public Class index3
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 
         bError = Delete.Articulo(Convert.ToInt32(hdfIDDel.Value))
-        Modal.CerrarModal("deleteModal", "DeleteModalScript", Me)
+        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
         Modal.Validacion(Me, bError, "Delete")
         LlenarGridView()
     End Sub
@@ -54,4 +54,6 @@ Public Class index3
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
         Response.Redirect("Crear.aspx")
     End Sub
+
+
 End Class
