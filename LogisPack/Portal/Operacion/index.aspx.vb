@@ -12,6 +12,9 @@ Public Class index4
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
+    ''' </summary>
     Public Sub CargarListas()
 
         Listas.ArticuloTodos(ddlListaArticulos)
@@ -58,27 +61,27 @@ Public Class index4
 
                         Try
                             contexto.SaveChanges()
-                            Modal.MostrarMsjModal("Se Registro la operación satisfactoriamente", "EXI", Me)
+                            'Modal.MostrarMsjModal("Se Registro la operación satisfactoriamente", "EXI", Me)
                         Catch ex As Exception
-                            Modal.MostrarMsjModal("Error al registrar operación", "ERR", Me)
+                            'Modal.MostrarMsjModal("Error al registrar operación", "ERR", Me)
                             Return
                         End Try
 
 
                     Else
-                        Modal.MostrarMsjModal("Error al registrar operación", "ERR", Me)
+                        'Modal.MostrarMsjModal("Error al registrar operación", "ERR", Me)
                         Return
                     End If
 
                 Else
-                    Modal.MostrarMsjModal("Tiene que subir un documento", "ERR", Me)
+                    'Modal.MostrarMsjModal("Tiene que subir un documento", "ERR", Me)
                     Return
                 End If
 #End Region
 
             Else
 
-                Modal.MostrarMsjModal("Las unidades del Articulo no Deben superar al stock actual y deben ser mayor a cero", "ERR", Me)
+                'Modal.MostrarMsjModal("Las unidades del Articulo no Deben superar al stock actual y deben ser mayor a cero", "ERR", Me)
 
             End If
 

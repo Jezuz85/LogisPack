@@ -1,8 +1,10 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Editar.aspx.vb" Inherits="LogisPack.Editar" %>
 
+<%@ Register Src="~/Portal/WebUserControl/Alert.ascx" TagPrefix="uca" TagName="ucAlert" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-	<asp:UpdatePanel ID="upAdd_Articulo" runat="server">
+	<asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
 		<ContentTemplate>
 
 			<br />
@@ -15,6 +17,9 @@
 			<div class="page-header">
 				<h1 class="text-center">Artículo</h1>
 			</div>
+			
+			<!-- Alert -->
+			<uca:ucAlert runat="server" ID="ucAlerta" />
 
 			<div class="row">
 				<div class="col-md-2">
@@ -325,12 +330,14 @@
 									<Columns>
 										<asp:TemplateField HeaderText="Id Categoria" Visible="false" HeaderStyle-CssClass="text-center">
 											<ItemTemplate>
-												<asp:Label ID="id" runat="server" Text='<%# Eval("id_imagen") %>' /></ItemTemplate>
+												<asp:Label ID="id" runat="server" Text='<%# Eval("id_imagen") %>' />
+											</ItemTemplate>
 										</asp:TemplateField>
 
 										<asp:TemplateField HeaderText="Nombre" HeaderStyle-CssClass="text-center">
 											<ItemTemplate>
-												<asp:Label ID="nombre" runat="server" Text='<%# Eval("nombre") %>' /></ItemTemplate>
+												<asp:Label ID="nombre" runat="server" Text='<%# Eval("nombre") %>' />
+											</ItemTemplate>
 										</asp:TemplateField>
 
 										<asp:TemplateField HeaderText="Ver" HeaderStyle-CssClass="text-center">
@@ -340,8 +347,9 @@
 											</ItemTemplate>
 										</asp:TemplateField>
 
-										<asp:ButtonField CommandName="Eliminar" ButtonType="Image" Text="Eliminar"
-											HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
+										<asp:ButtonField CommandName="Delete" ButtonType="Image" Text="Eliminar"
+											HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center"
+											ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
 
 									</Columns>
 								</asp:GridView>
@@ -355,7 +363,8 @@
 
 			<div class="row">
 				<div class="col-md-3">
-					<asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-default" Text="Guardar" ValidationGroup="ValidationAdd" />
+					<asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-default" Text="Guardar" 
+						ValidationGroup="ValidationAdd" />
 				</div>
 			</div>
 
@@ -372,37 +381,39 @@
 
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-					<h3>Eliminar Registro</h3>
+					<h3>¿Eliminar Imagen?</h3>
 				</div>
 
-				<asp:updatepanel id="upDel" runat="server">
+				<asp:UpdatePanel ID="upDel" runat="server">
 					<ContentTemplate>
-						
+
 						<div class="modal-body form-group">
-							<asp:HiddenField id="hdfIDDel" runat="server"/>
-							
+							<asp:HiddenField ID="hdfIDDel" runat="server" />
+
 							<div class="row">
 								<h4 class="text-center">¿Seguro desea eliminar esta imagen?</h4>
 							</div>
 						</div>
-						
+
 						<div class="modal-footer">
-							<div class="row">                                
+							<div class="row">
 								<div class="col-md-4 col-md-offset-2">
-									<asp:Button id="btnDelete" runat="server" Text="Eliminar" class="btn btn-block btn-info" 
-										OnClick="EliminarRegistro"/>
+									<asp:Button ID="btnDelete" runat="server" Text="Eliminar"
+										class="btn btn-block btn-info" OnClick="EliminarImagen" />
 								</div>
-								
+
 								<div class="col-md-4">
-									<button class="btn btn-block btn-default" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+									<button class="btn btn-block btn-default" data-dismiss="modal"
+										aria-hidden="true">
+										Cerrar</button>
 								</div>
 							</div>
 						</div>
 					</ContentTemplate>
 					<Triggers>
-						<asp:AsyncPostBackTrigger Controlid="btnDelete" EventName="Click"/>
+						<asp:AsyncPostBackTrigger ControlID="btnDelete" EventName="Click" />
 					</Triggers>
-				</asp:updatepanel>
+				</asp:UpdatePanel>
 
 			</div>
 		</div>

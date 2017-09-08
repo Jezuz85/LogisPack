@@ -3,15 +3,9 @@ Imports CapaDatos
 
 Public Class Editar
     Inherits Page
-
     Dim contexto As LogisPackEntities = New LogisPackEntities()
-    Dim ContFilas As Integer = 0
     Dim bError As Boolean
-    Dim miTextbox As TextBox
-    Dim miHyperLink As HyperLink
-    Dim miDropDownList As DropDownList
     Dim IdArticulo As Integer = 0
-    Dim _Articulo As List(Of Articulo)
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
@@ -22,7 +16,6 @@ Public Class Editar
             ViewState("contadorUbi") = "0"
             CargarListas()
             CargarArticulo()
-            CargarImagenes(IdArticulo)
         Else
             ObtenerControl_Postback(Me)
             For Each ctlID In Page.Request.Form.AllKeys
@@ -50,6 +43,9 @@ Public Class Editar
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que se ejecuta para obtener el control que realizó el postback
+    ''' </summary>
     Private Sub ObtenerControl_Postback(page As Page)
 
         Dim ctrl As Control = Utilidades_UpdatePanel.ObtenerControl_PostBack(page)
@@ -62,186 +58,199 @@ Public Class Editar
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
+    ''' </summary>
     Private Sub CargarListas()
         Listas.TipoFacturacion(ddlTipoFacturacion)
         Listas.TipoUnidad(ddlTipoUnidad)
         Listas.Cliente(ddlCliente)
     End Sub
 
+    ''' <summary>
+    ''' Metodo que en donde se realiza la carga de los datos del articulo y sus atributos
+    ''' </summary>
     Private Sub CargarArticulo()
 
+        Dim _Articulo As List(Of Articulo)
         _Articulo = Getter.Articulo_list(IdArticulo)
+
         For Each itemArticulos In _Articulo
 
-            ddlTipoArticulo.SelectedValue = itemArticulos.tipoArticulo
-            ddlCliente.SelectedValue = itemArticulos.Almacen.id_cliente
-            Listas.Almacen(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
-            ddlAlmacen.SelectedValue = itemArticulos.id_almacen
+            CargarArticulo(itemArticulos)
 
-#Region "lista articulos picking"
-            If itemArticulos.tipoArticulo = "Picking" Then
+            CargarArticulosPicking(itemArticulos)
 
-                phListaArticulos.Visible = True
-                Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+            CargarImagenes(IdArticulo)
 
-                For Each itemPickArticulos In itemArticulos.Picking_Articulo1
+            CargarUbicacion(itemArticulos)
+        Next
 
-                    ddlListaArticulos.Items.Remove(ddlListaArticulos.Items.FindByValue(itemPickArticulos.id_articulo))
+    End Sub
 
+    ''' <summary>
+    ''' Metodo que en donde se realiza la carga de los datos del articulo 
+    ''' </summary>
+    Private Sub CargarArticulo(itemArticulos As Articulo)
 
-                    Dim _ArticuloPick = contexto.Articulo.Where(Function(model) model.id_articulo = itemPickArticulos.id_articulo).SingleOrDefault()
+        ddlTipoArticulo.SelectedValue = itemArticulos.tipoArticulo
+        ddlCliente.SelectedValue = itemArticulos.Almacen.id_cliente
+        Listas.Almacen(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
+        ddlAlmacen.SelectedValue = itemArticulos.id_almacen
+        txtCodigo.Text = itemArticulos.codigo
+        txtNombre.Text = itemArticulos.nombre
+        txtRefPick.Text = itemArticulos.referencia_picking
+        txtRef1.Text = itemArticulos.referencia1
+        txtRef2.Text = itemArticulos.referencia2
+        txtRef3.Text = itemArticulos.referencia3
+        ddlTipoUnidad.SelectedValue = itemArticulos.id_tipo_unidad
+        txtPeso.Text = itemArticulos.peso.ToString().Replace(",", ".")
+        txtAlto.Text = itemArticulos.alto.ToString().Replace(",", ".")
+        txtLargo.Text = itemArticulos.largo.ToString().Replace(",", ".")
+        txtAncho.Text = itemArticulos.ancho.ToString().Replace(",", ".")
+        txtCoefVol.Text = itemArticulos.coeficiente_volumetrico.ToString().Replace(",", ".")
+        ddlTipoFacturacion.SelectedValue = itemArticulos.id_tipo_facturacion
+        ddlIdentificacion.SelectedValue = itemArticulos.identificacion
+        txtValArticulo.Text = itemArticulos.valor_articulo.ToString().Replace(",", ".")
+        txtValAsegurado.Text = itemArticulos.valor_asegurado.ToString().Replace(",", ".")
+        txtObsGen.Text = itemArticulos.observaciones_generales
+        txtObsArt.Text = itemArticulos.observaciones_articulo
+        txtStockMinimo.Text = itemArticulos.stock_minimo.ToString().Replace(",", ".")
+        txtStockFisico.Text = itemArticulos.stock_fisico.ToString().Replace(",", ".")
 
-                    Dim textoArt1 = txtArticulos1.Text
-                    Dim textoArt2 = txtArticulos2.Text
+    End Sub
 
-                    Dim textArea1 As New StringBuilder
-                    textArea1.AppendLine("Articulo: " & _ArticuloPick.nombre & " Unidades=" & Convert.ToDouble(itemPickArticulos.unidades))
-                    txtArticulos1.Text = textoArt1 & textArea1.ToString()
+    ''' <summary>
+    ''' Metodo que en donde se realiza la carga de los datos de los articulos de un picking
+    ''' </summary>
+    Private Sub CargarArticulosPicking(itemArticulos As Articulo)
 
+        If itemArticulos.tipoArticulo = "Picking" Then
 
-                    Dim textArea2 As New StringBuilder
-                    textArea2.AppendLine(itemPickArticulos.id_articulo & "-" & itemPickArticulos.unidades)
-                    txtArticulos2.Text = textoArt2 & textArea2.ToString()
+            phListaArticulos.Visible = True
+            Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
 
-                Next
+            For Each itemPickArticulos In itemArticulos.Picking_Articulo1
 
-            End If
-#End Region
-
-            txtCodigo.Text = itemArticulos.codigo
-            txtNombre.Text = itemArticulos.nombre
-            txtRefPick.Text = itemArticulos.referencia_picking
-            txtRef1.Text = itemArticulos.referencia1
-            txtRef2.Text = itemArticulos.referencia2
-            txtRef3.Text = itemArticulos.referencia3
-            ddlTipoUnidad.SelectedValue = itemArticulos.id_tipo_unidad
-
-            txtPeso.Text = itemArticulos.peso.ToString().Replace(",", ".")
-            txtAlto.Text = itemArticulos.alto.ToString().Replace(",", ".")
-            txtLargo.Text = itemArticulos.largo.ToString().Replace(",", ".")
-            txtAncho.Text = itemArticulos.ancho.ToString().Replace(",", ".")
-            txtCoefVol.Text = itemArticulos.coeficiente_volumetrico.ToString().Replace(",", ".")
-
-            ddlTipoFacturacion.SelectedValue = itemArticulos.id_tipo_facturacion
-            ddlIdentificacion.SelectedValue = itemArticulos.identificacion
-
-            txtValArticulo.Text = itemArticulos.valor_articulo.ToString().Replace(",", ".")
-            txtValAsegurado.Text = itemArticulos.valor_asegurado.ToString().Replace(",", ".")
-
-            txtObsGen.Text = itemArticulos.observaciones_generales
-            txtObsArt.Text = itemArticulos.observaciones_articulo
-            txtStockMinimo.Text = itemArticulos.stock_minimo.ToString().Replace(",", ".")
-            txtStockFisico.Text = itemArticulos.stock_fisico.ToString().Replace(",", ".")
-#Region "ubicaciones"
-            If itemArticulos.Ubicacion.Count > 0 Then
-                crearCamposListaUbicacion(itemArticulos.Ubicacion.Count - 1)
-            End If
-
-            Dim ContFilas As Integer = 0
-            For Each itemUbicacion In itemArticulos.Ubicacion
-
-                miTextbox = CType(pTabla.FindControl("txtZona" & ContFilas), TextBox)
-                miTextbox.Text = itemUbicacion.zona
+                ddlListaArticulos.Items.Remove(ddlListaArticulos.Items.FindByValue(itemPickArticulos.id_articulo))
 
 
-                miTextbox = CType(pTabla.FindControl("txtEstante" & ContFilas), TextBox)
-                miTextbox.Text = itemUbicacion.estante
+                Dim _ArticuloPick = contexto.Articulo.Where(Function(model) model.id_articulo = itemPickArticulos.id_articulo).SingleOrDefault()
 
-                miTextbox = CType(pTabla.FindControl("txtFila" & ContFilas), TextBox)
-                miTextbox.Text = itemUbicacion.fila
+                Dim textoArt1 = txtArticulos1.Text
+                Dim textoArt2 = txtArticulos2.Text
 
-                miTextbox = CType(pTabla.FindControl("txtColumna" & ContFilas), TextBox)
-                miTextbox.Text = itemUbicacion.columna
+                Dim textArea1 As New StringBuilder
+                textArea1.AppendLine("Articulo: " & _ArticuloPick.nombre & " Unidades=" & Convert.ToDouble(itemPickArticulos.unidades))
+                txtArticulos1.Text = textoArt1 & textArea1.ToString()
 
-                miTextbox = CType(pTabla.FindControl("txtPanel" & ContFilas), TextBox)
-                miTextbox.Text = itemUbicacion.panel
 
-                miTextbox = CType(pTabla.FindControl("txtRefUbi" & ContFilas), TextBox)
-                miTextbox.Text = itemUbicacion.referencia_ubicacion
+                Dim textArea2 As New StringBuilder
+                textArea2.AppendLine(itemPickArticulos.id_articulo & "-" & itemPickArticulos.unidades)
+                txtArticulos2.Text = textoArt2 & textArea2.ToString()
 
-                ContFilas += 1
             Next
 
-#End Region
-        Next
+        End If
+
     End Sub
 
+    ''' <summary>
+    ''' Metodo que en donde se realiza la carga de las imagenes del articulo
+    ''' </summary>
     Private Sub CargarImagenes(idArticulo As Integer)
-
         Tabla.Imagen(GridView1, idArticulo)
     End Sub
+
+    ''' <summary>
+    ''' Metodo que en donde se realiza la carga de las ubicaciones del articulo
+    ''' </summary>
+    Private Sub CargarUbicacion(itemArticulos As Articulo)
+        Dim miTextbox As TextBox
+
+        If itemArticulos.Ubicacion.Count > 0 Then
+            crearCamposListaUbicacion(itemArticulos.Ubicacion.Count - 1)
+        End If
+
+        Dim ContFilas As Integer = 0
+        For Each itemUbicacion In itemArticulos.Ubicacion
+
+            miTextbox = CType(pTabla.FindControl("txtZona" & ContFilas), TextBox)
+            miTextbox.Text = itemUbicacion.zona
+
+
+            miTextbox = CType(pTabla.FindControl("txtEstante" & ContFilas), TextBox)
+            miTextbox.Text = itemUbicacion.estante
+
+            miTextbox = CType(pTabla.FindControl("txtFila" & ContFilas), TextBox)
+            miTextbox.Text = itemUbicacion.fila
+
+            miTextbox = CType(pTabla.FindControl("txtColumna" & ContFilas), TextBox)
+            miTextbox.Text = itemUbicacion.columna
+
+            miTextbox = CType(pTabla.FindControl("txtPanel" & ContFilas), TextBox)
+            miTextbox.Text = itemUbicacion.panel
+
+            miTextbox = CType(pTabla.FindControl("txtRefUbi" & ContFilas), TextBox)
+            miTextbox.Text = itemUbicacion.referencia_ubicacion
+
+            ContFilas += 1
+        Next
+
+    End Sub
+
+
+    ''' <summary>
+    ''' Metodos del Gridview
+    ''' </summary>
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         CargarImagenes(IdArticulo)
     End Sub
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        If e.CommandName.Equals("Eliminar") Then
+        If e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
             hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
         End If
 
     End Sub
-    Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
+
+    ''' <summary>
+    ''' Metodo para eliminar la imagen seleccionada por el usario
+    ''' </summary>
+    Protected Sub EliminarImagen(sender As Object, e As EventArgs)
 
         bError = Delete.Imagen(Convert.ToInt32(hdfIDDel.Value))
+
+        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+
         Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
-        Modal.Validacion(Me, bError, "Delete")
+
         CargarImagenes(IdArticulo)
     End Sub
 
+    ''' <summary>
+    ''' Metodo que consulta el Coeficiente Volumetrico del almacen y lo asigna al articulo a crear al 
+    ''' cargar la pagina
+    ''' </summary>
     Private Sub CargarCoefVol(idAlmacen As Integer)
         Dim _Almacen = Getter.Almacen(idAlmacen)
         txtCoefVol.Text = _Almacen.coeficiente_volumetrico
     End Sub
 
+    ''' <summary>
+    ''' Metodo que crea la tabla ubicacion, para añadir o eliminar filas, para agregar ubicaciones al articulo
+    ''' </summary>
     Private Sub crearCamposListaUbicacion(valor As Integer)
 
-        If valor < 0 Then
-            ContFilas = 0
-        Else
-            ContFilas = valor
-        End If
-
-        For i As Integer = 1 To ContFilas
-
-            ControlesDinamicos.CrearLiteral("<tr><td>", pTabla)
-            ControlesDinamicos.CrearTextbox("txtZona" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearLiteral("</td>", pTabla)
-
-
-            ControlesDinamicos.CrearLiteral("<td>", pTabla)
-            ControlesDinamicos.CrearTextbox("txtEstante" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearLiteral("</td>", pTabla)
-
-
-            ControlesDinamicos.CrearLiteral("<td>", pTabla)
-            ControlesDinamicos.CrearTextbox("txtFila" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearLiteral("</td>", pTabla)
-
-
-            ControlesDinamicos.CrearLiteral("<td>", pTabla)
-            ControlesDinamicos.CrearTextbox("txtColumna" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearLiteral("</td>", pTabla)
-
-
-            ControlesDinamicos.CrearLiteral("<td>", pTabla)
-            ControlesDinamicos.CrearTextbox("txtPanel" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearLiteral("</td>", pTabla)
-
-
-            ControlesDinamicos.CrearLiteral("<td>", pTabla)
-            ControlesDinamicos.CrearTextbox("txtRefUbi" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearLiteral("</td></tr>", pTabla)
-
-
-        Next
-
-        ViewState("contadorUbi") = Convert.ToString(ContFilas)
+        ViewState("contadorUbi") = Convert.ToString(Manager_Articulo.crearCamposListaUbicacion(valor, pTabla))
 
     End Sub
 
     Protected Sub Editar(sender As Object, e As EventArgs) Handles btnGuardar.Click
+
+        Dim miTextbox As TextBox
 
         If Page.IsValid Then
             Dim contadorControl As Integer = 0
@@ -441,12 +450,10 @@ Public Class Editar
 #End Region
             End If
 
-            Modal.Validacion(Me, bError, "Add")
-
             If bError Then
                 If ddlTipoArticulo.SelectedValue = "Picking" Then
 
-                    Utilidades_UpdatePanel.LimpiarControles(upAdd_Articulo)
+                    Utilidades_UpdatePanel.LimpiarControles(updatePanelPrinicpal)
                     Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
                     phListaArticulos.Visible = False
                     txtUnidad.Text = Nothing
@@ -460,81 +467,40 @@ Public Class Editar
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
+    ''' </summary>
     Protected Sub CambiarCliente(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
-
-        If ddlCliente.SelectedValue = "" Then
-            txtCoefVol.Text = String.Empty
-            ddlAlmacen.SelectedValue = ""
-        Else
-            Listas.Almacen(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
-        End If
-
+        Manager_Articulo.CambiarCliente(ddlCliente, txtCoefVol, ddlAlmacen)
     End Sub
 
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se oprime el boton de añadir articulo al artiulo picking
+    ''' </summary>
     Protected Sub Añadir_ArticuloLista(sender As Object, e As EventArgs) Handles btnAddArticuloRow.Click
 
         If Page.IsValid Then
-            Dim unidadesSolicitadas As Double = Double.Parse(txtUnidad.Text, CultureInfo.InvariantCulture)
-
-            Dim _IdArticulo As Integer = Convert.ToInt32(ddlListaArticulos.SelectedValue)
-            Dim Listarticulo = contexto.Articulo.Where(Function(model) model.id_articulo = _IdArticulo).SingleOrDefault()
-
-            Dim textoArt1 = txtArticulos1.Text
-            Dim textoArt2 = txtArticulos2.Text
-
-            Dim textArea1 As New StringBuilder
-            textArea1.AppendLine("Articulo: " & ddlListaArticulos.SelectedItem.Text + " Unidades=" + txtUnidad.Text)
-            txtArticulos1.Text = textoArt1 & textArea1.ToString()
-
-
-            Dim textArea2 As New StringBuilder
-            textArea2.AppendLine(ddlListaArticulos.SelectedValue + "-" + txtUnidad.Text)
-            txtArticulos2.Text = textoArt2 & textArea2.ToString()
-
-
-            ddlListaArticulos.Items.Remove(ddlListaArticulos.Items.FindByValue(ddlListaArticulos.SelectedValue))
-
-            If ddlListaArticulos.Items.Count = 0 Then
-                btnAddArticuloRow.Visible = False
-            End If
+            Manager_Articulo.Añadir_ArticuloLista(txtUnidad, ddlListaArticulos, txtArticulos1, txtArticulos2, btnAddArticuloRow)
         End If
 
     End Sub
 
-    Protected Sub CambiarTipoArticulo(sender As Object, e As EventArgs) Handles ddlTipoArticulo.SelectedIndexChanged
-
-        If ddlAlmacen.SelectedValue = "Normal" Then
-            phListaArticulos.Visible = False
-        Else
-            Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
-            phListaArticulos.Visible = True
-        End If
-
-    End Sub
-
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
+    ''' al articulo dependiendo del valor que tenga el coeficiente del almacen
+    ''' </summary>
     Protected Sub SetCoefVolumétrico(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
-        If ddlAlmacen.SelectedValue = "" Then
-            txtCoefVol.Text = String.Empty
-            phListaArticulos.Visible = False
-        Else
 
-            If ddlTipoArticulo.SelectedValue = "Picking" Then
-                Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
-                phListaArticulos.Visible = True
-            End If
-
-            CargarCoefVol(Convert.ToInt32(ddlAlmacen.SelectedValue))
-        End If
+        Manager_Articulo.SetCoefVolumétrico(ddlAlmacen, txtCoefVol, phListaArticulos, ddlTipoArticulo, ddlListaArticulos)
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
+    ''' lista de Articulo
+    ''' </summary>
     Protected Sub Reset_ArticuloLista(sender As Object, e As EventArgs) Handles btnReset.Click
-
-        btnAddArticuloRow.Visible = True
-        Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
-        txtArticulos1.Text = String.Empty
-        txtArticulos2.Text = String.Empty
-
+        Manager_Articulo.Reset_ArticuloLista(btnAddArticuloRow, ddlListaArticulos, ddlAlmacen, txtArticulos1, txtArticulos2)
     End Sub
 
 End Class

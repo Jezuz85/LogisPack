@@ -14,13 +14,22 @@ Option Explicit On
 Partial Public Class Editar
     
     '''<summary>
-    '''Control upAdd_Articulo.
+    '''Control updatePanelPrinicpal.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents upAdd_Articulo As Global.System.Web.UI.UpdatePanel
+    Protected WithEvents updatePanelPrinicpal As Global.System.Web.UI.UpdatePanel
+    
+    '''<summary>
+    '''Control ucAlerta.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ucAlerta As Global.LogisPack.Alert
     
     '''<summary>
     '''Control ddlTipoArticulo.

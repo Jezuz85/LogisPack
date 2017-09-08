@@ -58,7 +58,7 @@ Public Class Crear
     End Sub
 
     ''' <summary>
-    ''' Metodo que llena los Dropdownlits con datos de la Base de DAtos
+    ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
     Public Sub CargarListas()
         Listas.TipoFacturacion(ddlTipoFacturacion)
@@ -66,104 +66,70 @@ Public Class Crear
         Listas.Cliente(ddlCliente)
     End Sub
 
-    Public Sub CargarCoefVol(idAlmacen As Integer)
-        Dim _Almacen = Getter.Almacen(idAlmacen)
-        txtCoefVol.Text = _Almacen.coeficiente_volumetrico
-    End Sub
-
+    ''' <summary>
+    ''' Metodo que crea la tabla ubicacion, para añadir o eliminar filas, para agregar ubicaciones al articulo
+    ''' </summary>
     Public Sub crearCamposListaUbicacion(valor As Integer)
-        Dim ContFilas As Integer = 0
 
-        If valor < 0 Then
-            ContFilas = 0
-        Else
-            ContFilas = valor
-        End If
-
-        For i As Integer = 1 To ContFilas
-
-            ControlesDinamicos.CrearLiteral("<tr><td>", pTabla)
-            ControlesDinamicos.CrearTextbox("txtZona" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearLiteral("</td>", pTabla)
-
-
-            ControlesDinamicos.CrearLiteral("<td>", pTabla)
-            ControlesDinamicos.CrearTextbox("txtEstante" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearLiteral("</td>", pTabla)
-
-
-            ControlesDinamicos.CrearLiteral("<td>", pTabla)
-            ControlesDinamicos.CrearTextbox("txtFila" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearLiteral("</td>", pTabla)
-
-
-            ControlesDinamicos.CrearLiteral("<td>", pTabla)
-            ControlesDinamicos.CrearTextbox("txtColumna" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearLiteral("</td>", pTabla)
-
-
-            ControlesDinamicos.CrearLiteral("<td>", pTabla)
-            ControlesDinamicos.CrearTextbox("txtPanel" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearLiteral("</td>", pTabla)
-
-
-            ControlesDinamicos.CrearLiteral("<td>", pTabla)
-            ControlesDinamicos.CrearTextbox("txtRefUbi" & i, pTabla, TextBoxMode.SingleLine)
-            ControlesDinamicos.CrearLiteral("</td></tr>", pTabla)
-
-
-        Next
-
-        ViewState("contadorUbi") = Convert.ToString(ContFilas)
+        ViewState("contadorUbi") = Convert.ToString(Manager_Articulo.crearCamposListaUbicacion(valor, pTabla))
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que se ejecuta para registrar un articulo en la base de datos
+    ''' </summary>
     Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
         If Page.IsValid Then
 
-            Dim miTextbox As TextBox
-            Dim contadorControl As Integer = 0
-            Dim zona As String = Nothing
-            Dim estante As String = Nothing
-            Dim fila As String = Nothing
-            Dim columna As String = Nothing
-            Dim panel As String = Nothing
-            Dim referencia_ubicacion As String = Nothing
-            Dim _NuevoUbicaion As Ubicacion
-            Dim M3 As Double = Nothing
-            Dim PesoVol As Double = Nothing
-
-
             Dim Stock_Picking As Double = If(txtStockFisico.Text = String.Empty, 0, Double.Parse(txtStockFisico.Text, CultureInfo.InvariantCulture))
 
-#Region "Guardar Articulo nuevo"
-
-            If (txtAlto.Text IsNot String.Empty And txtAncho.Text IsNot String.Empty And txtLargo.Text IsNot String.Empty) Then
-                M3 = ((Convert.ToDouble(txtAlto.Text) * Convert.ToDouble(txtAncho.Text) * Convert.ToDouble(txtLargo.Text)) / 1000)
+            If GuardarArticulo() Then
+                Dim articuloView = Getter.Articulo_Ultimo()
+                GuardarImagenes(articuloView)
+                GuardarUbicaciones(articuloView)
+                GuardarPicking(articuloView)
             End If
 
-            If (txtAlto.Text IsNot String.Empty And txtAncho.Text IsNot String.Empty And txtLargo.Text IsNot String.Empty And txtCoefVol.Text IsNot String.Empty) Then
-                PesoVol = ((Convert.ToDouble(txtAlto.Text) * Convert.ToDouble(txtAncho.Text) * Convert.ToDouble(txtLargo.Text) * Convert.ToDouble(txtCoefVol.Text)) / 1000)
-            End If
+            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, upAdd_Articulo, upAdd_Articulo)
 
+            LimpiarControles()
 
-            Dim valoracionStock As Decimal
-            If (txtValAsegurado.Text <> String.Empty And txtStockFisico.Text <> String.Empty) Then
-                valoracionStock = Double.Parse(txtValArticulo.Text, CultureInfo.InvariantCulture) * Double.Parse(txtStockFisico.Text, CultureInfo.InvariantCulture)
-            Else
-                valoracionStock = Nothing
-            End If
+        End If
 
-            Dim valoracionSeguro As Decimal
-            If (txtValAsegurado.Text <> String.Empty And txtStockFisico.Text <> String.Empty) Then
-                valoracionSeguro = Double.Parse(txtValAsegurado.Text, CultureInfo.InvariantCulture) * Double.Parse(txtStockFisico.Text, CultureInfo.InvariantCulture)
-            Else
-                valoracionSeguro = Nothing
-            End If
+    End Sub
 
+    ''' <summary>
+    ''' Metodo que se ejecuta para crear el articulo y registrarlo en la base de datos
+    ''' </summary>
+    Private Function GuardarArticulo() As Boolean
 
-            Dim _Nuevo As New Articulo With
+        Dim M3 As Double = Nothing
+        Dim PesoVol As Double = Nothing
+
+        If (txtAlto.Text IsNot String.Empty And txtAncho.Text IsNot String.Empty And txtLargo.Text IsNot String.Empty) Then
+            M3 = ((Convert.ToDouble(txtAlto.Text) * Convert.ToDouble(txtAncho.Text) * Convert.ToDouble(txtLargo.Text)) / 1000)
+        End If
+
+        If (txtAlto.Text IsNot String.Empty And txtAncho.Text IsNot String.Empty And txtLargo.Text IsNot String.Empty And txtCoefVol.Text IsNot String.Empty) Then
+            PesoVol = ((Convert.ToDouble(txtAlto.Text) * Convert.ToDouble(txtAncho.Text) * Convert.ToDouble(txtLargo.Text) * Convert.ToDouble(txtCoefVol.Text)) / 1000)
+        End If
+
+        Dim valoracionStock As Decimal
+        If (txtValAsegurado.Text <> String.Empty And txtStockFisico.Text <> String.Empty) Then
+            valoracionStock = Double.Parse(txtValArticulo.Text, CultureInfo.InvariantCulture) * Double.Parse(txtStockFisico.Text, CultureInfo.InvariantCulture)
+        Else
+            valoracionStock = Nothing
+        End If
+
+        Dim valoracionSeguro As Decimal
+        If (txtValAsegurado.Text <> String.Empty And txtStockFisico.Text <> String.Empty) Then
+            valoracionSeguro = Double.Parse(txtValAsegurado.Text, CultureInfo.InvariantCulture) * Double.Parse(txtStockFisico.Text, CultureInfo.InvariantCulture)
+        Else
+            valoracionSeguro = Nothing
+        End If
+
+        Dim _Nuevo As New Articulo With
             {
             .codigo = If(txtCodigo.Text = String.Empty, String.Empty, txtCodigo.Text),
             .nombre = If(txtNombre.Text = String.Empty, String.Empty, txtNombre.Text),
@@ -192,79 +158,96 @@ Public Class Crear
             .id_tipo_unidad = If(ddlTipoUnidad.SelectedValue = String.Empty, 0, Convert.ToInt32(ddlTipoUnidad.SelectedValue)),
             .tipoArticulo = If(ddlTipoArticulo.SelectedValue = String.Empty, Nothing, ddlTipoArticulo.SelectedValue)
         }
-            bError = Create.Articulo(_Nuevo)
-#End Region
+        bError = Create.Articulo(_Nuevo)
 
-            If bError Then
+        Return bError
 
-                Dim articuloView = Getter.Articulo_Ultimo()
+    End Function
 
-#Region "Guardar imagenes"
-                For Each _imagen In fuImagenes.PostedFiles
+    ''' <summary>
+    ''' Metodo que se ejecuta para crear las imagenes del articulo y registrarlo en la base de datos
+    ''' </summary>
+    Private Sub GuardarImagenes(articuloView As Articulo)
 
-                    contadorControl += 1
+        Dim contadorControl As Integer = 0
 
-                    If _imagen.ContentLength > 0 And _imagen IsNot Nothing Then
+        For Each _imagen In fuImagenes.PostedFiles
 
-                        Dim urlImagen As String = Utilidades_Fileupload.Subir_Archivos(_imagen, "../../Archivos/Articulos/", "Img_" & articuloView.id_articulo & "_" & contadorControl)
+            contadorControl += 1
 
-                        Dim _imagenes As New Imagen With
+            If _imagen.ContentLength > 0 And _imagen IsNot Nothing Then
+
+                Dim urlImagen As String = Utilidades_Fileupload.Subir_Archivos(_imagen, Mensajes.RutaArticulos.ToString, "Img_" & articuloView.id_articulo & "_" & contadorControl)
+
+                Dim _imagenes As New Imagen With
                             {
                             .nombre = "Imagen_" & DateTime.Now.ToString("(MM-dd-yy_H:mm:ss)"),
                             .id_articulo = articuloView.id_articulo,
                             .url_imagen = urlImagen
                         }
-                        Create.Imagen(_imagenes)
-                    End If
+                Create.Imagen(_imagenes)
+            End If
 
-                Next
-#End Region
+        Next
+    End Sub
 
-#Region "Guardar ubicaciones"
-                contadorControl = 0
+    ''' <summary>
+    ''' Metodo que se ejecuta para crear las ubicaciones del articulo y registrarlo en la base de datos
+    ''' </summary>
+    Private Sub GuardarUbicaciones(articuloView As Articulo)
 
-                For Each micontrol As Control In pTabla.Controls
+        Dim contadorControl As Integer = 0
+        Dim miTextbox As TextBox
+        Dim _NuevoUbicaion As Ubicacion
+        Dim zona As String = Nothing
+        Dim estante As String = Nothing
+        Dim fila As String = Nothing
+        Dim columna As String = Nothing
+        Dim panel As String = Nothing
+        Dim referencia_ubicacion As String = Nothing
 
-                    miTextbox = CType(pTabla.FindControl("txtZona" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        zona = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
-                    End If
+        For Each micontrol As Control In pTabla.Controls
 
-                    miTextbox = CType(pTabla.FindControl("txtEstante" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        estante = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
-                    End If
+            miTextbox = CType(pTabla.FindControl("txtZona" & contadorControl), TextBox)
+            If miTextbox IsNot Nothing Then
+                zona = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+            End If
 
-                    miTextbox = CType(pTabla.FindControl("txtFila" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        fila = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
-                    End If
+            miTextbox = CType(pTabla.FindControl("txtEstante" & contadorControl), TextBox)
+            If miTextbox IsNot Nothing Then
+                estante = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+            End If
 
-                    miTextbox = CType(pTabla.FindControl("txtColumna" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        Dim valor As String = miTextbox.Text.PadLeft(4, "0")
-                        columna = If(miTextbox.Text = String.Empty, "", miTextbox.Text.PadLeft(4, "0"))
-                    End If
+            miTextbox = CType(pTabla.FindControl("txtFila" & contadorControl), TextBox)
+            If miTextbox IsNot Nothing Then
+                fila = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+            End If
 
-                    miTextbox = CType(pTabla.FindControl("txtPanel" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        panel = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
-                    End If
+            miTextbox = CType(pTabla.FindControl("txtColumna" & contadorControl), TextBox)
+            If miTextbox IsNot Nothing Then
+                Dim valor As String = miTextbox.Text.PadLeft(4, "0")
+                columna = If(miTextbox.Text = String.Empty, "", miTextbox.Text.PadLeft(4, "0"))
+            End If
 
-                    miTextbox = CType(pTabla.FindControl("txtRefUbi" & contadorControl), TextBox)
-                    If miTextbox IsNot Nothing Then
-                        referencia_ubicacion = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
-                    End If
+            miTextbox = CType(pTabla.FindControl("txtPanel" & contadorControl), TextBox)
+            If miTextbox IsNot Nothing Then
+                panel = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+            End If
 
-                    If referencia_ubicacion IsNot Nothing Then
+            miTextbox = CType(pTabla.FindControl("txtRefUbi" & contadorControl), TextBox)
+            If miTextbox IsNot Nothing Then
+                referencia_ubicacion = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+            End If
 
-                        If (zona <> String.Empty) Or
+            If referencia_ubicacion IsNot Nothing Then
+
+                If (zona <> String.Empty) Or
                             (estante <> String.Empty) Or
                             (columna <> String.Empty) Or
                             (panel <> String.Empty) Or
                             (referencia_ubicacion <> String.Empty) Then
 
-                            _NuevoUbicaion = New Ubicacion With {
+                    _NuevoUbicaion = New Ubicacion With {
                                 .zona = zona,
                                 .estante = estante,
                                 .fila = fila,
@@ -274,125 +257,96 @@ Public Class Crear
                                 .id_articulo = articuloView.id_articulo
                             }
 
-                            Create.Ubicacion(_NuevoUbicaion)
-                            referencia_ubicacion = Nothing
+                    Create.Ubicacion(_NuevoUbicaion)
+                    referencia_ubicacion = Nothing
 
-                        End If
-                    End If
+                End If
+            End If
 
-                    contadorControl += 1
-                Next
-#End Region
+            contadorControl += 1
+        Next
+    End Sub
 
-#Region "Guardar picking"
-                If ddlTipoArticulo.SelectedValue = "Picking" Then
-                    contadorControl = 0
+    ''' <summary>
+    ''' Metodo que se ejecuta para registrar los articulos que conforman el articulo picking y registrarlo en la base de datos
+    ''' </summary>
+    Private Sub GuardarPicking(articuloView As Articulo)
 
-                    Dim lineaArt As String() = txtArticulos2.Text.Split("" & vbLf & "")
+        Dim contadorControl As Integer = 0
 
-                    For i As Integer = 1 To (lineaArt.Length - 1)
+        If ddlTipoArticulo.SelectedValue = "Picking" Then
 
-                        Dim lineas As String() = lineaArt(i - 1).Split(New Char() {"-"c})
-                        Dim itemArt As Integer = Convert.ToInt32(lineas(0))
-                        Dim itemUni As Double = Double.Parse(lineas(1), CultureInfo.InvariantCulture)
+            Dim lineaArt As String() = txtArticulos2.Text.Split("" & vbLf & "")
 
-                        Dim Listarticulo = contexto.Articulo.Where(Function(model) model.id_articulo = itemArt).SingleOrDefault()
+            For i As Integer = 1 To (lineaArt.Length - 1)
 
-                        Dim _NuevoPic_Art As New Picking_Articulo With {
+                Dim lineas As String() = lineaArt(i - 1).Split(New Char() {"-"c})
+                Dim itemArt As Integer = Convert.ToInt32(lineas(0))
+                Dim itemUni As Double = Double.Parse(lineas(1), CultureInfo.InvariantCulture)
+
+                Dim Listarticulo = contexto.Articulo.Where(Function(model) model.id_articulo = itemArt).SingleOrDefault()
+
+                Dim _NuevoPic_Art As New Picking_Articulo With {
                             .unidades = itemUni,
                             .id_articulo = itemArt,
                             .id_picking = articuloView.id_articulo
                         }
-                        bError = Create.Picking_Articulo(_NuevoPic_Art)
-                    Next
-                End If
-#End Region
-
-            End If
-
-            Modal.Validacion(Me, bError, "Add")
-
-            If bError Then
-                If ddlTipoArticulo.SelectedValue = "Picking" Then
-
-                    Utilidades_UpdatePanel.LimpiarControles(upAdd_Articulo)
-                    Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
-                    phListaArticulos.Visible = False
-                    txtUnidad.Text = Nothing
-                    txtArticulos1.Text = Nothing
-                End If
-                ddlAlmacen.SelectedValue = ""
-                ddlCliente.SelectedValue = ""
-            End If
-
+                bError = Create.Picking_Articulo(_NuevoPic_Art)
+            Next
         End If
 
     End Sub
 
-    Protected Sub CambiarCliente(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
+    ''' <summary>
+    ''' Metodo que se ejecuta para limpiar los valores del updatepanel
+    ''' </summary>
+    Private Sub LimpiarControles()
 
-        If ddlCliente.SelectedValue = "" Then
-            txtCoefVol.Text = String.Empty
+        If bError Then
+            If ddlTipoArticulo.SelectedValue = "Picking" Then
+
+                Utilidades_UpdatePanel.LimpiarControles(upAdd_Articulo)
+                Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+                phListaArticulos.Visible = False
+                txtUnidad.Text = Nothing
+                txtArticulos1.Text = Nothing
+            End If
             ddlAlmacen.SelectedValue = ""
-        Else
-            Listas.Almacen(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
+            ddlCliente.SelectedValue = ""
         End If
-
     End Sub
 
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
+    ''' </summary>
+    Protected Sub CambiarCliente(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
+        Manager_Articulo.CambiarCliente(ddlCliente, txtCoefVol, ddlAlmacen)
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se oprime el boton de añadir articulo al artiulo picking
+    ''' </summary>
     Protected Sub Añadir_ArticuloLista(sender As Object, e As EventArgs) Handles btnAddArticuloRow.Click
-
         If Page.IsValid Then
-            Dim unidadesSolicitadas As Double = Double.Parse(txtUnidad.Text, CultureInfo.InvariantCulture)
-            Dim _IdArticulo As Integer = Convert.ToInt32(ddlListaArticulos.SelectedValue)
-            Dim Listarticulo = contexto.Articulo.Where(Function(model) model.id_articulo = _IdArticulo).SingleOrDefault()
-
-            Dim textoArt1 = txtArticulos1.Text
-            Dim textoArt2 = txtArticulos2.Text
-
-            Dim textArea1 As New StringBuilder
-            textArea1.AppendLine("Articulo: " & ddlListaArticulos.SelectedItem.Text + " Unidades=" + txtUnidad.Text)
-            txtArticulos1.Text = textoArt1 & textArea1.ToString()
-
-
-            Dim textArea2 As New StringBuilder
-            textArea2.AppendLine(ddlListaArticulos.SelectedValue + "-" + txtUnidad.Text)
-            txtArticulos2.Text = textoArt2 & textArea2.ToString()
-
-
-            ddlListaArticulos.Items.Remove(ddlListaArticulos.Items.FindByValue(ddlListaArticulos.SelectedValue))
-
-            If ddlListaArticulos.Items.Count = 0 Then
-                btnAddArticuloRow.Visible = False
-            End If
-
+            Manager_Articulo.Añadir_ArticuloLista(txtUnidad, ddlListaArticulos, txtArticulos1, txtArticulos2, btnAddArticuloRow)
         End If
-
     End Sub
 
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
+    ''' al articulo dependiendo del valor que tenga el coeficiente del almacen
+    ''' </summary>
     Protected Sub SetCoefVolumétrico(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
 
-        If ddlAlmacen.SelectedValue = "" Then
-            txtCoefVol.Text = String.Empty
-            phListaArticulos.Visible = False
-        Else
-
-            If ddlTipoArticulo.SelectedValue = "Picking" Then
-                Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
-                phListaArticulos.Visible = True
-            End If
-
-            CargarCoefVol(Convert.ToInt32(ddlAlmacen.SelectedValue))
-        End If
+        Manager_Articulo.SetCoefVolumétrico(ddlAlmacen, txtCoefVol, phListaArticulos, ddlTipoArticulo, ddlListaArticulos)
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
+    ''' lista de Articulo
+    ''' </summary>
     Protected Sub Reset_ArticuloLista(sender As Object, e As EventArgs) Handles btnReset.Click
-
-        btnAddArticuloRow.Visible = True
-        Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
-        txtArticulos1.Text = String.Empty
-        txtArticulos2.Text = String.Empty
-
+        Manager_Articulo.Reset_ArticuloLista(btnAddArticuloRow, ddlListaArticulos, ddlAlmacen, txtArticulos1, txtArticulos2)
     End Sub
 End Class

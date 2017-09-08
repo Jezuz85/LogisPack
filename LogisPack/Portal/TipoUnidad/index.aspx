@@ -31,11 +31,11 @@
                                     <ItemTemplate><asp:Label id="nombre" runat="server" Text='<%# Eval("nombre") %>'/></ItemTemplate>
                                 </asp:TemplateField>
 
-                                <asp:ButtonField   CommandName="Editar" ButtonType="Image" Text ="Editar"
+                                <asp:ButtonField   CommandName="Edit" ButtonType="Image" Text ="Editar"
                                     HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default">
                                 </asp:ButtonField>
   
-                                <asp:ButtonField   CommandName="Eliminar" ButtonType="Image" Text ="Eliminar"
+                                <asp:ButtonField   CommandName="Delete" ButtonType="Image" Text ="Eliminar"
                                     HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default">
                                 </asp:ButtonField>
 

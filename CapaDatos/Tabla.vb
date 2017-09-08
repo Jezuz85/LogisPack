@@ -2,6 +2,9 @@
 
 Public Class Tabla
 
+    ''' <summary>
+    ''' Metodo que recibe el gridview para llenar con los datos del almacen en la base de datos
+    ''' </summary>
     Public Shared Sub Almacen(ByRef GridView1 As GridView)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -18,6 +21,9 @@ Public Class Tabla
         GridView1.DataBind()
     End Sub
 
+    ''' <summary>
+    ''' Metodo que recibe el gridview para llenar con los datos del articulo en la base de datos
+    ''' </summary>
     Public Shared Sub Articulo(ByRef GridView1 As GridView)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -32,6 +38,9 @@ Public Class Tabla
         GridView1.DataBind()
     End Sub
 
+    ''' <summary>
+    ''' Metodo que recibe el gridview para llenar con los datos del cliente en la base de datos
+    ''' </summary>
     Public Shared Sub Cliente(ByRef GridView1 As GridView)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -47,6 +56,9 @@ Public Class Tabla
         GridView1.DataBind()
     End Sub
 
+    ''' <summary>
+    ''' Metodo que recibe el gridview para llenar con los datos del tipo de facturacion en la base de datos
+    ''' </summary>
     Public Shared Sub TipoFacturacion(ByRef GridView1 As GridView)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -61,6 +73,9 @@ Public Class Tabla
         GridView1.DataBind()
     End Sub
 
+    ''' <summary>
+    ''' Metodo que recibe el gridview para llenar con los datos del tipo de unidad en la base de datos
+    ''' </summary>
     Public Shared Sub TipoUnidad(ByRef GridView1 As GridView)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -75,6 +90,9 @@ Public Class Tabla
         GridView1.DataBind()
     End Sub
 
+    ''' <summary>
+    ''' Metodo que recibe el gridview para llenar con los datos de la imagen en la base de datos
+    ''' </summary>
     Public Shared Sub Imagen(ByRef GridView1 As GridView, id As Integer)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()

@@ -100,12 +100,22 @@ Public Class Getter
         Return contexto.Tipo_Facturacion.Where(Function(model) model.id_tipo_facturacion = id).SingleOrDefault()
 
     End Function
+
+    ''' <summary>
+    ''' Metodo que recibe un id del Tipo_Facturacion y lo consulta desde la Base de datos, recibe un objeto contexto
+    ''' para devolver el Tipo_Facturacion a editar con su respectivo contexto usado
+    ''' devuelve un objeto tipo Tipo_Facturacion si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
     Public Shared Function Tipo_Facturacion(id As Integer, ByRef contexto As LogisPackEntities) As Tipo_Facturacion
 
         Return contexto.Tipo_Facturacion.Where(Function(model) model.id_tipo_facturacion = id).SingleOrDefault()
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un id del Tipo_Unidad y lo consulta desde la Base de datos, 
+    ''' devuelve un objeto tipo Tipo_Unidad si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
     Public Shared Function Tipo_Unidad(id As Integer) As Tipo_Unidad
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -113,12 +123,21 @@ Public Class Getter
         Return contexto.Tipo_Unidad.Where(Function(model) model.id_tipo_unidad = id).SingleOrDefault()
 
     End Function
+
+    ''' <summary>
+    ''' Metodo que recibe un id del Tipo_Unidad y lo consulta desde la Base de datos, recibe un objeto contexto
+    ''' para devolver el Tipo_Unidad a editar con su respectivo contexto usado
+    ''' devuelve un objeto tipo Tipo_Unidad si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
     Public Shared Function Tipo_Unidad(id As Integer, ByRef contexto As LogisPackEntities) As Tipo_Unidad
 
         Return contexto.Tipo_Unidad.Where(Function(model) model.id_tipo_unidad = id).SingleOrDefault()
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un id del Artiuclo, y devuelve una lista de las imagenes asociadas al articulo
+    ''' </summary>
     Public Shared Function Imagen_list(id As String) As List(Of Imagen)
         Dim contexto As LogisPackEntities = New LogisPackEntities()
         Return contexto.Imagen.Where(Function(model) model.id_articulo = id).ToList()

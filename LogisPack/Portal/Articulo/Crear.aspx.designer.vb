@@ -23,6 +23,15 @@ Partial Public Class Crear
     Protected WithEvents upAdd_Articulo As Global.System.Web.UI.UpdatePanel
     
     '''<summary>
+    '''Control ucAlerta.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ucAlerta As Global.LogisPack.Alert
+    
+    '''<summary>
     '''Control ddlTipoArticulo.
     '''</summary>
     '''<remarks>

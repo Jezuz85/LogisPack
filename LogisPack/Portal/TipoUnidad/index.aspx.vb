@@ -17,6 +17,9 @@ Public Class index2
 
     End Sub
 
+    ''' <summary>
+    ''' Metodos del Gridview
+    ''' </summary>
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         LlenarGridView()
@@ -24,14 +27,14 @@ Public Class index2
     End Sub
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        If e.CommandName.Equals("Editar") Then
+        If e.CommandName.Equals(Mensajes.Editar.ToString) Then
 
             hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Dim _TipoUnidad = Getter.Tipo_Unidad(Convert.ToInt32(hdfEdit.Value))
             txtNombre_Edit.Text = _TipoUnidad.nombre
             Modal.AbrirModal("EditModal", "EditModalScript", Me)
         End If
-        If e.CommandName.Equals("Eliminar") Then
+        If e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
 
             hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
@@ -50,7 +53,7 @@ Public Class index2
         bError = Create.TipoUnidad(_Nuevo)
 
         Modal.CerrarModal("AddModal", "AddModalScript", Me)
-        Modal.Validacion(Me, bError, "Add")
+        'Modal.Validacion(Me, bError, "Add")
         LlenarGridView()
         Utilidades_UpdatePanel.LimpiarControles(up_Add)
     End Sub
@@ -65,7 +68,7 @@ Public Class index2
         bError = Update.Tipo_Unidad(Edit, contexto)
 
         Modal.CerrarModal("EditModal", "EditModallScript", Me)
-        Modal.Validacion(Me, bError, "Edit")
+        'Modal.Validacion(Me, bError, "Edit")
         Utilidades_UpdatePanel.LimpiarControles(up_Edit)
         LlenarGridView()
     End Sub
@@ -74,7 +77,7 @@ Public Class index2
         bError = Delete.TipoUnidad(Convert.ToInt32(hdfIDDel.Value))
 
         Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
-        Modal.Validacion(Me, bError, "Delete")
+        'Modal.Validacion(Me, bError, "Delete")
         LlenarGridView()
     End Sub
 

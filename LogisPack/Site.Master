@@ -50,9 +50,13 @@
 
 			<asp:ScriptManager ID="ScriptManager1" runat="server" />
 			<%: Scripts.Render("~/bundles/MisScripts") %>
-			<asp:ContentPlaceHolder ID="MainContent" runat="server">
-			</asp:ContentPlaceHolder>
+			
 
+			<asp:ContentPlaceHolder ID="MainContent" runat="server">
+				
+
+
+			</asp:ContentPlaceHolder>
 			<hr />
 			<footer>
 				<p>&copy; <%: DateTime.Now.Year %> - Logis Pack</p>
@@ -60,7 +64,9 @@
 
 
 		</div>
-
+		
+		<!-- Msj Modal -->
+		<ucm:ucMsjModal runat="server" ID="ucMsjModal" />
 	</form>
 	
 
@@ -78,7 +84,5 @@
 		};
 	</script>
 
-	<!-- Msj Modal -->
-	<ucm:ucMsjModal runat="server" ID="ucMsjModal" />
 </body>
 </html>

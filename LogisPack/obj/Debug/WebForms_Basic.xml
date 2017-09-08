@@ -100,6 +100,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack.index._ucAlerta">
+<summary>
+Control ucAlerta.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack.index._GridView1">
 <summary>
 Control GridView1.
@@ -316,9 +325,63 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="M:LogisPack.index.LlenarGridView">
+ <summary>
+ Metodo que llena El Gridview con datos de la Base de Datos
+ </summary>
+</member>
+<member name="M:LogisPack.index.CargarListas">
+ <summary>
+ Metodo que llena los Dropdownlits con datos de la Base de Datos
+ </summary>
+</member>
+<member name="M:LogisPack.index.GridView1_PageIndexChanging(System.Object,System.Web.UI.WebControls.GridViewPageEventArgs)">
+ <summary>
+ Metodos del Gridview
+ </summary>
+</member>
+<member name="M:LogisPack.index.Guardar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que crea un objeto Almacen y lo guarda en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.index.Editar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que Edita un objeto Almacen y actualiza el registro en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.index.EliminarRegistro(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que Elimina un registro de Almacen de la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.index.MyTreeView_SelectedNodeChanged(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se invoca al darle click al nodo de almacen y asi consultar los datos del almacen
+ </summary>
+</member>
+<member name="M:LogisPack.index.LlenarTreeView(System.Data.DataTable,System.Int32,System.Web.UI.WebControls.TreeNode)">
+ <summary>
+ Metodo que llena el arbol de almacenes
+ </summary>
+</member>
+<member name="M:LogisPack.index.GetData(System.String)">
+ <summary>
+ Metodo que obtiene la data a pasarle al arbol
+ </summary>
+</member>
 <member name="F:LogisPack.Crear._upAdd_Articulo">
 <summary>
 Control upAdd_Articulo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack.Crear._ucAlerta">
+<summary>
+Control ucAlerta.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -694,6 +757,73 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="M:LogisPack.Crear.ObtenerControl_Postback(System.Web.UI.Page)">
+ <summary>
+ Metodo para obtener que lista hace el postback si Tipo de Articulo o Cliente y asi pintar las ubicaciones
+ </summary>
+</member>
+<member name="M:LogisPack.Crear.CargarListas">
+ <summary>
+ Metodo que llena los Dropdownlits con datos de la Base de Datos
+ </summary>
+</member>
+<member name="M:LogisPack.Crear.crearCamposListaUbicacion(System.Int32)">
+ <summary>
+ Metodo que crea la tabla ubicacion, para añadir o eliminar filas, para agregar ubicaciones al articulo
+ </summary>
+</member>
+<member name="M:LogisPack.Crear.Guardar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta para registrar un articulo en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.Crear.GuardarArticulo">
+ <summary>
+ Metodo que se ejecuta para crear el articulo y registrarlo en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.Crear.GuardarImagenes(CapaDatos.Articulo)">
+ <summary>
+ Metodo que se ejecuta para crear las imagenes del articulo y registrarlo en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.Crear.GuardarUbicaciones(CapaDatos.Articulo)">
+ <summary>
+ Metodo que se ejecuta para crear las ubicaciones del articulo y registrarlo en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.Crear.GuardarPicking(CapaDatos.Articulo)">
+ <summary>
+ Metodo que se ejecuta para registrar los articulos que conforman el articulo picking y registrarlo en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.Crear.LimpiarControles">
+ <summary>
+ Metodo que se ejecuta para limpiar los valores del updatepanel
+ </summary>
+</member>
+<member name="M:LogisPack.Crear.CambiarCliente(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se selecciona un cliente de la lista
+ </summary>
+</member>
+<member name="M:LogisPack.Crear.Añadir_ArticuloLista(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se oprime el boton de añadir articulo al artiulo picking
+ </summary>
+</member>
+<member name="M:LogisPack.Crear.SetCoefVolumétrico(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
+ al articulo dependiendo del valor que tenga el coeficiente del almacen
+ </summary>
+</member>
+<member name="M:LogisPack.Crear.Reset_ArticuloLista(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
+ lista de Articulo
+ </summary>
+</member>
 <member name="F:LogisPack.Detalles._lbTipoArticulo">
 <summary>
 Control lbTipoArticulo.
@@ -964,9 +1094,43 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack.Editar._upAdd_Articulo">
+<member name="M:LogisPack.Detalles.CargarArticulo(System.Int32)">
+ <summary>
+ Metodo que se ejecuta para cargar los datos del articulo a consultar
+ </summary>
+</member>
+<member name="M:LogisPack.Detalles.CargarArticulo(CapaDatos.Articulo)">
+ <summary>
+ Metodo que se ejecuta para cargar los datos del articulo a consultar
+ </summary>
+</member>
+<member name="M:LogisPack.Detalles.CargarArticulosPicking(CapaDatos.Articulo)">
+ <summary>
+ Metodo que se ejecuta para cargar los datos del articulo que conforman el articulo picking a consultar
+ </summary>
+</member>
+<member name="M:LogisPack.Detalles.CargarImagenes(CapaDatos.Articulo)">
+ <summary>
+ Metodo que se ejecuta para cargar los datos de las imagenes del articulo a consultar
+ </summary>
+</member>
+<member name="M:LogisPack.Detalles.CargarUbicacion(CapaDatos.Articulo)">
+ <summary>
+ Metodo que se ejecuta para cargar los datos de las imagenes del articulo a consultar
+ </summary>
+</member>
+<member name="F:LogisPack.Editar._updatePanelPrinicpal">
 <summary>
-Control upAdd_Articulo.
+Control updatePanelPrinicpal.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack.Editar._ucAlerta">
+<summary>
+Control ucAlerta.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1378,6 +1542,84 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="M:LogisPack.Editar.ObtenerControl_Postback(System.Web.UI.Page)">
+ <summary>
+ Metodo que se ejecuta para obtener el control que realizó el postback
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.CargarListas">
+ <summary>
+ Metodo que llena los Dropdownlits con datos de la Base de Datos
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.CargarArticulo">
+ <summary>
+ Metodo que en donde se realiza la carga de los datos del articulo y sus atributos
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.CargarArticulo(CapaDatos.Articulo)">
+ <summary>
+ Metodo que en donde se realiza la carga de los datos del articulo 
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.CargarArticulosPicking(CapaDatos.Articulo)">
+ <summary>
+ Metodo que en donde se realiza la carga de los datos de los articulos de un picking
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.CargarImagenes(System.Int32)">
+ <summary>
+ Metodo que en donde se realiza la carga de las imagenes del articulo
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.CargarUbicacion(CapaDatos.Articulo)">
+ <summary>
+ Metodo que en donde se realiza la carga de las ubicaciones del articulo
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.GridView1_PageIndexChanging(System.Object,System.Web.UI.WebControls.GridViewPageEventArgs)">
+ <summary>
+ Metodos del Gridview
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.EliminarImagen(System.Object,System.EventArgs)">
+ <summary>
+ Metodo para eliminar la imagen seleccionada por el usario
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.CargarCoefVol(System.Int32)">
+ <summary>
+ Metodo que consulta el Coeficiente Volumetrico del almacen y lo asigna al articulo a crear al 
+ cargar la pagina
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.crearCamposListaUbicacion(System.Int32)">
+ <summary>
+ Metodo que crea la tabla ubicacion, para añadir o eliminar filas, para agregar ubicaciones al articulo
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.CambiarCliente(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se selecciona un cliente de la lista
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.Añadir_ArticuloLista(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se oprime el boton de añadir articulo al artiulo picking
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.SetCoefVolumétrico(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
+ al articulo dependiendo del valor que tenga el coeficiente del almacen
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.Reset_ArticuloLista(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
+ lista de Articulo
+ </summary>
+</member>
 <member name="F:LogisPack.index3._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
@@ -1567,6 +1809,16 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="M:LogisPack.index5.LlenarGridView">
+ <summary>
+ Metodo que llena los Dropdownlits con datos de la Base de Datos
+ </summary>
+</member>
+<member name="M:LogisPack.index5.GridView1_PageIndexChanging(System.Object,System.Web.UI.WebControls.GridViewPageEventArgs)">
+ <summary>
+ Metodos del Gridview
+ </summary>
+</member>
 <member name="F:LogisPack.index4._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
@@ -1638,6 +1890,11 @@ Control btnGuardar.
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
+</member>
+<member name="M:LogisPack.index4.CargarListas">
+ <summary>
+ Metodo que llena los Dropdownlits con datos de la Base de Datos
+ </summary>
 </member>
 <member name="F:LogisPack.index1._updatePanelPrinicpal">
 <summary>
@@ -1756,6 +2013,11 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="M:LogisPack.index1.GridView1_PageIndexChanging(System.Object,System.Web.UI.WebControls.GridViewPageEventArgs)">
+ <summary>
+ Metodos del Gridview
+ </summary>
+</member>
 <member name="F:LogisPack.index2._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
@@ -1867,6 +2129,47 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack.index2._btnDelete">
 <summary>
 Control btnDelete.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="M:LogisPack.index2.GridView1_PageIndexChanging(System.Object,System.Web.UI.WebControls.GridViewPageEventArgs)">
+ <summary>
+ Metodos del Gridview
+ </summary>
+</member>
+<member name="F:LogisPack.Alert._AlertExito">
+<summary>
+Control AlertExito.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack.Alert._lbAlertMsjExito">
+<summary>
+Control lbAlertMsjExito.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack.Alert._AlertFalla">
+<summary>
+Control AlertFalla.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack.Alert._lbAlertMsjFalla">
+<summary>
+Control lbAlertMsjFalla.
 </summary>
 <remarks>
 Campo generado automáticamente.

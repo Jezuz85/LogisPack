@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Crear.aspx.vb" Inherits="LogisPack.Crear" %>
 
+<%@ Register Src="~/Portal/WebUserControl/Alert.ascx" TagPrefix="uca" TagName="ucAlert" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 	<asp:UpdatePanel ID="upAdd_Articulo" runat="server">
@@ -15,6 +17,9 @@
 			<div class="page-header">
 				<h1 class="text-center">Artículo</h1>
 			</div>
+
+			<!-- Alert -->
+			<uca:ucAlert runat="server" ID="ucAlerta" />
 
 			<div class="row">
 				<div class="col-md-2">
@@ -82,7 +87,7 @@
 						</div>
 
 						<div class="col-md-12">
-						    <hr />
+							<hr />
 							<asp:Button ID="btnAddArticuloRow" runat="server" CssClass="btn btn-default" Text="Añadir Articulo"
 								ValidationGroup="Val_AddArticulo" CausesValidation="true" />
 							<asp:Button ID="btnReset" runat="server" CssClass="btn btn-default" Text="Eliminar Articulos" />

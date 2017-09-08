@@ -24,7 +24,7 @@ Public Class index3
 
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        If e.CommandName.Equals("Editar") Then
+        If e.CommandName.Equals(Mensajes.Editar.ToString) Then
             Dim id As String = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Response.Redirect("Editar.aspx?id=" & Cifrar.cifrarCadena(id))
 
@@ -34,7 +34,7 @@ Public Class index3
             Response.Redirect("Detalles.aspx?id=" & Cifrar.cifrarCadena(id))
 
         End If
-        If e.CommandName.Equals("Eliminar") Then
+        If e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
             hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
@@ -47,7 +47,7 @@ Public Class index3
 
         bError = Delete.Articulo(Convert.ToInt32(hdfIDDel.Value))
         Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
-        Modal.Validacion(Me, bError, "Delete")
+        'Modal.Validacion(Me, bError, "Delete")
         LlenarGridView()
     End Sub
 

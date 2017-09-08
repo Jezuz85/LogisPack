@@ -77,6 +77,15 @@ Partial Public Class index
     Protected WithEvents MyTreeView As Global.System.Web.UI.WebControls.TreeView
     
     '''<summary>
+    '''Control ucAlerta.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ucAlerta As Global.LogisPack.Alert
+    
+    '''<summary>
     '''Control GridView1.
     '''</summary>
     '''<remarks>

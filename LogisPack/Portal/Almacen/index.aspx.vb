@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Globalization
 Imports CapaDatos
 
 Public Class index
@@ -19,6 +20,7 @@ Public Class index
             CargarListas()
         End If
 
+
     End Sub
 
     ''' <summary>
@@ -35,7 +37,6 @@ Public Class index
         Listas.Cliente(ddlClienteAdd)
     End Sub
 
-
     ''' <summary>
     ''' Metodos del Gridview
     ''' </summary>
@@ -45,7 +46,7 @@ Public Class index
     End Sub
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        If e.CommandName.Equals("Editar") Then
+        If e.CommandName.Equals(Mensajes.Editar.ToString) Then
 
             hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Dim _Almacen = Getter.Almacen(Convert.ToInt32(hdfEdit.Value))
@@ -58,11 +59,15 @@ Public Class index
 
             Modal.AbrirModal("EditModal", "EditModalScript", Me)
         End If
-        If e.CommandName.Equals("Eliminar") Then
+
+        If e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
+
             hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
+
         End If
-        If e.CommandName.Equals("Detalles") Then
+
+        If e.CommandName.Equals(Mensajes.Detalles.ToString) Then
 
             hdfView.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Dim _Almacen = Getter.Almacen(Convert.ToInt32(hdfView.Value))
@@ -73,6 +78,7 @@ Public Class index
             lbViewCoefVol.Text = _Almacen.coeficiente_volumetrico
 
             Modal.AbrirModal("ViewModal", "ViewModalScript", Me)
+
         End If
 
     End Sub
@@ -85,15 +91,16 @@ Public Class index
         Dim _Nuevo As New Almacen With {
             .nombre = txtNombre.Text,
             .codigo = txtCodigo.Text,
-            .coeficiente_volumetrico = txtCoefVol.Text,
+            .coeficiente_volumetrico = Double.Parse(txtCoefVol.Text, CultureInfo.InvariantCulture),
             .id_cliente = Convert.ToInt32(ddlClienteAdd.SelectedValue)
         }
 
         bError = Create.Almacen(_Nuevo)
 
-        Utilidades_UpdatePanel.CerrarOperacion("Add", bError, Me, up_Add)
+        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
 
         LlenarGridView()
+
     End Sub
 
     ''' <summary>
@@ -112,7 +119,7 @@ Public Class index
 
         bError = Update.Almacen(Edit, contexto)
 
-        Utilidades_UpdatePanel.CerrarOperacion("Edit", bError, Me, up_Edit)
+        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
 
         LlenarGridView()
 
@@ -124,7 +131,7 @@ Public Class index
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
         bError = Delete.Almacen(Convert.ToInt32(hdfIDDel.Value))
 
-        Utilidades_UpdatePanel.CerrarOperacion("Delete", bError, Me)
+        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
 
         LlenarGridView()
     End Sub

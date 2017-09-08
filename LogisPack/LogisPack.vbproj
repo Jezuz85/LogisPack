@@ -213,6 +213,7 @@
     <Content Include="Portal\Operacion\index.aspx" />
     <Content Include="Portal\TipoFacturacion\index.aspx" />
     <Content Include="Portal\TipoUnidad\index.aspx" />
+    <Content Include="Portal\WebUserControl\Alert.ascx" />
     <Content Include="Portal\WebUserControl\MsjModal.ascx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -362,6 +363,13 @@
     <Compile Include="Portal\TipoUnidad\index.aspx.vb">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Portal\WebUserControl\Alert.ascx.designer.vb">
+      <DependentUpon>Alert.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\WebUserControl\Alert.ascx.vb">
+      <DependentUpon>Alert.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Portal\WebUserControl\MsjModal.ascx.designer.vb">
       <DependentUpon>MsjModal.ascx</DependentUpon>

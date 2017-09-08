@@ -99,6 +99,8 @@
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
     <Compile Include="Listas.vb" />
+    <Compile Include="Manager_Articulo.vb" />
+    <Compile Include="Mensajes.vb" />
     <Compile Include="Modal.vb" />
     <Compile Include="ModeloLogisPack.Context.vb">
       <AutoGen>True</AutoGen>
