@@ -56,13 +56,13 @@
     </asp:updatepanel>
 
     <!-- Add Modal -->
-    <div id="AddModal" class="modal">
+    <div id="AddModal"class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 
                 <div class="modal-header">
                     <button id="btnAddCerrar" type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-                    <h3>Agregar Registro</h3>
+                    <h3><strong>Agregar Registro</strong></h3>
                 </div>
 
                 <asp:updatepanel id="up_Add" runat="server">
@@ -71,7 +71,7 @@
 
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                    <h4 class="text-left">Nombre</h4>
+                                    <h4><strong>Nombre</strong></h4>
 
                                     <asp:TextBox id="txtNombre" MaxLength="40" runat="server" ClientIDMode="Static" 
                                         CssClass="form-control" data-toggle="tooltip" data-placement="bottom" 
@@ -101,13 +101,13 @@
     </div>
     
     <!-- Edit Modal -->
-    <div id="EditModal" class="modal">
+    <div id="EditModal"class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 
                 <div class="modal-header">
                     <button id="btnEditCerrar" type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-                    <h3>Editar Registro</h3>
+                    <h3><strong>Editar Registro</strong></h3>
                 </div>
 
                 <asp:updatepanel id="up_Edit" runat="server">
@@ -119,7 +119,7 @@
 
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                    <h4 class="text-left">Nombre</h4>
+                                    <h4><strong>Nombre</strong></h4>
 
                                     <asp:TextBox id="txtNombre_Edit" MaxLength="40" runat="server" ClientIDMode="Static" 
                                         CssClass="form-control" data-toggle="tooltip" data-placement="bottom" 
@@ -150,13 +150,13 @@
     </div>    
     
     <!-- Delete Modal -->
-    <div id="DeleteModal" class="modal">
+    <div id="DeleteModal"class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-                    <h3>Eliminar Registro</h3>
+                    <h3><strong>Eliminar Registro</strong></h3>
                 </div>
 
                 <asp:updatepanel id="upDel" runat="server">

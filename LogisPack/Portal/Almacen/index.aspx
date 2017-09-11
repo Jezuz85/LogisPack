@@ -127,13 +127,13 @@
 
 
     <!-- Add Modal -->
-    <div id="AddModal" class="modal">
+    <div id="AddModal"class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-header">
                     <button id="btnAddCerrar" type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-                    <h3>Agregar Registro</h3>
+                    <h3><strong>Agregar Registro</strong></h3>
                 </div>
 
                 <asp:UpdatePanel ID="up_Add" runat="server">
@@ -142,7 +142,7 @@
 
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                    <h4 class="text-left">Código</h4>
+                                    <h4>Código</h4>
 
                                     <asp:TextBox ID="txtCodigo" MaxLength="15" runat="server" ClientIDMode="Static"
                                         CssClass="form-control" data-toggle="tooltip" data-placement="bottom"
@@ -156,7 +156,7 @@
 
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                    <h4 class="text-left">Nombre</h4>
+                                    <h4><strong>Nombre</strong></h4>
 
                                     <asp:TextBox ID="txtNombre" MaxLength="40" runat="server" ClientIDMode="Static"
                                         CssClass="form-control" data-toggle="tooltip" data-placement="bottom"
@@ -170,7 +170,7 @@
 
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                    <h4 class="text-left">Coeficiente volumétrico</h4>
+                                    <h4>Coeficiente volumétrico</h4>
 
                                     <asp:TextBox ID="txtCoefVol" runat="server" ClientIDMode="Static" type="number" step="any"
                                         CssClass="form-control" data-toggle="tooltip" data-placement="bottom"
@@ -184,7 +184,7 @@
 
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                    <h4 class="text-left">Cliente</h4>
+                                    <h4>Cliente</h4>
 
                                     <asp:DropDownList ID="ddlClienteAdd" runat="server" CssClass="form-control" data-toggle="tooltip"
                                         data-placement="bottom" title="Seleccione el cliente" AutoPostBack="true">
@@ -215,13 +215,13 @@
     </div>
 
     <!-- Edit Modal -->
-    <div id="EditModal" class="modal">
+    <div id="EditModal"class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-header">
                     <button id="btnEditCerrar" type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-                    <h3>Editar Registro</h3>
+                    <h3><strong>Editar Registro</strong></h3>
                 </div>
 
                 <asp:UpdatePanel ID="up_Edit" runat="server">
@@ -231,7 +231,7 @@
 
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                    <h4 class="text-left">Código</h4>
+                                    <h4>Código</h4>
 
                                     <asp:TextBox ID="txtEditCodigo" MaxLength="15" runat="server" ClientIDMode="Static"
                                         CssClass="form-control" data-toggle="tooltip" data-placement="bottom"
@@ -245,7 +245,7 @@
 
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                    <h4 class="text-left">Nombre</h4>
+                                    <h4><strong>Nombre</strong></h4>
 
                                     <asp:TextBox ID="txtEditNombre" MaxLength="40" runat="server" ClientIDMode="Static"
                                         CssClass="form-control" data-toggle="tooltip" data-placement="bottom"
@@ -259,7 +259,7 @@
 
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                    <h4 class="text-left">Coeficiente volumétrico</h4>
+                                    <h4>Coeficiente volumétrico</h4>
 
                                     <asp:TextBox ID="txtEditCoefVol" runat="server" ClientIDMode="Static" type="number" step="any"
                                         CssClass="form-control" data-toggle="tooltip" data-placement="bottom"
@@ -273,7 +273,7 @@
 
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                    <h4 class="text-left">Cliente</h4>
+                                    <h4>Cliente</h4>
 
 
                                     <asp:DropDownList ID="ddlClienteEdit" runat="server" CssClass="form-control" data-toggle="tooltip"
@@ -305,7 +305,7 @@
     </div>
 
     <!-- View Modal -->
-    <div id="ViewModal" class="modal">
+    <div id="ViewModal"class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -356,13 +356,13 @@
     </div>
 
     <!-- Delete Modal -->
-    <div id="DeleteModal" class="modal">
+    <div id="DeleteModal"class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-                    <h3>Eliminar Registro</h3>
+                    <h3><strong>Eliminar Registro</strong></h3>
                 </div>
 
                 <asp:UpdatePanel ID="upDel" runat="server">

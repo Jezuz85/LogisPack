@@ -30,22 +30,28 @@ Public Class index5
     End Sub
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        If e.CommandName.Equals(Mensajes.Editar.ToString) Then
-
-            hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Dim _Cliente = Getter.Cliente(Convert.ToInt32(hdfEdit.Value))
-
-            txtCodigo_Edit.Text = _Cliente.codigo
-            txtNombre_Edit.Text = _Cliente.nombre
-
-            Modal.AbrirModal("EditModal", "EditModalScript", Me)
-
-        ElseIf e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
+        If e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
 
             hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
         End If
+
+    End Sub
+    Protected Sub GridView1_onRowEditing(sender As Object, e As GridViewEditEventArgs)
+
+        hdfEdit.Value = Utilidades_Grid.Get_IdRow_Editing(GridView1, e, "id")
+        Dim _Cliente = Getter.Cliente(Convert.ToInt32(hdfEdit.Value))
+
+        txtCodigo_Edit.Text = _Cliente.codigo
+        txtNombre_Edit.Text = _Cliente.nombre
+
+        Modal.AbrirModal("EditModal", "EditModalScript", Me)
+
+    End Sub
+    Protected Sub GridView1_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
+
+        Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
     End Sub
 

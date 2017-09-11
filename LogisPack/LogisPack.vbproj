@@ -184,10 +184,18 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\BaseCSS.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CustomCss.css" />
+    <Content Include="Content\dlweb.css" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\minimize_16x16.png" />
+    <Content Include="Content\jQueryUiCss.css" />
+    <Content Include="Content\MainMasterCss.css" />
+    <Content Include="Content\NormalizeCss.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />

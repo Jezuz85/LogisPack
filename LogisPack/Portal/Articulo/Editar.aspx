@@ -111,7 +111,7 @@
 
 			<div class="row" onkeydown="return (event.keyCode!=13)">
 				<div class="col-md-8">
-					<h4>Nombre</h4>
+					<h4><strong>Nombre</strong></h4>
 					<asp:TextBox runat="server" MaxLength="40" ID="txtNombre" CssClass="form-control" data-toggle="tooltip"
 						data-placement="bottom" title="Ingrese el nombre del artículo"></asp:TextBox>
 				</div>
@@ -375,7 +375,7 @@
 	</asp:UpdatePanel>
 
 	<!-- Delete Modal -->
-	<div id="DeleteModal" class="modal">
+	<div id="DeleteModal"class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 

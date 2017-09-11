@@ -50,7 +50,6 @@
             <div class="row">
                 <div class="col-md-12">
                     <asp:button id="btnGuardar" runat="server" cssclass="btn btn-default" text="Crear Nuevo"/>
-
                 </div>
             </div>
 
@@ -59,13 +58,13 @@
     </asp:updatepanel>
 
     <!-- Delete Modal -->
-    <div id="DeleteModal" class="modal">
+    <div id="DeleteModal"class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-                    <h3>Eliminar Registro</h3>
+                    <h3><strong>Eliminar Registro</strong></h3>
                 </div>
 
                 <asp:updatepanel id="upDel" runat="server">
