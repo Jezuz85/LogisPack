@@ -44,6 +44,9 @@ Public Class index1
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que registra un tipo de facturacion en la base de datos
+    ''' </summary>
     Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnAdd.Click
 
         Dim _Nuevo As New Tipo_Facturacion With {
@@ -59,6 +62,9 @@ Public Class index1
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que Actualiza un tipo de facturación en la base de datos
+    ''' </summary>
     Protected Sub Editar(sender As Object, e As EventArgs) Handles btnEdit.Click
 
         Dim Edit = Getter.Tipo_Facturacion(Convert.ToInt32(hdfEdit.Value), contexto)
@@ -75,6 +81,9 @@ Public Class index1
         LlenarGridView()
     End Sub
 
+    ''' <summary>
+    ''' Metodo que Elimina un tipo de facturación en la base de datos
+    ''' </summary>
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 
         bError = Delete.TipoFacturacion(Convert.ToInt32(hdfIDDel.Value))

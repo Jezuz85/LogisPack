@@ -104,30 +104,15 @@ Public Class Crear
     ''' </summary>
     Private Function GuardarArticulo() As Boolean
 
-        Dim M3 As Double = Nothing
-        Dim PesoVol As Double = Nothing
+        Dim M3 As Double = 0
+        Dim PesoVol As Double = 0
+        Dim valoracionStock As Double = 0
+        Dim valoracionSeguro As Double = 0
 
-        If (txtAlto.Text IsNot String.Empty And txtAncho.Text IsNot String.Empty And txtLargo.Text IsNot String.Empty) Then
-            M3 = ((Convert.ToDouble(txtAlto.Text) * Convert.ToDouble(txtAncho.Text) * Convert.ToDouble(txtLargo.Text)) / 1000)
-        End If
-
-        If (txtAlto.Text IsNot String.Empty And txtAncho.Text IsNot String.Empty And txtLargo.Text IsNot String.Empty And txtCoefVol.Text IsNot String.Empty) Then
-            PesoVol = ((Convert.ToDouble(txtAlto.Text) * Convert.ToDouble(txtAncho.Text) * Convert.ToDouble(txtLargo.Text) * Convert.ToDouble(txtCoefVol.Text)) / 1000)
-        End If
-
-        Dim valoracionStock As Decimal
-        If (txtValAsegurado.Text <> String.Empty And txtStockFisico.Text <> String.Empty) Then
-            valoracionStock = Double.Parse(txtValArticulo.Text, CultureInfo.InvariantCulture) * Double.Parse(txtStockFisico.Text, CultureInfo.InvariantCulture)
-        Else
-            valoracionStock = Nothing
-        End If
-
-        Dim valoracionSeguro As Decimal
-        If (txtValAsegurado.Text <> String.Empty And txtStockFisico.Text <> String.Empty) Then
-            valoracionSeguro = Double.Parse(txtValAsegurado.Text, CultureInfo.InvariantCulture) * Double.Parse(txtStockFisico.Text, CultureInfo.InvariantCulture)
-        Else
-            valoracionSeguro = Nothing
-        End If
+        M3 = Manager_Articulo.CalcularM3(txtAlto.Text, txtAncho.Text, txtLargo.Text)
+        PesoVol = Manager_Articulo.CalcularPesoVolumetrico(txtAlto.Text, txtAncho.Text, txtLargo.Text, txtCoefVol.Text)
+        valoracionStock = Manager_Articulo.CalcularValoracionStock(txtValAsegurado.Text, txtStockFisico.Text, txtValArticulo.Text)
+        valoracionSeguro = Manager_Articulo.CalcularValoracionSeguro(txtValAsegurado.Text, txtStockFisico.Text)
 
         Dim _Nuevo As New Articulo With
             {
@@ -158,6 +143,7 @@ Public Class Crear
             .id_tipo_unidad = If(ddlTipoUnidad.SelectedValue = String.Empty, 0, Convert.ToInt32(ddlTipoUnidad.SelectedValue)),
             .tipoArticulo = If(ddlTipoArticulo.SelectedValue = String.Empty, Nothing, ddlTipoArticulo.SelectedValue)
         }
+
         bError = Create.Articulo(_Nuevo)
 
         Return bError

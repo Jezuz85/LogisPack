@@ -143,4 +143,81 @@ Public Class Manager_Articulo
         Return Convert.ToString(ContFilas)
     End Function
 
+    Public Shared Function CalcularM3(txtAlto As String, txtAncho As String, txtLargo As String) As Double
+        Dim m3 As Double = 0
+        Dim Alto As Double = 0
+        Dim Largo As Double = 0
+        Dim Ancho As Double = 0
+
+
+        If (txtAlto IsNot String.Empty And txtAncho IsNot String.Empty And txtLargo IsNot String.Empty) Then
+
+            Alto = Double.Parse(txtAlto, CultureInfo.InvariantCulture)
+            Largo = Double.Parse(txtAncho, CultureInfo.InvariantCulture)
+            Ancho = Double.Parse(txtLargo, CultureInfo.InvariantCulture)
+
+            m3 = (Alto * Ancho * Largo) / 1000
+        End If
+
+        Return m3
+
+    End Function
+
+    Public Shared Function CalcularPesoVolumetrico(txtAlto As String, txtAncho As String, txtLargo As String, txtCoefVol As String) As Double
+        Dim PesoVol As Double = 0
+        Dim Alto As Double = 0
+        Dim Largo As Double = 0
+        Dim Ancho As Double = 0
+        Dim CoefVol As Double = 0
+
+
+        If (txtAlto IsNot String.Empty And txtAncho IsNot String.Empty And txtLargo IsNot String.Empty And txtCoefVol IsNot String.Empty) Then
+            Alto = Double.Parse(txtAlto, CultureInfo.InvariantCulture)
+            Largo = Double.Parse(txtAncho, CultureInfo.InvariantCulture)
+            Ancho = Double.Parse(txtLargo, CultureInfo.InvariantCulture)
+            CoefVol = Double.Parse(txtCoefVol, CultureInfo.InvariantCulture)
+
+            PesoVol = (Alto * Ancho * Largo * CoefVol) / 1000
+        End If
+
+
+        Return PesoVol
+
+    End Function
+
+    Public Shared Function CalcularValoracionStock(txtValAsegurado As String, txtStockFisico As String, txtValArticulo As String) As Double
+
+        Dim valoracionStock As Double = 0
+        Dim ValArticulo As Double = 0
+        Dim StockFisico As Double = 0
+
+        If (txtValAsegurado <> String.Empty And txtStockFisico <> String.Empty) Then
+
+            ValArticulo = Double.Parse(txtValArticulo, CultureInfo.InvariantCulture)
+            StockFisico = Double.Parse(txtStockFisico, CultureInfo.InvariantCulture)
+
+            valoracionStock = ValArticulo * StockFisico
+
+        End If
+
+        Return valoracionStock
+    End Function
+
+    Public Shared Function CalcularValoracionSeguro(txtValAsegurado As String, txtStockFisico As String) As Double
+
+        Dim valoracionSeguro As Double = 0
+        Dim ValArticulo As Double = 0
+        Dim StockFisico As Double = 0
+
+        If (txtValAsegurado <> String.Empty And txtStockFisico <> String.Empty) Then
+
+            ValArticulo = Double.Parse(txtValAsegurado, CultureInfo.InvariantCulture)
+            StockFisico = Double.Parse(txtStockFisico, CultureInfo.InvariantCulture)
+            valoracionSeguro = ValArticulo * StockFisico
+
+        End If
+
+        Return valoracionSeguro
+
+    End Function
 End Class

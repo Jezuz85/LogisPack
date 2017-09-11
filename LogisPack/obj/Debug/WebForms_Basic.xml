@@ -1582,6 +1582,37 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Metodos del Gridview
  </summary>
 </member>
+<member name="M:LogisPack.Editar.Editar(System.Object,System.EventArgs)">
+ <summary>
+ Metodos que se llama al presionar el boton editar, e invoca los metodos que hacen la actualizacion de un articulo
+ en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.EditarArticulo(CapaDatos.Articulo)">
+ <summary>
+ Metodos que edita el articulo y devuelve true si la operacion fue exitosa y caso contrario false
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.EditarImagenes(CapaDatos.Articulo)">
+ <summary>
+ Metodos que edita las imagenes del articulo y devuelve true si la operacion fue exitosa y caso contrario false
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.EditarUbicaciones(CapaDatos.Articulo)">
+ <summary>
+ Metodos que edita las ubicaciones del articulo y devuelve true si la operacion fue exitosa y caso contrario false
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.EditarPicking(CapaDatos.Articulo)">
+ <summary>
+ Metodos que edita lso articulo picking del articulo y devuelve true si la operacion fue exitosa y caso contrario false
+ </summary>
+</member>
+<member name="M:LogisPack.Editar.crearCamposListaUbicacion(System.Int32)">
+ <summary>
+ Metodo que crea la tabla ubicacion, para añadir o eliminar filas, para agregar ubicaciones al articulo
+ </summary>
+</member>
 <member name="M:LogisPack.Editar.EliminarImagen(System.Object,System.EventArgs)">
  <summary>
  Metodo para eliminar la imagen seleccionada por el usario
@@ -1591,11 +1622,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  <summary>
  Metodo que consulta el Coeficiente Volumetrico del almacen y lo asigna al articulo a crear al 
  cargar la pagina
- </summary>
-</member>
-<member name="M:LogisPack.Editar.crearCamposListaUbicacion(System.Int32)">
- <summary>
- Metodo que crea la tabla ubicacion, para añadir o eliminar filas, para agregar ubicaciones al articulo
  </summary>
 </member>
 <member name="M:LogisPack.Editar.CambiarCliente(System.Object,System.EventArgs)">
@@ -1673,6 +1699,26 @@ Control btnDelete.
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
+</member>
+<member name="M:LogisPack.index3.LlenarGridView">
+ <summary>
+ Metodo que llena El Gridview con datos de la Base de Datos
+ </summary>
+</member>
+<member name="M:LogisPack.index3.GridView1_PageIndexChanging(System.Object,System.Web.UI.WebControls.GridViewPageEventArgs)">
+ <summary>
+ Metodos del gridview
+ </summary>
+</member>
+<member name="M:LogisPack.index3.EliminarRegistro(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que elimina un articulo de la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.index3.btnGuardar_Click(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se invoca cuando se presiona el boton "guardar" y redirecciona la pagina a "Crear"
+ </summary>
 </member>
 <member name="F:LogisPack.index5._updatePanelPrinicpal">
 <summary>
@@ -1819,6 +1865,21 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Metodos del Gridview
  </summary>
 </member>
+<member name="M:LogisPack.index5.Guardar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que registra un cliente en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.index5.Editar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que actualiza un cliente en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.index5.EliminarRegistro(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que elimina un cliente en la base de datos
+ </summary>
+</member>
 <member name="F:LogisPack.index4._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
@@ -1894,6 +1955,11 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="M:LogisPack.index4.CargarListas">
  <summary>
  Metodo que llena los Dropdownlits con datos de la Base de Datos
+ </summary>
+</member>
+<member name="M:LogisPack.index4.Guardar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que registra una operacion de Entrada/Salida de un articulo en la base de datos
  </summary>
 </member>
 <member name="F:LogisPack.index1._updatePanelPrinicpal">
@@ -2018,6 +2084,21 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Metodos del Gridview
  </summary>
 </member>
+<member name="M:LogisPack.index1.Guardar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que registra un tipo de facturacion en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.index1.Editar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que Actualiza un tipo de facturación en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.index1.EliminarRegistro(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que Elimina un tipo de facturación en la base de datos
+ </summary>
+</member>
 <member name="F:LogisPack.index2._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
@@ -2138,6 +2219,21 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="M:LogisPack.index2.GridView1_PageIndexChanging(System.Object,System.Web.UI.WebControls.GridViewPageEventArgs)">
  <summary>
  Metodos del Gridview
+ </summary>
+</member>
+<member name="M:LogisPack.index2.Guardar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que registra un tipo de unidad en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.index2.Editar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que Actualiza un tipo de unidad en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack.index2.EliminarRegistro(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que Elimina un tipo de unidad en la base de datos
  </summary>
 </member>
 <member name="F:LogisPack.Alert._AlertExito">

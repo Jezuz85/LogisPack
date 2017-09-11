@@ -49,6 +49,9 @@ Public Class index5
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que registra un cliente en la base de datos
+    ''' </summary>
     Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnAdd.Click
 
         Dim _Nuevo As New Cliente With {
@@ -65,6 +68,9 @@ Public Class index5
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que actualiza un cliente en la base de datos
+    ''' </summary>
     Protected Sub Editar(sender As Object, e As EventArgs) Handles btnEdit.Click
 
         Dim Edit = Getter.Cliente(Convert.ToInt32(hdfEdit.Value), contexto)
@@ -82,6 +88,9 @@ Public Class index5
         LlenarGridView()
     End Sub
 
+    ''' <summary>
+    ''' Metodo que elimina un cliente en la base de datos
+    ''' </summary>
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 
         bError = Delete.Cliente(Convert.ToInt32(hdfIDDel.Value))

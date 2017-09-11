@@ -11,17 +11,22 @@ Public Class index3
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que llena El Gridview con datos de la Base de Datos
+    ''' </summary>
     Public Sub LlenarGridView()
 
         Tabla.Articulo(GridView1)
 
     End Sub
 
+    ''' <summary>
+    ''' Metodos del gridview
+    ''' </summary>
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         LlenarGridView()
     End Sub
-
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
         If e.CommandName.Equals(Mensajes.Editar.ToString) Then
@@ -43,17 +48,21 @@ Public Class index3
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que elimina un articulo de la base de datos
+    ''' </summary>
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 
         bError = Delete.Articulo(Convert.ToInt32(hdfIDDel.Value))
         Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
-        'Modal.Validacion(Me, bError, "Delete")
         LlenarGridView()
     End Sub
 
+    ''' <summary>
+    ''' Metodo que se invoca cuando se presiona el boton "guardar" y redirecciona la pagina a "Crear"
+    ''' </summary>
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
         Response.Redirect("Crear.aspx")
     End Sub
-
 
 End Class

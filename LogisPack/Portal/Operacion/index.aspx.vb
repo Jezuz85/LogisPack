@@ -21,6 +21,9 @@ Public Class index4
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que registra una operacion de Entrada/Salida de un articulo en la base de datos
+    ''' </summary>
     Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
         If Page.IsValid Then

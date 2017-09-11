@@ -43,7 +43,9 @@ Public Class index2
 
     End Sub
 
-
+    ''' <summary>
+    ''' Metodo que registra un tipo de unidad en la base de datos
+    ''' </summary>
     Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnAdd.Click
 
         Dim _Nuevo As New Tipo_Unidad With {
@@ -57,6 +59,10 @@ Public Class index2
         LlenarGridView()
         Utilidades_UpdatePanel.LimpiarControles(up_Add)
     End Sub
+
+    ''' <summary>
+    ''' Metodo que Actualiza un tipo de unidad en la base de datos
+    ''' </summary>
     Protected Sub Editar(sender As Object, e As EventArgs) Handles btnEdit.Click
 
         Dim Edit = Getter.Tipo_Unidad(Convert.ToInt32(hdfEdit.Value), contexto)
@@ -72,6 +78,10 @@ Public Class index2
         Utilidades_UpdatePanel.LimpiarControles(up_Edit)
         LlenarGridView()
     End Sub
+
+    ''' <summary>
+    ''' Metodo que Elimina un tipo de unidad en la base de datos
+    ''' </summary>
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 
         bError = Delete.TipoUnidad(Convert.ToInt32(hdfIDDel.Value))
