@@ -25,7 +25,7 @@
 				<div class="col-md-2">
 					<h4>Tipo de Artículo</h4>
 
-					<asp:DropDownList runat="server" ID="ddlTipoArticulo" CssClass="form-control" data-toggle="tooltip"
+					<asp:DropDownList runat="server" ID="ddlTipoArticulo"  data-toggle="tooltip"
 						data-placement="bottom" title="Seleccione el tipo de Artículo" AutoPostBack="true">
 						<asp:ListItem Text="Normal" Value="Normal"></asp:ListItem>
 						<asp:ListItem Text="Picking" Value="Picking"></asp:ListItem>
@@ -34,7 +34,7 @@
 
 				<div class="col-md-2">
 					<h4>Cliente:</h4>
-					<asp:DropDownList ID="ddlCliente" runat="server" CssClass="form-control" data-toggle="tooltip"
+					<asp:DropDownList ID="ddlCliente" runat="server"  data-toggle="tooltip"
 						data-placement="bottom" title="Seleccione el cliente" AutoPostBack="true">
 					</asp:DropDownList>
 
@@ -45,7 +45,7 @@
 
 				<div class="col-md-2">
 					<h4>Almacén</h4>
-					<asp:DropDownList ID="ddlAlmacen" runat="server" CssClass="form-control" data-toggle="tooltip"
+					<asp:DropDownList ID="ddlAlmacen" runat="server"  data-toggle="tooltip"
 						data-placement="bottom" title="Seleccione el almacén" AutoPostBack="true">
 					</asp:DropDownList>
 
@@ -60,8 +60,8 @@
 						<div class="col-md-12">
 							<h4>Lista de Articulos</h4>
 
-							<asp:TextBox ID="txtArticulos1" CssClass="form-control" runat="server" Rows="5" TextMode="multiline" ReadOnly="true"></asp:TextBox>
-							<asp:TextBox ID="txtArticulos2" CssClass="form-control" runat="server" Rows="5" TextMode="multiline" Visible="false"></asp:TextBox>
+							<asp:TextBox ID="txtArticulos1"  runat="server" Rows="5" TextMode="multiline" ReadOnly="true"></asp:TextBox>
+							<asp:TextBox ID="txtArticulos2"  runat="server" Rows="5" TextMode="multiline" Visible="false"></asp:TextBox>
 
 							<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
 								ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtArticulos1" runat="server"
@@ -71,7 +71,7 @@
 
 						<div class="col-md-6">
 							<h4>Articulos</h4>
-							<asp:DropDownList ID="ddlListaArticulos" runat="server" CssClass="form-control" data-toggle="tooltip"
+							<asp:DropDownList ID="ddlListaArticulos" runat="server"  data-toggle="tooltip"
 								data-placement="bottom" title="Seleccione el Artículo">
 							</asp:DropDownList>
 
@@ -79,7 +79,7 @@
 
 						<div class="col-md-6" onkeydown="return (event.keyCode!=13)">
 							<h4>Unidades del Articulos</h4>
-							<asp:TextBox ID="txtUnidad" CssClass="form-control" runat="server" type="number" min="0"></asp:TextBox>
+							<asp:TextBox ID="txtUnidad"  runat="server" type="number" min="0"></asp:TextBox>
 
 							<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
 								ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtUnidad" runat="server"
@@ -104,7 +104,7 @@
 				<div class="col-md-3">
 					<h4>Código</h4>
 
-					<asp:TextBox runat="server" MaxLength="25" ID="txtCodigo" CssClass="form-control"
+					<asp:TextBox runat="server" MaxLength="25" ID="txtCodigo" 
 						data-toggle="tooltip" data-placement="bottom" title="Ingrese el codigo del articulo"></asp:TextBox>
 				</div>
 			</div>
@@ -112,13 +112,13 @@
 			<div class="row" onkeydown="return (event.keyCode!=13)">
 				<div class="col-md-8">
 					<h4><strong>Nombre</strong></h4>
-					<asp:TextBox runat="server" MaxLength="40" ID="txtNombre" CssClass="form-control" data-toggle="tooltip"
+					<asp:TextBox runat="server" MaxLength="40" ID="txtNombre"  data-toggle="tooltip"
 						data-placement="bottom" title="Ingrese el nombre del artículo"></asp:TextBox>
 				</div>
 
 				<div class="col-md-4">
 					<h4>Referencia picking</h4>
-					<asp:TextBox runat="server" MaxLength="25" ID="txtRefPick" CssClass="form-control" data-toggle="tooltip"
+					<asp:TextBox runat="server" MaxLength="25" ID="txtRefPick"  data-toggle="tooltip"
 						data-placement="bottom" title="Ingrese la referencia picking del artículo"></asp:TextBox>
 				</div>
 			</div>
@@ -128,19 +128,19 @@
 
 				<div class="col-md-4">
 					<h4>Referencia 1</h4>
-					<asp:TextBox runat="server" MaxLength="25" ID="txtRef1" CssClass="form-control" data-toggle="tooltip"
+					<asp:TextBox runat="server" MaxLength="25" ID="txtRef1"  data-toggle="tooltip"
 						data-placement="bottom" title="Ingrese la referencia 1 del artículo"></asp:TextBox>
 				</div>
 
 				<div class="col-md-4">
 					<h4>Referencia 2</h4>
-					<asp:TextBox runat="server" MaxLength="25" ID="txtRef2" CssClass="form-control" data-toggle="tooltip"
+					<asp:TextBox runat="server" MaxLength="25" ID="txtRef2"  data-toggle="tooltip"
 						data-placement="bottom" title="Ingrese la referencia 2 del artículo"></asp:TextBox>
 				</div>
 
 				<div class="col-md-4">
 					<h4>Referencia 3</h4>
-					<asp:TextBox runat="server" MaxLength="25" ID="txtRef3" CssClass="form-control" data-toggle="tooltip"
+					<asp:TextBox runat="server" MaxLength="25" ID="txtRef3"  data-toggle="tooltip"
 						data-placement="bottom" title="Ingrese la referencia 3 del artículo"></asp:TextBox>
 				</div>
 			</div>
@@ -150,7 +150,7 @@
 			<div class="row">
 				<div class="col-md-3">
 					<h4>Tipo de Unidad</h4>
-					<asp:DropDownList ID="ddlTipoUnidad" runat="server" CssClass="form-control" data-toggle="tooltip"
+					<asp:DropDownList ID="ddlTipoUnidad" runat="server"  data-toggle="tooltip"
 						data-placement="bottom" title="Seleccione el Tipo de Unidad">
 					</asp:DropDownList>
 				</div>
@@ -173,22 +173,22 @@
 							<asp:Panel ID="pTabla" runat="server">
 								<tr>
 									<td>
-										<asp:TextBox ID="txtZona0" CssClass="form-control" runat="server" MaxLength="4"></asp:TextBox>
+										<asp:TextBox ID="txtZona0"  runat="server" MaxLength="4"></asp:TextBox>
 									</td>
 									<td>
-										<asp:TextBox ID="txtEstante0" CssClass="form-control" runat="server" MaxLength="4"></asp:TextBox>
+										<asp:TextBox ID="txtEstante0"  runat="server" MaxLength="4"></asp:TextBox>
 									</td>
 									<td>
-										<asp:TextBox ID="txtFila0" CssClass="form-control" runat="server" MaxLength="4"></asp:TextBox>
+										<asp:TextBox ID="txtFila0"  runat="server" MaxLength="4"></asp:TextBox>
 									</td>
 									<td>
-										<asp:TextBox ID="txtColumna0" CssClass="form-control" runat="server" MaxLength="4"></asp:TextBox>
+										<asp:TextBox ID="txtColumna0"  runat="server" MaxLength="4"></asp:TextBox>
 									</td>
 									<td>
-										<asp:TextBox ID="txtPanel0" CssClass="form-control" runat="server" MaxLength="4"></asp:TextBox>
+										<asp:TextBox ID="txtPanel0"  runat="server" MaxLength="4"></asp:TextBox>
 									</td>
 									<td>
-										<asp:TextBox ID="txtRefUbi0" CssClass="form-control" runat="server" MaxLength="40"></asp:TextBox>
+										<asp:TextBox ID="txtRefUbi0"  runat="server" MaxLength="40"></asp:TextBox>
 									</td>
 								</tr>
 							</asp:Panel>
@@ -208,31 +208,31 @@
 			<div class="row" onkeydown="return (event.keyCode!=13)">
 				<div class="col-md-2">
 					<h4>Peso (Kgs)</h4>
-					<asp:TextBox runat="server" ID="txtPeso" CssClass="form-control" data-toggle="tooltip" type="number"
+					<asp:TextBox runat="server" ID="txtPeso"  data-toggle="tooltip" type="number"
 						step="any" data-placement="bottom" title="Ingrese el peso del artículo"></asp:TextBox>
 				</div>
 
 				<div class="col-md-2">
 					<h4>Alto(cm)</h4>
-					<asp:TextBox runat="server" min="0" max="9999,9" ID="txtAlto" CssClass="form-control" data-toggle="tooltip" type="number"
+					<asp:TextBox runat="server" min="0" max="9999,9" ID="txtAlto"  data-toggle="tooltip" type="number"
 						step="0.1" data-placement="bottom" title="Ingrese la altura del artículo"></asp:TextBox>
 				</div>
 
 				<div class="col-md-2">
 					<h4>Largo (cm)</h4>
-					<asp:TextBox runat="server" min="0" max="9999,9" ID="txtLargo" CssClass="form-control" data-toggle="tooltip" type="number"
+					<asp:TextBox runat="server" min="0" max="9999,9" ID="txtLargo"  data-toggle="tooltip" type="number"
 						step="0.1" data-placement="bottom" title="Ingrese el largo del artículo"></asp:TextBox>
 				</div>
 
 				<div class="col-md-2">
 					<h4>Ancho(cm)</h4>
-					<asp:TextBox runat="server" min="0" max="9999,9" ID="txtAncho" CssClass="form-control" data-toggle="tooltip" type="number"
+					<asp:TextBox runat="server" min="0" max="9999,9" ID="txtAncho"  data-toggle="tooltip" type="number"
 						step="0.1" data-placement="bottom" title="Ingrese el ancho del artículo"></asp:TextBox>
 				</div>
 
 				<div class="col-md-3">
 					<h4>Coef. Volumétrico</h4>
-					<asp:TextBox runat="server" min="0" max="9999,9" ID="txtCoefVol" CssClass="form-control" data-toggle="tooltip" type="number"
+					<asp:TextBox runat="server" min="0" max="9999,9" ID="txtCoefVol"  data-toggle="tooltip" type="number"
 						step="0.1" data-placement="bottom" title="Ingrese el coeficiente volumétrico del artículo"></asp:TextBox>
 				</div>
 
@@ -243,7 +243,7 @@
 			<div class="row" onkeydown="return (event.keyCode!=13)">
 				<div class="col-md-3">
 					<h4>Tipo de Facturación</h4>
-					<asp:DropDownList ID="ddlTipoFacturacion" runat="server" CssClass="form-control" data-toggle="tooltip"
+					<asp:DropDownList ID="ddlTipoFacturacion" runat="server"  data-toggle="tooltip"
 						data-placement="bottom" title="Seleccione el Tipo de Facturación">
 					</asp:DropDownList>
 				</div>
@@ -251,7 +251,7 @@
 				<div class="col-md-3">
 					<h4>Identificación</h4>
 
-					<asp:DropDownList runat="server" ID="ddlIdentificacion" CssClass="form-control" data-toggle="tooltip"
+					<asp:DropDownList runat="server" ID="ddlIdentificacion"  data-toggle="tooltip"
 						data-placement="bottom" title="Seleccione el tipo de Artículo">
 						<asp:ListItem Text="CB" Value="CB"></asp:ListItem>
 						<asp:ListItem Text="RF" Value="RF"></asp:ListItem>
@@ -260,13 +260,13 @@
 
 				<div class="col-md-3">
 					<h4>Valor artículo</h4>
-					<asp:TextBox runat="server" min="0" ID="txtValArticulo" CssClass="form-control" data-toggle="tooltip" type="number"
+					<asp:TextBox runat="server" min="0" ID="txtValArticulo"  data-toggle="tooltip" type="number"
 						step="0.01" data-placement="bottom" title="Ingrese el valor del artículo"></asp:TextBox>
 				</div>
 
 				<div class="col-md-3">
 					<h4>Valor Asegurado</h4>
-					<asp:TextBox runat="server" ID="txtValAsegurado" CssClass="form-control" type="number" step="0.01"
+					<asp:TextBox runat="server" ID="txtValAsegurado"  type="number" step="0.01"
 						data-placement="bottom" title="Ingrese el valor asegurado"></asp:TextBox>
 				</div>
 			</div>
@@ -276,7 +276,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<h4>Observaciones Generales</h4>
-					<asp:TextBox runat="server" ID="txtObsGen" CssClass="form-control" data-toggle="tooltip" Rows="3"
+					<asp:TextBox runat="server" ID="txtObsGen"  data-toggle="tooltip" Rows="3"
 						TextMode="multiline" data-placement="bottom" title="Ingrese las observaciones generales"></asp:TextBox>
 					<div id="count1">0</div>
 					<div id="alert1" class="hidden">Has alcanzado el limite!</div>
@@ -285,7 +285,7 @@
 
 				<div class="col-md-6">
 					<h4>Observaciones Artículo</h4>
-					<asp:TextBox runat="server" MaxLength="300" ID="txtObsArt" CssClass="form-control" data-toggle="tooltip" Rows="3"
+					<asp:TextBox runat="server" MaxLength="300" ID="txtObsArt"  data-toggle="tooltip" Rows="3"
 						TextMode="multiline" data-placement="bottom" title="Ingrese las observaciones del artículo"></asp:TextBox>
 					<div id="count2">0</div>
 					<div id="alert2" class="hidden">Has alcanzado el limite!</div>
@@ -299,13 +299,13 @@
 			<div class="row" onkeydown="return (event.keyCode!=13)">
 				<div class="col-md-3">
 					<h4>Stock mínimo</h4>
-					<asp:TextBox runat="server" min="0" ID="txtStockMinimo" CssClass="form-control" data-toggle="tooltip"
+					<asp:TextBox runat="server" min="0" ID="txtStockMinimo"  data-toggle="tooltip"
 						type="number" step="0.01" data-placement="bottom" title="Ingrese el stock mínimo del artículo"></asp:TextBox>
 				</div>
 
 				<div class="col-md-3">
 					<h4>Stock físico</h4>
-					<asp:TextBox runat="server" min="0" ID="txtStockFisico" CssClass="form-control" data-toggle="tooltip" type="number"
+					<asp:TextBox runat="server" min="0" ID="txtStockFisico"  data-toggle="tooltip" type="number"
 						step="0.01" data-placement="bottom" title="Ingrese el stock fisico del artículo"></asp:TextBox>
 				</div>
 			</div>
@@ -323,7 +323,7 @@
 					<div class="row">
 						<div class="box-body">
 							<div class="dataTables_wrapper form-inline dt-bootstrap">
-								<asp:GridView ID="GridView1" class="table table-bordered table-hover dataTable" runat="server"
+								<asp:GridView ID="GridView1" class="grid gridSelectable gridSortable noPadding noMargin"  runat="server"
 									AutoGenerateColumns="false" AllowPaging="true" PageSize="10" OnRowCommand="GridView1_RowCommand"
 									OnPageIndexChanging="GridView1_PageIndexChanging" EmptyDataText="No existen Registros">
 

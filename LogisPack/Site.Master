@@ -64,16 +64,16 @@
 															<li class="dropdown">
 																<a class="dropbtn" runat="server" href="~/Portal/Cliente/index">Cliente</a>
 
-																<div class="dropdown-content">
+																<%--<div class="dropdown-content">
 																	<a href="#">Nuevo Cliente</a>
-																</div>
+																</div>--%>
 															</li>
 															<li class="dropdown">
 																<a runat="server" href="~/Portal/Almacen/index">Almacen</a>
 																
-																<div class="dropdown-content">
+																<%--<div class="dropdown-content">
 																	<a href="#">Nuevo Almacén</a>
-																</div>
+																</div>--%>
 															</li>
 															<li class="dropdown">
 																<a runat="server" href="~/Portal/Articulo/index">Articulo</a>
@@ -93,16 +93,16 @@
 															<li class="dropdown">
 																<a runat="server" href="~/Portal/TipoFacturacion/index">Tipo de Facturación</a>
 																
-																<div class="dropdown-content">
+																<%--<div class="dropdown-content">
 																	<a href="#">Nuevo Tipo de Facturación</a>
-																</div>
+																</div>--%>
 															</li>
 															<li class="dropdown">
 																<a runat="server" href="~/Portal/TipoUnidad/index">Tipo de Unidad</a>
 																
-																<div class="dropdown-content">
+																<%--<div class="dropdown-content">
 																	<a href="#">Nuevo Tipo de Unidad</a>
-																</div>
+																</div>--%>
 															</li>
 														</ul>
 													</div>

@@ -77,6 +77,33 @@ Partial Public Class index
     Protected WithEvents MyTreeView As Global.System.Web.UI.WebControls.TreeView
     
     '''<summary>
+    '''Control txtSearch.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtSearch As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control btnBuscar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnBuscar As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btnReset.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnReset As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
     '''Control ucAlerta.
     '''</summary>
     '''<remarks>
@@ -113,6 +140,15 @@ Partial Public Class index
     Protected WithEvents up_Add As Global.System.Web.UI.UpdatePanel
     
     '''<summary>
+    '''Control ddlClienteAdd.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlClienteAdd As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''Control txtCodigo.
     '''</summary>
     '''<remarks>
@@ -138,15 +174,6 @@ Partial Public Class index
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtCoefVol As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control ddlClienteAdd.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ddlClienteAdd As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
     '''Control btnAdd.
@@ -176,6 +203,15 @@ Partial Public Class index
     Protected WithEvents hdfEdit As Global.System.Web.UI.WebControls.HiddenField
     
     '''<summary>
+    '''Control ddlClienteEdit.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlClienteEdit As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''Control txtEditCodigo.
     '''</summary>
     '''<remarks>
@@ -201,15 +237,6 @@ Partial Public Class index
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtEditCoefVol As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control ddlClienteEdit.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ddlClienteEdit As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
     '''Control btnEdit.

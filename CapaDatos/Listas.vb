@@ -77,7 +77,7 @@ Public Class Listas
         Dim query = (From AL In contexto.Articulo
                      Select
                          AL.id_articulo,
-                         NombreStock = AL.nombre & " - Stock:" & AL.stock_fisico
+                         NombreStock = AL.nombre
                     ).ToList()
 
         DropDownList1.DataValueField = "id_articulo"

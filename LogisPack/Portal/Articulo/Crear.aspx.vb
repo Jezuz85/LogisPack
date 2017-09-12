@@ -4,8 +4,8 @@ Imports CapaDatos
 Public Class Crear
     Inherits Page
 
-    Dim contexto As LogisPackEntities = New LogisPackEntities()
-    Dim bError As Boolean
+    Private contexto As LogisPackEntities = New LogisPackEntities()
+    Private bError As Boolean
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
@@ -60,7 +60,7 @@ Public Class Crear
     ''' <summary>
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
-    Public Sub CargarListas()
+    Private Sub CargarListas()
         Listas.TipoFacturacion(ddlTipoFacturacion)
         Listas.TipoUnidad(ddlTipoUnidad)
         Listas.Cliente(ddlCliente)
@@ -69,7 +69,7 @@ Public Class Crear
     ''' <summary>
     ''' Metodo que crea la tabla ubicacion, para añadir o eliminar filas, para agregar ubicaciones al articulo
     ''' </summary>
-    Public Sub crearCamposListaUbicacion(valor As Integer)
+    Private Sub crearCamposListaUbicacion(valor As Integer)
 
         ViewState("contadorUbi") = Convert.ToString(Manager_Articulo.crearCamposListaUbicacion(valor, pTabla))
 

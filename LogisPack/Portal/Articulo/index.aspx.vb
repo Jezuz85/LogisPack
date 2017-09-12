@@ -3,18 +3,19 @@
 Public Class index3
     Inherits Page
 
-    Dim bError As Boolean
+    Private bError As Boolean
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         LlenarGridView()
+        Modal.OcultarAlerta(updatePanelPrinicpal)
 
     End Sub
 
     ''' <summary>
     ''' Metodo que llena El Gridview con datos de la Base de Datos
     ''' </summary>
-    Public Sub LlenarGridView()
+    Private Sub LlenarGridView()
 
         Tabla.Articulo(GridView1)
 
@@ -29,22 +30,23 @@ Public Class index3
     End Sub
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        If e.CommandName.Equals(Mensajes.Editar.ToString) Then
-            Dim id As String = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Response.Redirect("Editar.aspx?id=" & Cifrar.cifrarCadena(id))
-
-        End If
         If e.CommandName.Equals("Detalle") Then
             Dim id As String = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Response.Redirect("Detalles.aspx?id=" & Cifrar.cifrarCadena(id))
 
         End If
-        If e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
-            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
-        End If
+    End Sub
+    Protected Sub GridView1_onRowEditing(sender As Object, e As GridViewEditEventArgs)
 
+        Dim id As String = Utilidades_Grid.Get_IdRow_Editing(GridView1, e, "id")
+        Response.Redirect("Editar.aspx?id=" & Cifrar.cifrarCadena(id))
+
+    End Sub
+    Protected Sub GridView1_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
+
+        hdfIDDel.Value = Utilidades_Grid.Get_IdRow_Deleting(GridView1, e, "id")
+        Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
     End Sub
 
@@ -55,6 +57,7 @@ Public Class index3
 
         bError = Delete.Articulo(Convert.ToInt32(hdfIDDel.Value))
         Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
+        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
         LlenarGridView()
     End Sub
 

@@ -3,16 +3,20 @@
 Public Class index1
     Inherits Page
 
-    Dim contexto As LogisPackEntities = New LogisPackEntities()
-    Dim bError As Boolean
+    Private contexto As LogisPackEntities = New LogisPackEntities()
+    Private bError As Boolean
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         LlenarGridView()
+        Modal.OcultarAlerta(updatePanelPrinicpal)
 
     End Sub
 
-    Public Sub LlenarGridView()
+    ''' <summary>
+    ''' Metodos para llenar el Gridview con los tipos de facturacion de la base de datos
+    ''' </summary>
+    Private Sub LlenarGridView()
 
         Tabla.TipoFacturacion(GridView1)
 
@@ -26,21 +30,18 @@ Public Class index1
         LlenarGridView()
 
     End Sub
-    Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
+    Protected Sub GridView1_onRowEditing(sender As Object, e As GridViewEditEventArgs)
 
-        If e.CommandName.Equals(Mensajes.Editar.ToString) Then
+        hdfEdit.Value = Utilidades_Grid.Get_IdRow_Editing(GridView1, e, "id")
+        Dim _TipoFacturacion = Getter.Tipo_Facturacion(Convert.ToInt32(hdfEdit.Value))
+        txtNombre_Edit.Text = _TipoFacturacion.nombre
+        Modal.AbrirModal("EditModal", "EditModalScript", Me)
 
-            hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Dim _TipoFacturacion = Getter.Tipo_Facturacion(Convert.ToInt32(hdfEdit.Value))
-            txtNombre_Edit.Text = _TipoFacturacion.nombre
-            Modal.AbrirModal("EditModal", "EditModalScript", Me)
+    End Sub
+    Protected Sub GridView1_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
 
-        ElseIf e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
-
-            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
-
-        End If
+        hdfIDDel.Value = Utilidades_Grid.Get_IdRow_Deleting(GridView1, e, "id")
+        Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
     End Sub
 
@@ -56,9 +57,8 @@ Public Class index1
         bError = Create.TipoFacturacion(_Nuevo)
 
         Modal.CerrarModal("AddModal", "AddModalScript", Me)
-        'Modal.Validacion(Me, bError, "Add")
+        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
         LlenarGridView()
-        Utilidades_UpdatePanel.LimpiarControles(up_Add)
 
     End Sub
 
@@ -76,8 +76,7 @@ Public Class index1
         bError = Update.Tipo_Facturacion(Edit, contexto)
 
         Modal.CerrarModal("EditModal", "EditModallScript", Me)
-        'Modal.Validacion(Me, bError, "Edit")
-        Utilidades_UpdatePanel.LimpiarControles(up_Edit)
+        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
         LlenarGridView()
     End Sub
 
@@ -88,7 +87,7 @@ Public Class index1
 
         bError = Delete.TipoFacturacion(Convert.ToInt32(hdfIDDel.Value))
         Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
-        'Modal.Validacion(Me, bError, "Delete")
+        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
         LlenarGridView()
 
     End Sub

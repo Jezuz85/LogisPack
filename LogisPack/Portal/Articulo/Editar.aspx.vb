@@ -3,9 +3,10 @@ Imports CapaDatos
 
 Public Class Editar
     Inherits Page
-    Dim contexto As LogisPackEntities = New LogisPackEntities()
-    Dim bError As Boolean
-    Dim IdArticulo As Integer = 0
+
+    Private contexto As LogisPackEntities = New LogisPackEntities()
+    Private bError As Boolean
+    Private IdArticulo As Integer = 0
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")

@@ -3,8 +3,8 @@
 Public Class index4
     Inherits Page
 
-    Dim contexto As LogisPackEntities = New LogisPackEntities()
-    Dim bError As Boolean
+    Private contexto As LogisPackEntities = New LogisPackEntities()
+    Private bError As Boolean
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
@@ -15,7 +15,7 @@ Public Class index4
     ''' <summary>
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
-    Public Sub CargarListas()
+    Private Sub CargarListas()
 
         Listas.ArticuloTodos(ddlListaArticulos)
 

@@ -43,7 +43,7 @@ Public Class Modal
 
                 _PlaceHolder = CType(_UserControl.FindControl("AlertExito"), PlaceHolder)
                 _LabelExito = CType(_UserControl.FindControl("lbAlertMsjExito"), Label)
-                _LabelExito.Text = mensaje
+                _LabelExito.Text = mensaje & " a las " & DateTime.Now.ToString("HH:mm:ss")
             Else
                 If tipoOperacion = Mensajes.Registrar.ToString Then
                     mensaje = Mensajes.AddFalla.ToString
@@ -55,7 +55,7 @@ Public Class Modal
 
                 _PlaceHolder = CType(_UserControl.FindControl("AlertFalla"), PlaceHolder)
                 _LabelFalla = CType(_UserControl.FindControl("lbAlertMsjFalla"), Label)
-                _LabelFalla.Text = mensaje
+                _LabelFalla.Text = mensaje & " a las " & DateTime.Now.ToString("HH:mm:ss")
             End If
 
             _PlaceHolder.Visible = True
@@ -65,4 +65,23 @@ Public Class Modal
 
     End Sub
 
+
+    ''' <summary>
+    ''' Metodo que oculta el updatepanel de Alerta
+    ''' </summary>
+    Public Shared Sub OcultarAlerta(_Master As UpdatePanel)
+
+        Dim _UserControl As UserControl = CType(_Master.FindControl("ucAlerta"), UserControl)
+
+        If _UserControl IsNot Nothing Then
+
+            Dim _PlaceHolder As PlaceHolder
+            _PlaceHolder = CType(_UserControl.FindControl("AlertExito"), PlaceHolder)
+            _PlaceHolder.Visible = False
+            _PlaceHolder = CType(_UserControl.FindControl("AlertFalla"), PlaceHolder)
+            _PlaceHolder.Visible = False
+
+        End If
+
+    End Sub
 End Class

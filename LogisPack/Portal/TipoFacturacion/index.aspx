@@ -1,59 +1,100 @@
 ﻿<%@ Page Title="Tipo de Facturación" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="index.aspx.vb" Inherits="LogisPack.index1" %>
 
+<%@ Register Src="~/Portal/WebUserControl/Alert.ascx" TagPrefix="uca" TagName="ucAlert" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:updatepanel id="updatePanelPrinicpal" runat="server">
+    <asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
         <ContentTemplate>
 
-            <br />
-            <ol class="breadcrumb">
-                <li><a href="../../Default.aspx">Menu Principal</a></li>
-                <li><a href="#">Tipo de Facturación</a></li>
-            </ol>
-    
-            <div class="page-header">
-                <h1 class="text-center">Tipo de Facturación</h1>
-            </div>
-
-            <div class="row">
-                <div class="box-body">
-                    <div class="dataTables_wrapper form-inline dt-bootstrap">
-                
-                        <asp:GridView id="GridView1" class="table table-bordered table-hover dataTable" runat="server" 
-                            AutoGenerateColumns="false" AllowPaging="true" PageSize="10" OnRowCommand="GridView1_RowCommand" 
-                            onpageindexchanging="GridView1_PageIndexChanging" EmptyDataText="No existen Registros">
-                    
-                            <Columns>
-                                <asp:TemplateField HeaderText="Id Categoria" Visible="false" HeaderStyle-CssClass="text-center">
-                                    <ItemTemplate><asp:Label id="id" runat="server" Text='<%# Eval("id_tipo_facturacion") %>'/></ItemTemplate>
-                                </asp:TemplateField>
-                        
-                                <asp:TemplateField HeaderText="Nombre" HeaderStyle-CssClass="text-center">
-                                    <ItemTemplate><asp:Label id="nombre" runat="server" Text='<%# Eval("nombre") %>'/></ItemTemplate>
-                                </asp:TemplateField>
-
-                                <asp:ButtonField   CommandName="Edit" ButtonType="Image" Text ="Editar"
-                                    HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default">
-                                </asp:ButtonField>
-
-                                <asp:ButtonField   CommandName="Delete" ButtonType="Image" Text ="Eliminar"
-                                    HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default">
-                                </asp:ButtonField>
-
-                            </Columns>
-                        </asp:GridView>
+            <div id="titleContainer">
+                <div class="MainContentTitle">
+                    <div class="MainContentTitleText">
+                        <ol class="breadcrumb">
+                            <li><a href="../../Default.aspx">Menu Principal</a></li>
+                            <li><a href="#">Tipo de Facturación</a></li>
+                        </ol>
                     </div>
                 </div>
             </div>
-    
-            <div class="row">
-                <div class="col-md-12">
-                    <asp:ImageButton AlternateText="Registrar" id="btnCrear" runat="server" CssClass="btn btn-default" data-toggle="modal" data-target="#AddModal"/>
+
+            <div id="pageBodyContainer" class="MainContentWrapper" style="width: 96%;">
+
+                <div class="section">
+                    <div id="sectionHeaderFiltros" class="sectionHeader">
+                        <div class="sectionHeaderTitle">
+                            Búsqueda
+                        </div>
+                        <div class="sectionHeaderButtons" data-toggle="collapse" data-target="#sectionContentFiltrosCabecera">
+                            <img class="sectionHeaderButton" src="../../Content/images/minimize_16x16.png">
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN FILTROS -->
+                    <div id="sectionContentFiltrosCabecera" class="section_Content collapse in">
+                        <div class="row_Content">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <asp:TextBox ID="txtSearch" runat="server" placeholder="Ingrese el texto a buscar" MaxLength="200" autocomplete="off"></asp:TextBox>
+                                </div>
+                                <div class="col-md-3">
+                                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" class="btn btn-block btn-default" />
+
+                                </div>
+                                <div class="col-md-3">
+                                    <asp:Button ID="btnReset" runat="server" Text="Reset" class="btn btn-block btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="section">
+                    <!-- Alert -->
+                    <uca:ucalert runat="server" id="ucAlerta" />
+
+                    <asp:GridView ID="GridView1" class="grid gridSelectable gridSortable noPadding noMargin" 
+                        runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="10"
+                        OnRowDeleting="GridView1_RowDeleting"
+                        OnRowEditing="GridView1_onRowEditing"
+                        OnPageIndexChanging="GridView1_PageIndexChanging" 
+                        EmptyDataText="No existen Registros">
+
+                        <Columns>
+                            <asp:TemplateField HeaderText="Id Categoria" Visible="false" HeaderStyle-CssClass="text-center">
+                                <ItemTemplate>
+                                    <asp:Label ID="id" runat="server" Text='<%# Eval("id_tipo_facturacion") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Nombre" HeaderStyle-CssClass="text-center">
+                                <ItemTemplate>
+                                    <asp:Label ID="nombre" runat="server" Text='<%# Eval("nombre") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:ButtonField CommandName="Edit" ButtonType="Image" Text="Editar"
+                                HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
+
+                            <asp:ButtonField CommandName="Delete" ButtonType="Image" Text="Eliminar"
+                                HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
+
+                        </Columns>
+                    </asp:GridView>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <asp:ImageButton AlternateText="Registrar" ID="btnCrear" runat="server" CssClass="btn btn-default" data-toggle="modal" data-target="#AddModal" />
+                    </div>
+                </div>
+
             </div>
 
         </ContentTemplate>
         <Triggers></Triggers>
-    </asp:updatepanel>
+    </asp:UpdatePanel>
 
     <!-- Add Modal -->
     <div id="AddModal"class="modal fade">
@@ -74,7 +115,7 @@
                                     <h4><strong>Nombre</strong></h4>
 
                                     <asp:TextBox id="txtNombre" MaxLength="40" runat="server" ClientIDMode="Static" 
-                                        CssClass="form-control" data-toggle="tooltip" data-placement="bottom" 
+                                         data-toggle="tooltip" data-placement="bottom" 
                                         title="Ingrese el nombre del Almacén"></asp:TextBox>
                                     
                                     <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" setfocusonerror="true" 
@@ -122,7 +163,7 @@
                                     <h4><strong>Nombre</strong></h4>
 
                                     <asp:TextBox id="txtNombre_Edit" MaxLength="40" runat="server" ClientIDMode="Static" 
-                                        CssClass="form-control" data-toggle="tooltip" data-placement="bottom" 
+                                         data-toggle="tooltip" data-placement="bottom" 
                                         title="Ingrese el nombre del Almacén"></asp:TextBox>
                                     
                                     <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" setfocusonerror="true" 

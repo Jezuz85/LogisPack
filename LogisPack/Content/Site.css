@@ -119,3 +119,7 @@ footer {
 input[type=text], input[type=password], input[type=email], input[type=number], input[type=tel], input[type=url], input[type=search] {
     width: 100%;
 }
+
+textarea {
+    width: 100%;
+}

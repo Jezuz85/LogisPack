@@ -3,7 +3,7 @@
 Public Class Detalles
     Inherits Page
 
-    Dim contexto As LogisPackEntities = New LogisPackEntities()
+    Private contexto As LogisPackEntities = New LogisPackEntities()
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 

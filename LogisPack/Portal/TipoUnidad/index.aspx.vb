@@ -3,15 +3,16 @@
 Public Class index2
     Inherits Page
 
-    Dim bError As Boolean
-    Dim contexto As LogisPackEntities = New LogisPackEntities()
+    Private bError As Boolean
+    Private contexto As LogisPackEntities = New LogisPackEntities()
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         LlenarGridView()
+        Modal.OcultarAlerta(updatePanelPrinicpal)
 
     End Sub
-    Public Sub LlenarGridView()
+    Private Sub LlenarGridView()
 
         Tabla.TipoUnidad(GridView1)
 
@@ -25,21 +26,18 @@ Public Class index2
         LlenarGridView()
 
     End Sub
-    Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
+    Protected Sub GridView1_onRowEditing(sender As Object, e As GridViewEditEventArgs)
 
-        If e.CommandName.Equals(Mensajes.Editar.ToString) Then
+        hdfEdit.Value = Utilidades_Grid.Get_IdRow_Editing(GridView1, e, "id")
+        Dim _TipoUnidad = Getter.Tipo_Unidad(Convert.ToInt32(hdfEdit.Value))
+        txtNombre_Edit.Text = _TipoUnidad.nombre
+        Modal.AbrirModal("EditModal", "EditModalScript", Me)
 
-            hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Dim _TipoUnidad = Getter.Tipo_Unidad(Convert.ToInt32(hdfEdit.Value))
-            txtNombre_Edit.Text = _TipoUnidad.nombre
-            Modal.AbrirModal("EditModal", "EditModalScript", Me)
-        End If
-        If e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
+    End Sub
+    Protected Sub GridView1_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
 
-            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
-
-        End If
+        hdfIDDel.Value = Utilidades_Grid.Get_IdRow_Deleting(GridView1, e, "id")
+        Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
     End Sub
 
@@ -55,9 +53,8 @@ Public Class index2
         bError = Create.TipoUnidad(_Nuevo)
 
         Modal.CerrarModal("AddModal", "AddModalScript", Me)
-        'Modal.Validacion(Me, bError, "Add")
+        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
         LlenarGridView()
-        Utilidades_UpdatePanel.LimpiarControles(up_Add)
     End Sub
 
     ''' <summary>
@@ -74,8 +71,7 @@ Public Class index2
         bError = Update.Tipo_Unidad(Edit, contexto)
 
         Modal.CerrarModal("EditModal", "EditModallScript", Me)
-        'Modal.Validacion(Me, bError, "Edit")
-        Utilidades_UpdatePanel.LimpiarControles(up_Edit)
+        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
         LlenarGridView()
     End Sub
 
@@ -87,7 +83,8 @@ Public Class index2
         bError = Delete.TipoUnidad(Convert.ToInt32(hdfIDDel.Value))
 
         Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
-        'Modal.Validacion(Me, bError, "Delete")
+
+        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
         LlenarGridView()
     End Sub
 

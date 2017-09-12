@@ -5,9 +5,9 @@ Imports CapaDatos
 Public Class index
     Inherits Page
 
-    Dim contexto As LogisPackEntities = New LogisPackEntities()
-    Dim _comando As Comandos = New Comandos()
-    Dim bError As Boolean
+    Private contexto As LogisPackEntities = New LogisPackEntities()
+    Private _comando As Comandos = New Comandos()
+    Private bError As Boolean
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
@@ -20,20 +20,21 @@ Public Class index
             CargarListas()
         End If
 
+        Modal.OcultarAlerta(updatePanelPrinicpal)
 
     End Sub
 
     ''' <summary>
     ''' Metodo que llena El Gridview con datos de la Base de Datos
     ''' </summary>
-    Public Sub LlenarGridView()
+    Private Sub LlenarGridView()
         Tabla.Almacen(GridView1)
     End Sub
 
     ''' <summary>
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
-    Public Sub CargarListas()
+    Private Sub CargarListas()
         Listas.Cliente(ddlClienteAdd)
     End Sub
 
@@ -46,30 +47,9 @@ Public Class index
     End Sub
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        If e.CommandName.Equals(Mensajes.Editar.ToString) Then
-
-            hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Dim _Almacen = Getter.Almacen(Convert.ToInt32(hdfEdit.Value))
-            Listas.Cliente(ddlClienteEdit)
-
-            ddlClienteEdit.SelectedValue = _Almacen.id_cliente
-            txtEditCodigo.Text = _Almacen.codigo
-            txtEditNombre.Text = _Almacen.nombre
-            txtEditCoefVol.Text = _Almacen.coeficiente_volumetrico
-
-            Modal.AbrirModal("EditModal", "EditModalScript", Me)
-        End If
-
-        If e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
-
-            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
-
-        End If
-
         If e.CommandName.Equals(Mensajes.Detalles.ToString) Then
 
-            hdfView.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
+            hdfView.Value = Utilidades_Grid.Get_IdRow(GridView1, e)
             Dim _Almacen = Getter.Almacen(Convert.ToInt32(hdfView.Value))
 
             lbViewCliente.Text = _Almacen.Cliente.nombre
@@ -78,8 +58,29 @@ Public Class index
             lbViewCoefVol.Text = _Almacen.coeficiente_volumetrico
 
             Modal.AbrirModal("ViewModal", "ViewModalScript", Me)
-
         End If
+
+    End Sub
+    Protected Sub GridView1_onRowEditing(sender As Object, e As GridViewEditEventArgs)
+
+        hdfEdit.Value = Utilidades_Grid.Get_IdRow_Editing(GridView1, e)
+        Dim _Almacen = Getter.Almacen(Convert.ToInt32(hdfEdit.Value))
+        Listas.Cliente(ddlClienteEdit)
+
+        Dim CoefVolumetrico As String = Convert.ToDouble(_Almacen.coeficiente_volumetrico).ToString("##,##0.00").Replace(",", ".")
+
+        ddlClienteEdit.SelectedValue = _Almacen.id_cliente
+        txtEditCodigo.Text = _Almacen.codigo
+        txtEditNombre.Text = _Almacen.nombre
+        txtEditCoefVol.Text = CoefVolumetrico
+
+        Modal.AbrirModal("EditModal", "EditModalScript", Me)
+
+    End Sub
+    Protected Sub GridView1_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
+
+        hdfIDDel.Value = Utilidades_Grid.Get_IdRow_Deleting(GridView1, e)
+        Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
     End Sub
 
@@ -114,7 +115,7 @@ Public Class index
             Edit.id_cliente = Convert.ToInt32(ddlClienteEdit.SelectedValue)
             Edit.codigo = txtEditCodigo.Text
             Edit.nombre = txtEditNombre.Text
-            Edit.coeficiente_volumetrico = Convert.ToDouble(txtEditCoefVol.Text)
+            Edit.coeficiente_volumetrico = Double.Parse(txtEditCoefVol.Text, CultureInfo.InvariantCulture)
         End If
 
         bError = Update.Almacen(Edit, contexto)

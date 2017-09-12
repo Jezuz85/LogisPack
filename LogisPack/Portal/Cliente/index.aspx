@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="index.aspx.vb" Inherits="LogisPack.index5" %>
 
+<%@ Register Src="~/Portal/WebUserControl/Alert.ascx" TagPrefix="uca" TagName="ucAlert" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 	<asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
@@ -50,48 +52,48 @@
 				</div>
 
 				<div class="section">
+					
+					<!-- Alert -->
+					<uca:ucAlert runat="server" ID="ucAlerta" />
 
 					<div class="sectionContent sectionGrid noPadding noMargin">
 						<div id="updGrid">
-							<div>
 
-								<asp:GridView ID="GridView1" class="grid gridSelectable gridSortable noPadding noMargin" 
-									runat="server"
-									AutoGenerateColumns="false" 
-									AllowPaging="true" PageSize="10" 
-									OnRowCommand="GridView1_RowCommand" 
-									onRowDeleting="GridView1_RowDeleting"  
-									onRowEditing="GridView1_onRowEditing"  
-									OnPageIndexChanging="GridView1_PageIndexChanging" EmptyDataText="No existen Registros">
+							<asp:GridView ID="GridView1" class="grid gridSelectable gridSortable noPadding noMargin"
+								runat="server"
+								AutoGenerateColumns="false"
+								AllowPaging="true" PageSize="10"
+								OnRowDeleting="GridView1_RowDeleting"
+								OnRowEditing="GridView1_onRowEditing"
+								OnPageIndexChanging="GridView1_PageIndexChanging" EmptyDataText="No existen Registros">
 
-									<Columns>
-										<asp:TemplateField HeaderText="Id Categoria" Visible="false" HeaderStyle-CssClass="text-center">
-											<ItemTemplate>
-												<asp:Label ID="id" runat="server" Text='<%# Eval("id_cliente") %>' />
-											</ItemTemplate>
-										</asp:TemplateField>
+								<Columns>
+									<asp:TemplateField HeaderText="Id Categoria" Visible="false" HeaderStyle-CssClass="text-center">
+										<ItemTemplate>
+											<asp:Label ID="id" runat="server" Text='<%# Eval("id_cliente") %>' />
+										</ItemTemplate>
+									</asp:TemplateField>
 
-										<asp:TemplateField HeaderText="Código" HeaderStyle-CssClass="text-center">
-											<ItemTemplate>
-												<asp:Label ID="codigo" runat="server" Text='<%# Eval("codigo") %>' />
-											</ItemTemplate>
-										</asp:TemplateField>
+									<asp:TemplateField HeaderText="Código" HeaderStyle-CssClass="text-center">
+										<ItemTemplate>
+											<asp:Label ID="codigo" runat="server" Text='<%# Eval("codigo") %>' />
+										</ItemTemplate>
+									</asp:TemplateField>
 
-										<asp:TemplateField HeaderText="Nombre" HeaderStyle-CssClass="text-center">
-											<ItemTemplate>
-												<asp:Label ID="nombre" runat="server" Text='<%# Eval("nombre") %>' />
-											</ItemTemplate>
-										</asp:TemplateField>
+									<asp:TemplateField HeaderText="Nombre" HeaderStyle-CssClass="text-center">
+										<ItemTemplate>
+											<asp:Label ID="nombre" runat="server" Text='<%# Eval("nombre") %>' />
+										</ItemTemplate>
+									</asp:TemplateField>
 
-										<asp:ButtonField HeaderText="Editar" CommandName="Edit" ButtonType="Image" Text="Editar"
-											HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
+									<asp:ButtonField HeaderText="Editar" CommandName="Edit" ButtonType="Image" Text="Editar"
+										HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
 
-										<asp:ButtonField HeaderText="Eliminar" CommandName="Delete" ButtonType="Image" Text="Eliminar"
-											HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
+									<asp:ButtonField HeaderText="Eliminar" CommandName="Delete" ButtonType="Image" Text="Eliminar"
+										HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
 
-									</Columns>
-								</asp:GridView>
-							</div>
+								</Columns>
+							</asp:GridView>
 						</div>
 					</div>
 
@@ -130,7 +132,7 @@
 									<h4><strong>Código</strong></h4>
 
 									<asp:TextBox ID="txtCodigo_Add" MaxLength="10" runat="server" ClientIDMode="Static"
-										CssClass="form-control" data-toggle="tooltip" data-placement="bottom"
+										 data-toggle="tooltip" data-placement="bottom"
 										title="Ingrese el nombre del Almacén"></asp:TextBox>
 
 									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
@@ -144,7 +146,7 @@
 									<h4><strong>Nombre</strong></h4>
 
 									<asp:TextBox ID="txtNombre_Add" MaxLength="50" runat="server" ClientIDMode="Static"
-										CssClass="form-control" data-toggle="tooltip" data-placement="bottom"
+										 data-toggle="tooltip" data-placement="bottom"
 										title="Ingrese el nombre del Almacén"></asp:TextBox>
 
 									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
@@ -194,7 +196,7 @@
 									<h4><strong>Código</strong></h4>
 
 									<asp:TextBox ID="txtCodigo_Edit" MaxLength="40" runat="server" ClientIDMode="Static"
-										CssClass="form-control" data-toggle="tooltip" data-placement="bottom"
+										 data-toggle="tooltip" data-placement="bottom"
 										title="Ingrese el nombre del Almacén"></asp:TextBox>
 
 									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
@@ -209,7 +211,7 @@
 									<h4><strong>Nombre</strong></h4>
 
 									<asp:TextBox ID="txtNombre_Edit" MaxLength="40" runat="server" ClientIDMode="Static"
-										CssClass="form-control" data-toggle="tooltip" data-placement="bottom"
+										 data-toggle="tooltip" data-placement="bottom"
 										title="Ingrese el nombre del Almacén"></asp:TextBox>
 
 									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
