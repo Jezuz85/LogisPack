@@ -76,19 +76,19 @@
 																</div>--%>
 															</li>
 															<li class="dropdown">
-																<a runat="server" href="~/Portal/Articulo/index">Articulo</a>
+																<a class="dropbtn" runat="server" href="~/Portal/Articulo/index">Articulo</a>
 																
 																<div class="dropdown-content">
-																	<a href="#">Nuevo Articulo</a>
+																	<a href="../../Portal/Articulo/Crear">Nuevo Articulo</a>
 																</div>
 															</li>
 															<li class="dropdown">
 																<a runat="server" href="~/Portal/Operacion/index">Operacion</a>
 																
-																<div class="dropdown-content">
+																<%--<div class="dropdown-content">
 																	<a href="#">Nueva Entrada</a>
 																	<a href="#">Nueva Salida</a>
-																</div>
+																</div>--%>
 															</li>
 															<li class="dropdown">
 																<a runat="server" href="~/Portal/TipoFacturacion/index">Tipo de Facturación</a>

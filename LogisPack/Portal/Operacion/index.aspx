@@ -87,7 +87,7 @@
 						<h4>Documento Transacción</h4>
 
 						<asp:FileUpload runat="server" ID="fuDocumento" data-toggle="tooltip" data-placement="bottom"
-							class="form-control" title="Seleccione el documento de la transaccion" />
+							title="Seleccione el documento de la transaccion" />
 
 						<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
 							ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="fuDocumento" runat="server"

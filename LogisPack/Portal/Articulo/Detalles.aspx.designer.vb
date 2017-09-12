@@ -104,6 +104,15 @@ Partial Public Class Detalles
     Protected WithEvents lbRefPick As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
+    '''Control lbTipoUnidad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbTipoUnidad As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''Control lbRef1.
     '''</summary>
     '''<remarks>
@@ -129,15 +138,6 @@ Partial Public Class Detalles
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents lbRef3 As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''Control lbTipoUnidad.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lbTipoUnidad As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''Control pTabla.

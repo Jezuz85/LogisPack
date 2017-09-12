@@ -24,7 +24,7 @@ Public Class Detalles
             CargarArticulo(itemArticulos)
             CargarArticulosPicking(itemArticulos)
             CargarUbicacion(itemArticulos)
-
+            CargarImagenes(itemArticulos)
         Next
     End Sub
 

@@ -532,6 +532,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack.Crear._ddlTipoUnidad">
+<summary>
+Control ddlTipoUnidad.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack.Crear._txtRef1">
 <summary>
 Control txtRef1.
@@ -553,15 +562,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack.Crear._txtRef3">
 <summary>
 Control txtRef3.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack.Crear._ddlTipoUnidad">
-<summary>
-Control ddlTipoUnidad.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1281,6 +1281,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack.Editar._ddlTipoUnidad">
+<summary>
+Control ddlTipoUnidad.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack.Editar._txtRef1">
 <summary>
 Control txtRef1.
@@ -1302,15 +1311,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack.Editar._txtRef3">
 <summary>
 Control txtRef3.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack.Editar._ddlTipoUnidad">
-<summary>
-Control ddlTipoUnidad.
 </summary>
 <remarks>
 Campo generado automáticamente.

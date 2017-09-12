@@ -149,6 +149,15 @@ Partial Public Class Crear
     Protected WithEvents txtRefPick As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''Control ddlTipoUnidad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlTipoUnidad As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''Control txtRef1.
     '''</summary>
     '''<remarks>
@@ -174,15 +183,6 @@ Partial Public Class Crear
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtRef3 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control ddlTipoUnidad.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ddlTipoUnidad As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
     '''Control pTabla.

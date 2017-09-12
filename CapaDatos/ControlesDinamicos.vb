@@ -39,7 +39,6 @@ Public Class ControlesDinamicos
         Dim miTextBox As TextBox
         miTextBox = New TextBox()
         miTextBox.ID = id
-        miTextBox.CssClass = "form-control"
         miTextBox.TextMode = _TextBoxMode
         If _TextBoxMode = TextBoxMode.MultiLine Then
             miTextBox.Rows = 3
@@ -56,8 +55,6 @@ Public Class ControlesDinamicos
     Public Shared Function CrearDropDownList(id As String, _panel As Panel, _DropDownList As DropDownList) As DropDownList
 
         _DropDownList.ID = id
-        _DropDownList.CssClass = "form-control"
-
         _panel.Controls.Add(_DropDownList)
 
         Return _DropDownList
