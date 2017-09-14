@@ -6,10 +6,8 @@
 
     <TestInitialize>
     Public Sub inicializar()
-        DataAccess.Inicializar_Cliente(_Cliente)
-        DataAccess.Inicializar_Almacen(_Almacen, _Cliente.id_cliente)
+        DataAccess.Inicializar_Almacen(_Almacen, _Cliente)
     End Sub
-
     <TestCleanup>
     Public Sub finalizar()
         DataAccess.Finalizar_Cliente(_Cliente)

@@ -151,17 +151,55 @@ Public Class Getter
     ''' <summary>
     ''' Metodo que recibe un id del Artiuclo, y devuelve una lista de las imagenes asociadas al articulo
     ''' </summary>
-    Public Shared Function Imagen_list(id As String) As List(Of Imagen)
+    Public Shared Function Imagen_list(id As Integer) As List(Of Imagen)
         Dim contexto As LogisPackEntities = New LogisPackEntities()
         Return contexto.Imagen.Where(Function(model) model.id_articulo = id).ToList()
     End Function
 
     ''' <summary>
+    ''' Metodo que recibe un id de la imagen, y devuelve la imagene asociadas al articulo
+    ''' </summary>
+    Public Shared Function Imagen(id As Integer) As Imagen
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+        Return contexto.Imagen.Where(Function(model) model.id_imagen = id).SingleOrDefault()
+    End Function
+
+    ''' <summary>
+    ''' Metodo que recibe un id de la Imagen y lo consulta desde la Base de datos, recibe un objeto contexto
+    ''' para devolver la Imagen a editar con su respectivo contexto usado
+    ''' devuelve un objeto tipo Imagen si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
+    Public Shared Function Imagen(id As Integer, ByRef contexto As LogisPackEntities) As Imagen
+
+        Return contexto.Imagen.Where(Function(model) model.id_imagen = id).SingleOrDefault()
+
+    End Function
+
+    ''' <summary>
     ''' Metodo que recibe un id del Artiuclo, y devuelve una lista de las ubicaciones asociadas al articulo
     ''' </summary>
-    Public Shared Function Ubicacion_list(id As String) As List(Of Ubicacion)
+    Public Shared Function Ubicacion_list(id As Integer) As List(Of Ubicacion)
         Dim contexto As LogisPackEntities = New LogisPackEntities()
         Return contexto.Ubicacion.Where(Function(model) model.id_articulo = id).ToList()
+    End Function
+
+    ''' <summary>
+    ''' Metodo que recibe un id del Artiuclo, y devuelve una la ubicaciones asociadas al articulo
+    ''' </summary>
+    Public Shared Function Ubicacion(id As Integer) As Ubicacion
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+        Return contexto.Ubicacion.Where(Function(model) model.id_ubicacion = id).SingleOrDefault()
+    End Function
+
+    ''' <summary>
+    ''' Metodo que recibe un id de la ubicacion y lo consulta desde la Base de datos, recibe un objeto contexto
+    ''' para devolver la ubicacion a editar con su respectivo contexto usado
+    ''' devuelve un objeto tipo ubicacion si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
+    Public Shared Function Ubicacion(id As Integer, ByRef contexto As LogisPackEntities) As Ubicacion
+
+        Return contexto.Ubicacion.Where(Function(model) model.id_ubicacion = id).SingleOrDefault()
+
     End Function
 
 End Class

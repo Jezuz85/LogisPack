@@ -25,4 +25,3 @@ C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug
 C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.dll
 C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.xml
 C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.pdb
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.vbprojResolveAssemblyReference.cache

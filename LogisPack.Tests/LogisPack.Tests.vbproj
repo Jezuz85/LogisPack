@@ -116,6 +116,8 @@
     <Compile Include="Test_TipoUnidad.vb" />
     <Compile Include="Test_Almacen.vb" />
     <Compile Include="Test_Articulo.vb" />
+    <Compile Include="Test_Ubicacion.vb" />
+    <Compile Include="Test_Imagen.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

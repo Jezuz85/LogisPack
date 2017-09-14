@@ -227,11 +227,8 @@ Public Class Editar
             Dim Edit = Getter.Articulo(IdArticulo, contexto)
 
             If EditarArticulo(Edit) Then
-
                 If EditarImagenes(Edit) Then
-
                     If EditarUbicaciones(Edit) Then
-
                         If EditarPicking(Edit) Then
 
                             If ddlTipoArticulo.SelectedValue = "Picking" Then

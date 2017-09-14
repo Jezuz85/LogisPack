@@ -171,6 +171,13 @@ CapaDatos
  devuelve una lista de objetos de tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
+<member name="M:CapaDatos.Getter.Picking_Articulo_list(System.Int32)">
+ <summary>
+ Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
+ devuelve una lista de objetos de tipo Articulo que estan asociados a un articulo picking 
+ si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
 <member name="M:CapaDatos.Getter.Articulo(System.Int32)">
  <summary>
  Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
@@ -223,9 +230,38 @@ CapaDatos
  devuelve un objeto tipo Tipo_Unidad si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
-<member name="M:CapaDatos.Getter.Imagen_list(System.String)">
+<member name="M:CapaDatos.Getter.Imagen_list(System.Int32)">
  <summary>
  Metodo que recibe un id del Artiuclo, y devuelve una lista de las imagenes asociadas al articulo
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Imagen(System.Int32)">
+ <summary>
+ Metodo que recibe un id de la imagen, y devuelve la imagene asociadas al articulo
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Imagen(System.Int32,CapaDatos.LogisPackEntities@)">
+ <summary>
+ Metodo que recibe un id de la Imagen y lo consulta desde la Base de datos, recibe un objeto contexto
+ para devolver la Imagen a editar con su respectivo contexto usado
+ devuelve un objeto tipo Imagen si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Ubicacion_list(System.Int32)">
+ <summary>
+ Metodo que recibe un id del Artiuclo, y devuelve una lista de las ubicaciones asociadas al articulo
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Ubicacion(System.Int32)">
+ <summary>
+ Metodo que recibe un id del Artiuclo, y devuelve una la ubicaciones asociadas al articulo
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Ubicacion(System.Int32,CapaDatos.LogisPackEntities@)">
+ <summary>
+ Metodo que recibe un id de la ubicacion y lo consulta desde la Base de datos, recibe un objeto contexto
+ para devolver la ubicacion a editar con su respectivo contexto usado
+ devuelve un objeto tipo ubicacion si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
 <member name="M:CapaDatos.Listas.Almacen(System.Web.UI.WebControls.DropDownList@)">
@@ -381,6 +417,18 @@ CapaDatos
 <member name="M:CapaDatos.Update.Tipo_Unidad(CapaDatos.Tipo_Unidad,CapaDatos.LogisPackEntities@)">
  <summary>
  Metodo que recibe el objeto Tipo de Unidad a Actualizar y el contexto en que fue creado, devuelve true si fue
+ exitosa la actualización, en caso contrario devuelve false
+ </summary>
+</member>
+<member name="M:CapaDatos.Update.Ubicacion(CapaDatos.Ubicacion,CapaDatos.LogisPackEntities@)">
+ <summary>
+ Metodo que recibe el objeto Tipo de Ubicacion a Actualizar y el contexto en que fue creado, devuelve true si fue
+ exitosa la actualización, en caso contrario devuelve false
+ </summary>
+</member>
+<member name="M:CapaDatos.Update.Imagen(CapaDatos.Imagen,CapaDatos.LogisPackEntities@)">
+ <summary>
+ Metodo que recibe el objeto Tipo de Imagen a Actualizar y el contexto en que fue creado, devuelve true si fue
  exitosa la actualización, en caso contrario devuelve false
  </summary>
 </member>
