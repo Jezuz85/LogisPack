@@ -79,7 +79,7 @@
       <PropertyRef Name="id_imagen" />
     </Key>
     <Property Name="id_imagen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="url_imagen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="id_articulo" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Articulo" Relationship="Self.FK_dbo_Imagen_dbo_Articulo_id_articulo" FromRole="Imagen" ToRole="Articulo" />

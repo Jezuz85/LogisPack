@@ -53,7 +53,6 @@ C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin
 C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\Microsoft.AspNet.FriendlyUrls.dll
 C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\CapaDatos.dll
 C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.Mvc.dll
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\EntityFramework.dll
 C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
 C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.Razor.dll
 C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\System.Web.WebPages.Razor.dll
@@ -86,3 +85,8 @@ C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\obj
 C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\obj\Debug\LogisPack.Tests.dll
 C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\obj\Debug\LogisPack.Tests.xml
 C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\obj\Debug\LogisPack.Tests.pdb
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\NMemory.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\NMemory.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\EntityFramework.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\LogisPack.Tests\bin\Debug\EntityFramework.SqlServer.xml

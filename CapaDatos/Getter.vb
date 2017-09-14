@@ -47,6 +47,19 @@ Public Class Getter
 
     ''' <summary>
     ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
+    ''' devuelve una lista de objetos de tipo Articulo que estan asociados a un articulo picking 
+    ''' si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
+    Public Shared Function Picking_Articulo_list(id As Integer) As List(Of Picking_Articulo)
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Return contexto.Picking_Articulo.Where(Function(model) model.id_picking = id).ToList()
+
+    End Function
+
+    ''' <summary>
+    ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
     ''' devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
     ''' </summary>
     Public Shared Function Articulo(id As Integer) As Articulo
@@ -141,6 +154,14 @@ Public Class Getter
     Public Shared Function Imagen_list(id As String) As List(Of Imagen)
         Dim contexto As LogisPackEntities = New LogisPackEntities()
         Return contexto.Imagen.Where(Function(model) model.id_articulo = id).ToList()
+    End Function
+
+    ''' <summary>
+    ''' Metodo que recibe un id del Artiuclo, y devuelve una lista de las ubicaciones asociadas al articulo
+    ''' </summary>
+    Public Shared Function Ubicacion_list(id As String) As List(Of Ubicacion)
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+        Return contexto.Ubicacion.Where(Function(model) model.id_articulo = id).ToList()
     End Function
 
 End Class

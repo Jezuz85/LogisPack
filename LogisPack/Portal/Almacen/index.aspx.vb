@@ -6,7 +6,6 @@ Public Class index
     Inherits Page
 
     Private contexto As LogisPackEntities = New LogisPackEntities()
-    Private _comando As Comandos = New Comandos()
     Private bError As Boolean
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
@@ -14,7 +13,7 @@ Public Class index
         If IsPostBack = False Then
 
             MyTreeView.Nodes.Clear()
-            Dim dt As DataTable = GetData(_comando.Arbol_Almacen_Nivel0)
+            Dim dt As DataTable = GetData(Comandos.Arbol_Almacen_Nivel0.ToString)
             LlenarTreeView(dt, 0, Nothing)
             LlenarGridView()
             CargarListas()
@@ -171,11 +170,11 @@ Public Class index
 
             If parentId = 0 Then
                 MyTreeView.Nodes.Add(child)
-                Dim dtChild As DataTable = Me.GetData(_comando.Arbol_Almacen_Nivel1 + child.Value)
+                Dim dtChild As DataTable = Me.GetData(Comandos.Arbol_Almacen_Nivel1.ToString + child.Value)
                 LlenarTreeView(dtChild, 1, child)
             ElseIf parentId = 1 Then
                 treeNode.ChildNodes.Add(child)
-                Dim dtChild As DataTable = Me.GetData(_comando.Arbol_Almacen_Nivel2 + child.Value)
+                Dim dtChild As DataTable = Me.GetData(Comandos.Arbol_Almacen_Nivel2.ToString + child.Value)
                 LlenarTreeView(dtChild, 2, child)
             Else
                 treeNode.ChildNodes.Add(child)

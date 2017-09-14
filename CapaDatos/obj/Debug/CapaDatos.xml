@@ -171,6 +171,13 @@ CapaDatos
  devuelve una lista de objetos de tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
+<member name="M:CapaDatos.Getter.Picking_Articulo_list(System.Int32)">
+ <summary>
+ Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
+ devuelve una lista de objetos de tipo Articulo que estan asociados a un articulo picking 
+ si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
 <member name="M:CapaDatos.Getter.Articulo(System.Int32)">
  <summary>
  Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
@@ -226,6 +233,11 @@ CapaDatos
 <member name="M:CapaDatos.Getter.Imagen_list(System.String)">
  <summary>
  Metodo que recibe un id del Artiuclo, y devuelve una lista de las imagenes asociadas al articulo
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Ubicacion_list(System.String)">
+ <summary>
+ Metodo que recibe un id del Artiuclo, y devuelve una lista de las ubicaciones asociadas al articulo
  </summary>
 </member>
 <member name="M:CapaDatos.Listas.Almacen(System.Web.UI.WebControls.DropDownList@)">

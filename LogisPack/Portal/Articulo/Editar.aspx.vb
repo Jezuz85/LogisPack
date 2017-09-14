@@ -250,6 +250,7 @@ Public Class Editar
                 End If
             End If
 
+            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, updatePanelPrinicpal)
 
         End If
 
@@ -264,10 +265,11 @@ Public Class Editar
         Dim PesoVol As Double = 0
         Dim valoracionStock As Double = 0
         Dim valoracionSeguro As Double = 0
+        bError = True
 
         M3 = Manager_Articulo.CalcularM3(txtAlto.Text, txtAncho.Text, txtLargo.Text)
         PesoVol = Manager_Articulo.CalcularPesoVolumetrico(txtAlto.Text, txtAncho.Text, txtLargo.Text, txtCoefVol.Text)
-        valoracionStock = Manager_Articulo.CalcularValoracionStock(txtValAsegurado.Text, txtStockFisico.Text, txtValArticulo.Text)
+        valoracionStock = Manager_Articulo.CalcularValoracionStock(txtStockFisico.Text, txtValArticulo.Text)
         valoracionSeguro = Manager_Articulo.CalcularValoracionSeguro(txtValAsegurado.Text, txtStockFisico.Text)
 
         If Edit IsNot Nothing Then
@@ -311,7 +313,7 @@ Public Class Editar
     Private Function EditarImagenes(Edit As Articulo) As Boolean
 
         Dim contadorControl As Integer = 0
-        bError = False
+        bError = True
 
         'Guardar fotos que fueron cargadas
         For Each _imagen In fuImagenes.PostedFiles
@@ -350,7 +352,12 @@ Public Class Editar
         bError = True
 
         If Edit.Ubicacion.Count > 0 Then
-            bError = Delete.Ubicacion(Edit.id_articulo)
+
+            Dim _ListUbicaion As List(Of Ubicacion) = Getter.Ubicacion_list(Edit.id_articulo)
+            For Each itemUbicacion In _ListUbicaion
+                bError = Delete.Ubicacion(itemUbicacion.id_ubicacion)
+            Next
+
         End If
 
         If bError Then
@@ -430,11 +437,18 @@ Public Class Editar
     Private Function EditarPicking(Edit As Articulo) As Boolean
 
         Dim contadorControl As Integer = 0
+        bError = True
 
         If ddlTipoArticulo.SelectedValue = "Picking" Then
 
-            If Edit.Picking_Articulo.Count > 0 Then
-                bError = Delete.Picking_Articulo(Edit.id_articulo)
+            If Edit.Picking_Articulo1.Count > 0 Then
+
+                Dim _ListPicArt As List(Of Picking_Articulo) = Getter.Picking_Articulo_list(Edit.id_articulo)
+
+                For Each itemPicArt In _ListPicArt
+                    bError = Delete.Picking_Articulo(itemPicArt.id_picking_articulo)
+                Next
+
             Else
                 bError = True
             End If

@@ -156,7 +156,7 @@ Public Class Manager_Articulo
             Largo = Double.Parse(txtAncho, CultureInfo.InvariantCulture)
             Ancho = Double.Parse(txtLargo, CultureInfo.InvariantCulture)
 
-            m3 = (Alto * Ancho * Largo) / 1000
+            m3 = ((Alto * Ancho * Largo) / 1000).ToString("#.000")
         End If
 
         Return m3
@@ -177,7 +177,7 @@ Public Class Manager_Articulo
             Ancho = Double.Parse(txtLargo, CultureInfo.InvariantCulture)
             CoefVol = Double.Parse(txtCoefVol, CultureInfo.InvariantCulture)
 
-            PesoVol = (Alto * Ancho * Largo * CoefVol) / 1000
+            PesoVol = ((Alto * Ancho * Largo * CoefVol) / 1000).ToString("#.000")
         End If
 
 
@@ -185,18 +185,18 @@ Public Class Manager_Articulo
 
     End Function
 
-    Public Shared Function CalcularValoracionStock(txtValAsegurado As String, txtStockFisico As String, txtValArticulo As String) As Double
+    Public Shared Function CalcularValoracionStock(txtStockFisico As String, txtValArticulo As String) As Double
 
         Dim valoracionStock As Double = 0
         Dim ValArticulo As Double = 0
         Dim StockFisico As Double = 0
 
-        If (txtValAsegurado <> String.Empty And txtStockFisico <> String.Empty) Then
+        If (txtValArticulo <> String.Empty And txtStockFisico <> String.Empty) Then
 
             ValArticulo = Double.Parse(txtValArticulo, CultureInfo.InvariantCulture)
             StockFisico = Double.Parse(txtStockFisico, CultureInfo.InvariantCulture)
 
-            valoracionStock = ValArticulo * StockFisico
+            valoracionStock = (ValArticulo * StockFisico).ToString("#.000")
 
         End If
 
@@ -206,14 +206,14 @@ Public Class Manager_Articulo
     Public Shared Function CalcularValoracionSeguro(txtValAsegurado As String, txtStockFisico As String) As Double
 
         Dim valoracionSeguro As Double = 0
-        Dim ValArticulo As Double = 0
+        Dim ValAsegurado As Double = 0
         Dim StockFisico As Double = 0
 
         If (txtValAsegurado <> String.Empty And txtStockFisico <> String.Empty) Then
 
-            ValArticulo = Double.Parse(txtValAsegurado, CultureInfo.InvariantCulture)
+            ValAsegurado = Double.Parse(txtValAsegurado, CultureInfo.InvariantCulture)
             StockFisico = Double.Parse(txtStockFisico, CultureInfo.InvariantCulture)
-            valoracionSeguro = ValArticulo * StockFisico
+            valoracionSeguro = (ValAsegurado * StockFisico).ToString("#.000")
 
         End If
 

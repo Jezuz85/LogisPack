@@ -1,4 +1,6 @@
 ﻿
+Imports System.Data.Entity
+
 Public Class Delete
 
     ''' <summary>
@@ -115,10 +117,9 @@ Public Class Delete
     Public Shared Function Ubicacion(ByVal _id As Integer) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
-
         Try
             Dim Eliminar As New Ubicacion With {
-                .id_articulo = _id
+                .id_ubicacion = _id
             }
             contexto.Ubicacion.Attach(Eliminar)
             contexto.Ubicacion.Remove(Eliminar)
@@ -140,7 +141,7 @@ Public Class Delete
 
         Try
             Dim Eliminar As New Picking_Articulo With {
-                .id_picking = _id
+                .id_picking_articulo = _id
             }
             contexto.Picking_Articulo.Attach(Eliminar)
             contexto.Picking_Articulo.Remove(Eliminar)

@@ -111,7 +111,7 @@ Public Class Crear
 
         M3 = Manager_Articulo.CalcularM3(txtAlto.Text, txtAncho.Text, txtLargo.Text)
         PesoVol = Manager_Articulo.CalcularPesoVolumetrico(txtAlto.Text, txtAncho.Text, txtLargo.Text, txtCoefVol.Text)
-        valoracionStock = Manager_Articulo.CalcularValoracionStock(txtValAsegurado.Text, txtStockFisico.Text, txtValArticulo.Text)
+        valoracionStock = Manager_Articulo.CalcularValoracionStock(txtStockFisico.Text, txtValArticulo.Text)
         valoracionSeguro = Manager_Articulo.CalcularValoracionSeguro(txtValAsegurado.Text, txtStockFisico.Text)
 
         Dim _Nuevo As New Articulo With
