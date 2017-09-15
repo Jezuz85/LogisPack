@@ -1,5 +1,4 @@
-﻿
-Imports System.Drawing
+﻿Imports System.Drawing
 Imports System.Drawing.Imaging
 Imports System.Web
 Imports System.Web.UI.WebControls
@@ -39,14 +38,16 @@ Public Class Utilidades_Fileupload
     ''' Metodo para redimensionar las imagenes a 800 x 600 pxs
     ''' </summary>
     Private Shared Function ScaleImage(image As Drawing.Image, maxHeight As Integer) As Drawing.Image
-        Dim ratio = CDbl(maxHeight / image.Height)
+
+        Dim ratio = (maxHeight / image.Height)
         Dim newWidth = CInt((image.Width * ratio))
         Dim newHeight = CInt((image.Height * ratio))
         Dim newImage = New Bitmap(800, 600)
+
         Using g = Graphics.FromImage(newImage)
             g.DrawImage(image, 0, 0, 800, 600)
-
         End Using
+
         Return newImage
 
     End Function

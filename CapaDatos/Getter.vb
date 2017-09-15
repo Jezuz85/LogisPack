@@ -60,6 +60,27 @@ Public Class Getter
 
     ''' <summary>
     ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
+    ''' devuelve un  objeto de tipo Articulo que estan asociados a un articulo picking 
+    ''' si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
+    Public Shared Function Picking_Articulo(id As Integer) As Picking_Articulo
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+        Return contexto.Picking_Articulo.Where(Function(model) model.id_picking_articulo = id).SingleOrDefault()
+
+    End Function
+
+    ''' <summary>
+    ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, recibe un objeto contexto
+    ''' para devolver el ArticuloPicking a editar con su respectivo contexto usado
+    ''' devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
+    Public Shared Function Picking_Articulo(id As Integer, ByRef contexto As LogisPackEntities) As Picking_Articulo
+        Return contexto.Picking_Articulo.Where(Function(model) model.id_picking_articulo = id).SingleOrDefault()
+    End Function
+
+    ''' <summary>
+    ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
     ''' devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
     ''' </summary>
     Public Shared Function Articulo(id As Integer) As Articulo

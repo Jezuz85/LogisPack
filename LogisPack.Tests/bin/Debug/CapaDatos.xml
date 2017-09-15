@@ -178,6 +178,20 @@ CapaDatos
  si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
+<member name="M:CapaDatos.Getter.Picking_Articulo(System.Int32)">
+ <summary>
+ Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
+ devuelve un  objeto de tipo Articulo que estan asociados a un articulo picking 
+ si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Picking_Articulo(System.Int32,CapaDatos.LogisPackEntities@)">
+ <summary>
+ Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, recibe un objeto contexto
+ para devolver el ArticuloPicking a editar con su respectivo contexto usado
+ devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
 <member name="M:CapaDatos.Getter.Articulo(System.Int32)">
  <summary>
  Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 

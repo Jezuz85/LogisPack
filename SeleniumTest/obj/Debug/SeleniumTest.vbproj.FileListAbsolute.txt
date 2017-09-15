@@ -1,0 +1,3 @@
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\SeleniumTest\obj\Debug\SeleniumTest.vbprojResolveAssemblyReference.cache
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\SeleniumTest\obj\Debug\SeleniumTest.Resources.resources
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\SeleniumTest\obj\Debug\SeleniumTest.vbproj.GenerateResource.Cache

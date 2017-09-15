@@ -60,6 +60,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -118,6 +119,7 @@
     <Compile Include="Test_Articulo.vb" />
     <Compile Include="Test_Ubicacion.vb" />
     <Compile Include="Test_Imagen.vb" />
+    <Compile Include="Test_ArticuloPicking.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

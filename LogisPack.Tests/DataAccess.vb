@@ -10,6 +10,7 @@ Public Class DataAccess
         }
         Create.Cliente(_Nuevo)
     End Sub
+
     Public Shared Sub Finalizar_Cliente(ByRef _Nuevo As Cliente)
         Delete.Cliente(_Nuevo.id_cliente)
     End Sub
@@ -34,6 +35,7 @@ Public Class DataAccess
         }
         Create.TipoFacturacion(_Nuevo)
     End Sub
+
     Public Shared Sub Finalizar_TipoFacturacion(ByRef _Nuevo As Tipo_Facturacion)
         Delete.TipoFacturacion(_Nuevo.id_tipo_facturacion)
     End Sub
@@ -45,6 +47,7 @@ Public Class DataAccess
         }
         Create.TipoUnidad(_Nuevo)
     End Sub
+
     Public Shared Sub Finalizar_TipoUnidad(ByRef _Nuevo As Tipo_Unidad)
         Delete.TipoUnidad(_Nuevo.id_tipo_unidad)
     End Sub
@@ -88,6 +91,7 @@ Public Class DataAccess
         Create.Articulo(_Articulo)
 
     End Sub
+
     Public Shared Sub Finalizar_Articulo(ByRef _Tipo_Facturacion As Tipo_Facturacion, ByRef _Tipo_Unidad As Tipo_Unidad,
             ByRef _Cliente As Cliente)
 
@@ -130,6 +134,90 @@ Public Class DataAccess
         Create.Imagen(_Imagen)
     End Sub
 
+    Public Shared Sub Inicializar_ArticuloPicking(ByRef _Articulo As Articulo, ByRef _Almacen As Almacen,
+        ByRef _Tipo_Facturacion As Tipo_Facturacion, ByRef _Tipo_Unidad As Tipo_Unidad, ByRef _Cliente As Cliente,
+        ByRef _Picking_Articulo As Picking_Articulo, ByRef _ArticuloP As Articulo)
 
+        Inicializar_Almacen(_Almacen, _Cliente)
+        Inicializar_TipoFacturacion(_Tipo_Facturacion)
+        Inicializar_TipoUnidad(_Tipo_Unidad)
+
+        _Articulo = New Articulo With
+            {
+            .codigo = "Cod1",
+            .nombre = "Art_Pick1",
+            .referencia_picking = "RefPick",
+            .referencia1 = "ref1",
+            .referencia2 = "ref2",
+            .referencia3 = "ref3",
+            .identificacion = "CB",
+            .valor_articulo = 100.1,
+            .valor_asegurado = 200.2,
+            .valoracion_stock = 300.3,
+            .valoracion_seguro = 400.4,
+            .peso = 500.5,
+            .alto = 600.6,
+            .largo = 700.7,
+            .ancho = 800.8,
+            .coeficiente_volumetrico = 900.9,
+            .cubicaje = 10000.1,
+            .peso_volumen = 2000.2,
+            .observaciones_articulo = "Observaciones Articulo Prueba",
+            .observaciones_generales = "Observaciones Generales Prueba",
+            .stock_fisico = 3000.3,
+            .stock_minimo = 4000.4,
+            .id_almacen = _Almacen.id_almacen,
+            .id_tipo_facturacion = _Tipo_Facturacion.id_tipo_facturacion,
+            .id_tipo_unidad = _Tipo_Unidad.id_tipo_unidad,
+            .tipoArticulo = "Picking"
+        }
+        Create.Articulo(_Articulo)
+
+        _ArticuloP = New Articulo With
+            {
+            .codigo = "Cod1",
+            .nombre = "ArtPick_1",
+            .referencia_picking = "RefPick",
+            .referencia1 = "ref1",
+            .referencia2 = "ref2",
+            .referencia3 = "ref3",
+            .identificacion = "CB",
+            .valor_articulo = 100.1,
+            .valor_asegurado = 200.2,
+            .valoracion_stock = 300.3,
+            .valoracion_seguro = 400.4,
+            .peso = 500.5,
+            .alto = 600.6,
+            .largo = 700.7,
+            .ancho = 800.8,
+            .coeficiente_volumetrico = 900.9,
+            .cubicaje = 10000.1,
+            .peso_volumen = 2000.2,
+            .observaciones_articulo = "Observaciones Articulo Prueba",
+            .observaciones_generales = "Observaciones Generales Prueba",
+            .stock_fisico = 3000.3,
+            .stock_minimo = 4000.4,
+            .id_almacen = _Almacen.id_almacen,
+            .id_tipo_facturacion = _Tipo_Facturacion.id_tipo_facturacion,
+            .id_tipo_unidad = _Tipo_Unidad.id_tipo_unidad,
+            .tipoArticulo = "Normal"
+        }
+        Create.Articulo(_ArticuloP)
+
+        Inicializar_Picking_Articulo(_Picking_Articulo, _Articulo, _ArticuloP)
+
+    End Sub
+
+    Public Shared Sub Inicializar_Picking_Articulo(ByRef _Picking_Articulo As Picking_Articulo, ByRef _Articulo As Articulo, ByRef _ArticuloP As Articulo)
+
+        _Picking_Articulo = New Picking_Articulo With
+            {
+            .unidades = 2,
+            .id_articulo = _ArticuloP.id_articulo,
+            .id_picking = _Articulo.id_articulo
+        }
+        Create.Picking_Articulo(_Picking_Articulo)
+
+    End Sub
 
 End Class
